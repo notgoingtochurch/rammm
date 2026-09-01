@@ -1,0 +1,9 @@
+node_modules
+.output
+.tanstack
+.wrangler
+dist
+build
+.DS_Store
+npm-debug.log*
+bun-debug.log*

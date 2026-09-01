@@ -1,0 +1,8 @@
+.git
+node_modules
+.output
+dist
+build
+.DS_Store
+npm-debug.log*
+bun-debug.log*

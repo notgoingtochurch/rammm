@@ -1,0 +1,707 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --font-display: "Oswald", system-ui, sans-serif;
+  --font-menu: "Montserrat", system-ui, sans-serif;
+  --font-sans: "Montserrat", system-ui, sans-serif;
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-surface: var(--surface);
+  --radius-sm: 5px;
+  --radius-md: 5px;
+  --radius-lg: 5px;
+  --radius-xl: 5px;
+  --radius-2xl: 5px;
+  --radius-3xl: 5px;
+  --radius-4xl: 5px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 5px;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.18 0.005 260);
+  --surface: oklch(0.968 0.002 260);
+  --brand: oklch(0.55 0.22 27);
+  --brand-foreground: oklch(0.99 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.005 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.005 260);
+  --primary: oklch(0.55 0.22 27);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.96 0.002 260);
+  --secondary-foreground: oklch(0.18 0.005 260);
+  --muted: oklch(0.96 0.002 260);
+  --muted-foreground: oklch(0.52 0.008 260);
+  --accent: oklch(0.15 0.004 260);
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.9 0.004 260);
+  --input: oklch(0.9 0.004 260);
+  --ring: oklch(0.55 0.22 27);
+
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --surface: oklch(0.22 0.004 260);
+  --brand: oklch(0.55 0.22 27);
+  --brand-foreground: oklch(0.99 0 0);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .ram-page {
+    overflow-x: clip;
+  }
+
+  .ram-page *,
+  .ram-page *::before,
+  .ram-page *::after {
+    min-width: 0;
+  }
+
+  .ram-page img,
+  .ram-page video,
+  .ram-page canvas,
+  .ram-page svg {
+    max-width: 100%;
+  }
+
+  .ram-page button,
+  .ram-page a,
+  .ram-page select,
+  .ram-page input,
+  .ram-page textarea {
+    max-width: 100%;
+  }
+
+  .ram-page button {
+    cursor: pointer;
+  }
+
+  .ram-mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 40;
+    width: 100%;
+    box-shadow: 0 18px 40px oklch(0 0 0 / 12%);
+  }
+
+  .ram-hero {
+    background-image: var(--ram-hero-bg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+  }
+
+  .ram-hero-content {
+    background-repeat: no-repeat;
+  }
+
+  .ram-page .overflow-x-auto {
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  @media screen and (max-width: 1400px) {
+    .ram-container,
+    .ram-header-inner {
+      max-width: 1200px;
+    }
+
+    .ram-header-inner {
+      gap: 24px;
+    }
+
+    .ram-header-nav {
+      gap: 18px;
+    }
+
+    .ram-hero-title {
+      font-size: 96px !important;
+    }
+
+    .ram-video-img {
+      height: 280px !important;
+    }
+  }
+
+  @media screen and (max-width: 1300px) {
+    .ram-header-nav {
+      display: none !important;
+    }
+
+    .ram-menu-toggle {
+      display: flex !important;
+    }
+
+    .ram-mobile-menu {
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .ram-container,
+    .ram-header-inner {
+      max-width: 1024px;
+    }
+
+    .ram-hero-title {
+      font-size: 82px !important;
+    }
+
+    .ram-dim-stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .ram-dim-stats > div {
+      border-left: 0 !important;
+      padding-left: 0 !important;
+    }
+
+    .ram-interior-cards {
+      margin-left: -24px !important;
+      padding-right: 24px !important;
+    }
+
+    .ram-tech-visual {
+      opacity: 0.55;
+      width: 58% !important;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .ram-header-inner {
+      flex-wrap: wrap;
+      row-gap: 12px;
+    }
+
+    .ram-header-actions {
+      gap: 12px;
+    }
+
+    .ram-hero-video {
+      display: none !important;
+    }
+
+    .ram-model-card {
+      grid-template-columns: 96px minmax(0, 1fr) !important;
+    }
+
+    .ram-model-img,
+    .ram-model-meta {
+      grid-column: 1 / -1;
+    }
+
+    .ram-model-num {
+      font-size: 72px !important;
+    }
+
+    .ram-dim-schemes {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 24px !important;
+    }
+
+    .ram-engine-stats {
+      max-width: 560px;
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    .ram-container,
+    .ram-header-inner {
+      max-width: 768px;
+    }
+
+    .ram-hero {
+      background-position: 30% 0;
+      background-size: cover;
+    }
+
+    .ram-hero-video {
+      max-width: 420px;
+    }
+
+    .ram-interior-cards {
+      margin-top: 0 !important;
+      margin-left: 0 !important;
+      padding: 0 24px 24px !important;
+    }
+
+    .ram-interior-main {
+      min-height: 320px !important;
+      max-height: 520px;
+    }
+
+    .ram-video-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .ram-mini-comparison > div {
+      grid-template-columns: 1fr !important;
+    }
+
+    .ram-tech-visual {
+      display: none !important;
+    }
+
+    .ram-tech-content {
+      min-height: auto !important;
+      padding: 48px 0;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .ram-container,
+    .ram-header-inner {
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+
+    .ram-header-inner {
+      align-items: center;
+      flex-wrap: nowrap !important;
+      gap: 12px !important;
+    }
+
+    .ram-logo {
+      height: 48px !important;
+    }
+
+    .ram-header-actions {
+      width: auto;
+      justify-content: space-between;
+      gap: 10px !important;
+    }
+
+    .ram-header-actions > a {
+      font-size: 16px !important;
+      white-space: nowrap;
+    }
+
+    .ram-header-actions > .ram-discount-button {
+      display: none !important;
+    }
+
+    .ram-mobile-discount-button {
+      display: flex !important;
+    }
+
+    .ram-hero {
+      background-image: none;
+    }
+
+    .ram-hero-content {
+      background-image: var(--ram-hero-bg);
+      background-position: 44% 0;
+      background-size: cover;
+    }
+
+    .ram-hero-title {
+      font-size: 68px !important;
+    }
+
+    .ram-hero-price {
+      align-items: flex-start !important;
+      flex-direction: column;
+      gap: 2px !important;
+    }
+
+    .ram-hero-price span:last-child {
+      font-size: 32px !important;
+    }
+
+    .ram-feature-grid {
+      grid-template-columns: 1fr !important;
+      gap: 18px !important;
+      margin: 20px !important;
+      padding: 20px !important;
+    }
+
+    .ram-feature-grid > div {
+      border-left: 0 !important;
+      padding-left: 0 !important;
+    }
+
+    .ram-model-card {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+      padding: 22px !important;
+    }
+
+    .ram-model-num {
+      font-size: 56px !important;
+    }
+
+    .ram-model-meta {
+      flex-direction: column;
+      align-items: flex-start !important;
+    }
+
+    .ram-model-meta > div:last-child {
+      text-align: left !important;
+    }
+
+    .ram-catalog-link {
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+    }
+
+    .ram-catalog-link > svg:last-child {
+      margin-left: auto !important;
+    }
+
+    .ram-interior-title,
+    .ram-page h2 {
+      font-size: 42px !important;
+    }
+
+    .ram-interior-subtitle {
+      font-size: 34px !important;
+    }
+
+    .ram-video-grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    .ram-video-img {
+      height: 240px !important;
+    }
+
+    .ram-dim-schemes {
+      grid-template-columns: 1fr !important;
+      padding: 22px !important;
+    }
+
+    .ram-dim-tabs {
+      overflow-x: auto;
+      flex-wrap: nowrap !important;
+    }
+
+    .ram-dim-tabs button {
+      flex: 0 0 auto;
+      padding-left: 18px !important;
+      padding-right: 18px !important;
+      white-space: nowrap;
+    }
+
+    .ram-dim-specs {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    .ram-container,
+    .ram-header-inner {
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+
+    .ram-header-actions {
+      align-items: center !important;
+      flex-wrap: nowrap;
+      gap: 8px !important;
+    }
+
+    .ram-header-actions > a {
+      width: auto;
+      font-size: 14px !important;
+      white-space: nowrap;
+    }
+
+    .ram-header-actions > button {
+      justify-content: center;
+      width: 100%;
+    }
+
+    .ram-header-actions > .ram-discount-button {
+      flex: 1 1 0;
+      width: auto !important;
+    }
+
+    .ram-header-actions > .ram-menu-toggle {
+      flex: 0 0 42px;
+      width: 42px !important;
+    }
+
+    .ram-hero .ram-container {
+      padding-top: 36px !important;
+      padding-bottom: 28px !important;
+    }
+
+    .ram-hero-title {
+      font-size: 56px !important;
+    }
+
+    .ram-feature-grid {
+      margin: 16px !important;
+    }
+
+    .ram-button-row,
+    .ram-page [class*="flex-wrap"] {
+      row-gap: 10px;
+    }
+
+    .ram-button-row button,
+    .ram-catalog-link,
+    .ram-page form button,
+    .ram-page select {
+      width: 100%;
+    }
+
+    .ram-catalog-link {
+      flex-wrap: wrap;
+      padding: 18px !important;
+    }
+
+    .ram-models,
+    .ram-videos,
+    .ram-dimensions,
+    .ram-tech-specs {
+      padding-top: 48px !important;
+      padding-bottom: 48px !important;
+    }
+
+    .ram-page h2,
+    .ram-interior-title {
+      font-size: 36px !important;
+      line-height: 1 !important;
+    }
+
+    .ram-interior-subtitle {
+      font-size: 28px !important;
+    }
+
+    .ram-dim-stats,
+    .ram-engine-stats {
+      grid-template-columns: 1fr !important;
+    }
+
+    .ram-dim-stats > div,
+    .ram-engine-stats > div {
+      border-left: 0 !important;
+      padding-left: 0 !important;
+    }
+
+    .ram-dim-specs {
+      grid-template-columns: 1fr !important;
+    }
+
+    .ram-mini-comparison {
+      padding: 18px !important;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    .ram-container,
+    .ram-header-inner {
+      padding-left: 14px !important;
+      padding-right: 14px !important;
+    }
+
+    .ram-logo {
+      height: 42px !important;
+    }
+
+    .ram-header-actions > a {
+      font-size: 15px !important;
+    }
+
+    .ram-hero-content {
+      background-position: 44% 0;
+    }
+
+    .ram-hero-copy {
+      position: relative;
+      z-index: 0;
+    }
+
+    .ram-hero-copy::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      bottom: -10px;
+      left: -14px;
+      z-index: -1;
+      width: 45vw;
+      background: linear-gradient(90deg, oklch(1 0 0 / 92%) 0%, oklch(1 0 0 / 55%) 62%, oklch(1 0 0 / 0%) 100%);
+      pointer-events: none;
+    }
+
+    .ram-hero-title {
+      font-size: 48px !important;
+    }
+
+    .ram-hero-subtitle {
+      margin-top: 20px !important;
+      font-size: 15px !important;
+    }
+
+    .ram-hero-specs {
+      margin-top: 20px !important;
+    }
+
+    .ram-hero-specs > li {
+      font-size: 12px !important;
+    }
+
+    .ram-hero-price {
+      align-items: baseline !important;
+      flex-direction: row !important;
+      margin-top: 20px !important;
+    }
+
+    .ram-hero-price span:first-child {
+      padding-right: 8px !important;
+      font-size: 12px !important;
+    }
+
+    .ram-hero-price span:last-child {
+      font-size: 28px !important;
+    }
+
+    .ram-hero-discount-button {
+      display: none !important;
+    }
+
+    .ram-page h2,
+    .ram-interior-title {
+      font-size: 32px !important;
+    }
+
+    .ram-page h3 {
+      overflow-wrap: anywhere;
+    }
+
+    .ram-model-card,
+    .ram-page [class*=" p-8"],
+    .ram-page [class*=" p-6"] {
+      padding: 16px !important;
+    }
+
+    .ram-video-img {
+      height: 210px !important;
+    }
+
+    .ram-interior-main {
+      min-height: 260px !important;
+    }
+  }
+}
