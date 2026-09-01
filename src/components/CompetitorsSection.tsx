@@ -18,7 +18,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import vsRam from "@/assets/vs-ram.jpg";
-import compareBg from "@/assets/compare-bg.png.asset.json";
+import compareBg from "@/assets/compare-bg.png";
 import vsTransit from "@/assets/vs-transit.jpg";
 import vsSprinter from "@/assets/vs-sprinter.jpg";
 import vsCrafter from "@/assets/vs-crafter.jpg";
@@ -112,7 +112,7 @@ export function CompetitorsSection({ onDiscountClick }: CompetitorsSectionProps)
           </div>
 
           <img
-            src={compareBg.url}
+            src={compareBg}
             alt="RAM ProMaster, Ford Transit, Mercedes-Benz Sprinter и VW Crafter"
             loading="lazy"
             className="w-full object-contain"

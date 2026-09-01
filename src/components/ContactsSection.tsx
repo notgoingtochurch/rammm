@@ -12,10 +12,10 @@ import {
   Youtube,
   Send,
 } from "lucide-react";
-import contactHeroAsset from "@/assets/contact-0.png.asset.json";
+import contactHeroAsset from "@/assets/contact-0.png";
 import contactMap from "@/assets/contact-map.jpg";
-import contactManagerAsset from "@/assets/contact-men.png.asset.json";
-import footerLogoAsset from "@/assets/footer-logo.png.asset.json";
+import contactManagerAsset from "@/assets/contact-men.png";
+import footerLogoAsset from "@/assets/footer-logo.png";
 
 const CONTACTS = [
   {
@@ -80,7 +80,7 @@ export function ContactsSection() {
       <div className="mx-auto max-w-[1600px] px-6">
         <div
           className="grid min-h-[420px] items-center gap-8 bg-contain bg-right bg-no-repeat"
-          style={{ backgroundImage: `url(${contactHeroAsset.url})` }}
+          style={{ backgroundImage: `url(${contactHeroAsset})` }}
         >
           <div>
             <div className="flex items-center gap-3">
@@ -237,7 +237,7 @@ export function ContactsSection() {
 
           <div
             className="bg-accent text-accent-foreground relative overflow-hidden rounded-[5px] bg-contain bg-right-bottom bg-no-repeat p-8"
-            style={{ backgroundImage: `url(${contactManagerAsset.url})` }}
+            style={{ backgroundImage: `url(${contactManagerAsset})` }}
           >
             <h3 className="font-sans text-xl font-medium tracking-tight uppercase">
               Нужна консультация?
@@ -272,7 +272,7 @@ export function ContactsSection() {
         <div className="mx-auto grid max-w-[1600px] gap-10 px-6 py-14 lg:grid-cols-[minmax(0,1.1fr)_repeat(3,minmax(0,0.8fr))_minmax(0,1.2fr)]">
           <div>
             <img
-              src={footerLogoAsset.url}
+              src={footerLogoAsset}
               alt="RAM ProMaster Center"
               width={191}
               height={71}

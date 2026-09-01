@@ -1,7 +1,7 @@
 import { ShieldCheck, Sparkles, Star, Check, ArrowRight, Wrench, Truck, Percent } from "lucide-react";
-import trimWhiteAsset from "@/assets/ram-white.png.asset.json";
-import trimSilverAsset from "@/assets/ram-grey.png.asset.json";
-import trimBlackAsset from "@/assets/ram-black.png.asset.json";
+import trimWhiteAsset from "@/assets/ram-white.png";
+import trimSilverAsset from "@/assets/ram-grey.png";
+import trimBlackAsset from "@/assets/ram-black.png";
 
 const INTRO_FEATURES = [
   { icon: ShieldCheck, title: "Надёжность", text: "Проверенные решения и компоненты" },
@@ -14,7 +14,7 @@ const TRIMS = [
     name: "Tradesman",
     subtitle: "Практичность и надёжность",
     price: "4 950 000",
-    image: trimWhiteAsset.url,
+    image: trimWhiteAsset,
     featured: false,
     features: [
       "3.6L V6 Pentastar, 276 л.с.",
@@ -31,7 +31,7 @@ const TRIMS = [
     name: "SLT",
     subtitle: "Больше комфорта и технологий",
     price: "5 350 000",
-    image: trimSilverAsset.url,
+    image: trimSilverAsset,
     featured: true,
     features: [
       "Всё из комплектации Tradesman",
@@ -48,7 +48,7 @@ const TRIMS = [
     name: "SLT+",
     subtitle: "Максимум возможностей",
     price: "5 850 000",
-    image: trimBlackAsset.url,
+    image: trimBlackAsset,
     featured: false,
     features: [
       "Всё из комплектации SLT",

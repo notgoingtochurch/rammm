@@ -10,17 +10,17 @@ import {
   ArrowRight,
   Headphones,
 } from "lucide-react";
-import catWhiteAsset from "@/assets/vs-1-3.png.asset.json";
-const catWhite = catWhiteAsset.url;
-import catDarkAsset from "@/assets/vs-2-3.png.asset.json";
-const catDark = catDarkAsset.url;
+import catWhiteAsset from "@/assets/vs-1-3.png";
+const catWhite = catWhiteAsset;
+import catDarkAsset from "@/assets/vs-2-3.png";
+const catDark = catDarkAsset;
 import catConsult from "@/assets/cat-consult.jpg";
 
-import vsBanner from "@/assets/vs-0-3.png.asset.json";
-import photo1Asset from "@/assets/vs-3-2.png.asset.json";
-import photo2Asset from "@/assets/vs-4-2.png.asset.json";
-import photo3Asset from "@/assets/vs-5-3.png.asset.json";
-import photo4Asset from "@/assets/vs-6-2.png.asset.json";
+import vsBanner from "@/assets/vs-0-3.png";
+import photo1Asset from "@/assets/vs-3-2.png";
+import photo2Asset from "@/assets/vs-4-2.png";
+import photo3Asset from "@/assets/vs-5-3.png";
+import photo4Asset from "@/assets/vs-6-2.png";
 
 
 const CARDS = [
@@ -77,10 +77,10 @@ const KNOW = [
 ];
 
 const PHOTOS = [
-  { src: photo1Asset.url, caption: "RAM 2500 High Roof" },
-  { src: photo2Asset.url, caption: "RAM 3500 Extended" },
-  { src: photo3Asset.url, caption: "Просторный грузовой отсек" },
-  { src: photo4Asset.url, caption: "Погрузка европаллет" },
+  { src: photo1Asset, caption: "RAM 2500 High Roof" },
+  { src: photo2Asset, caption: "RAM 3500 Extended" },
+  { src: photo3Asset, caption: "Просторный грузовой отсек" },
+  { src: photo4Asset, caption: "Погрузка европаллет" },
 ];
 
 const HELP = [
@@ -118,7 +118,7 @@ export function CategorySection() {
           </div>
 
           <img
-            src={vsBanner.url}
+            src={vsBanner}
             alt="RAM 2500 категория B против RAM 3500 Extended категория C"
             loading="lazy"
             className="h-fit w-auto object-contain"

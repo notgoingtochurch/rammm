@@ -1,35 +1,35 @@
 import { useState } from "react";
 import { Camera, BadgeCheck, Eye, ShieldCheck } from "lucide-react";
-import extFrontAsset from "@/assets/gal-ext-front-new.png.asset.json";
-import extRearAsset from "@/assets/gal-ext-rear-new.png.asset.json";
-import extSideAsset from "@/assets/gal-ext-side-new.png.asset.json";
-import extSide2Asset from "@/assets/gal-ext-side2-new.png.asset.json";
-import intDashAsset from "@/assets/gal-int-3-new.png.asset.json";
-import cargoNewAsset from "@/assets/gal-cargo-new.png.asset.json";
-import engineNewAsset from "@/assets/gal-engine-new.png.asset.json";
-import wheelNewAsset from "@/assets/gal-wheel-new.png.asset.json";
-import badgeNewAsset from "@/assets/gal-badge-new.png.asset.json";
+import extFrontAsset from "@/assets/gal-ext-front-new.png";
+import extRearAsset from "@/assets/gal-ext-rear-new.png";
+import extSideAsset from "@/assets/gal-ext-side-new.png";
+import extSide2Asset from "@/assets/gal-ext-side2-new.png";
+import intDashAsset from "@/assets/gal-int-3-new.png";
+import cargoNewAsset from "@/assets/gal-cargo-new.png";
+import engineNewAsset from "@/assets/gal-engine-new.png";
+import wheelNewAsset from "@/assets/gal-wheel-new.png";
+import badgeNewAsset from "@/assets/gal-badge-new.png";
 
-import intCabinAsset from "@/assets/gal-int-1-new.png.asset.json";
-import intSeatsAsset from "@/assets/gal-int-2-new.png.asset.json";
-import detLightNewAsset from "@/assets/gal-det-light-new.png.asset.json";
+import intCabinAsset from "@/assets/gal-int-1-new.png";
+import intSeatsAsset from "@/assets/gal-int-2-new.png";
+import detLightNewAsset from "@/assets/gal-det-light-new.png";
 
 const FILTERS = ["Все фото", "Экстерьер", "Интерьер", "Грузовой отсек", "Детали"] as const;
 type Filter = (typeof FILTERS)[number];
 
 const PHOTOS: { src: string; alt: string; cat: Exclude<Filter, "Все фото"> }[] = [
-  { src: extFrontAsset.url, alt: "RAM ProMaster вид спереди", cat: "Экстерьер" },
-  { src: extRearAsset.url, alt: "RAM ProMaster вид сзади", cat: "Экстерьер" },
-  { src: extSideAsset.url, alt: "RAM ProMaster вид сбоку", cat: "Экстерьер" },
-  { src: extSide2Asset.url, alt: "RAM ProMaster вид сбоку", cat: "Экстерьер" },
-  { src: intCabinAsset.url, alt: "Салон RAM ProMaster", cat: "Интерьер" },
-  { src: intSeatsAsset.url, alt: "Сиденья RAM ProMaster", cat: "Интерьер" },
-  { src: intDashAsset.url, alt: "Панель приборов RAM ProMaster", cat: "Интерьер" },
-  { src: cargoNewAsset.url, alt: "Грузовой отсек RAM ProMaster", cat: "Грузовой отсек" },
-  { src: detLightNewAsset.url, alt: "Фара RAM ProMaster", cat: "Детали" },
-  { src: engineNewAsset.url, alt: "Двигатель Pentastar V6", cat: "Детали" },
-  { src: wheelNewAsset.url, alt: "Колесо RAM ProMaster", cat: "Детали" },
-  { src: badgeNewAsset.url, alt: "Шильдик 2500 ProMaster", cat: "Детали" },
+  { src: extFrontAsset, alt: "RAM ProMaster вид спереди", cat: "Экстерьер" },
+  { src: extRearAsset, alt: "RAM ProMaster вид сзади", cat: "Экстерьер" },
+  { src: extSideAsset, alt: "RAM ProMaster вид сбоку", cat: "Экстерьер" },
+  { src: extSide2Asset, alt: "RAM ProMaster вид сбоку", cat: "Экстерьер" },
+  { src: intCabinAsset, alt: "Салон RAM ProMaster", cat: "Интерьер" },
+  { src: intSeatsAsset, alt: "Сиденья RAM ProMaster", cat: "Интерьер" },
+  { src: intDashAsset, alt: "Панель приборов RAM ProMaster", cat: "Интерьер" },
+  { src: cargoNewAsset, alt: "Грузовой отсек RAM ProMaster", cat: "Грузовой отсек" },
+  { src: detLightNewAsset, alt: "Фара RAM ProMaster", cat: "Детали" },
+  { src: engineNewAsset, alt: "Двигатель Pentastar V6", cat: "Детали" },
+  { src: wheelNewAsset, alt: "Колесо RAM ProMaster", cat: "Детали" },
+  { src: badgeNewAsset, alt: "Шильдик 2500 ProMaster", cat: "Детали" },
 ];
 
 const NOTES = [

@@ -11,17 +11,17 @@ import {
   Cpu,
   Fuel,
 } from "lucide-react";
-import leasingBgAsset from "@/assets/leasing-bg.png.asset.json";
-import finCreditAsset from "@/assets/fin-credit.png.asset.json";
-const finCredit = finCreditAsset.url;
-import finLeasingAsset from "@/assets/fin-leasing-2.png.asset.json";
-import warrantyBgAsset from "@/assets/warranty-bg.png.asset.json";
-const finLeasing = finLeasingAsset.url;
-import finTradeinAsset from "@/assets/fin-tradein.png.asset.json";
-const finTradein = finTradeinAsset.url;
-import finServiceAsset from "@/assets/fin-service-2.png.asset.json";
+import leasingBgAsset from "@/assets/leasing-bg.png";
+import finCreditAsset from "@/assets/fin-credit.png";
+const finCredit = finCreditAsset;
+import finLeasingAsset from "@/assets/fin-leasing-2.png";
+import warrantyBgAsset from "@/assets/warranty-bg.png";
+const finLeasing = finLeasingAsset;
+import finTradeinAsset from "@/assets/fin-tradein.png";
+const finTradein = finTradeinAsset;
+import finServiceAsset from "@/assets/fin-service-2.png";
 
-const finService = finServiceAsset.url;
+const finService = finServiceAsset;
 
 const TimingBeltIcon = ({ className }: { className?: string; strokeWidth?: number }) => (
   <svg viewBox="0 0 432.138 432.138" fill="currentColor" className={className} aria-hidden="true">
@@ -163,7 +163,7 @@ export function FinanceSection() {
       <div className="bg-surface relative overflow-hidden">
         <div
           className="relative mx-auto grid max-w-[1600px] items-center gap-8 bg-contain bg-right bg-no-repeat px-6 py-12 lg:grid-cols-2"
-          style={{ backgroundImage: `url(${leasingBgAsset.url})` }}
+          style={{ backgroundImage: `url(${leasingBgAsset})` }}
         >
           <div>
             <div className="text-muted-foreground flex items-center gap-3 text-xs">
@@ -231,7 +231,7 @@ export function FinanceSection() {
           <div
             className="bg-accent text-accent-foreground rounded-[6px] p-4"
             style={{
-              backgroundImage: `url(${warrantyBgAsset.url})`,
+              backgroundImage: `url(${warrantyBgAsset})`,
               backgroundSize: "100% 100%",
               
               backgroundRepeat: "no-repeat",

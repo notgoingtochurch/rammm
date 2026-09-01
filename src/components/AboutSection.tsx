@@ -14,14 +14,14 @@ import {
   Repeat,
   Truck,
 } from "lucide-react";
-import aboutDealerAsset from "@/assets/about-dealer.png.asset.json";
-const aboutDealer = aboutDealerAsset.url;
-import aboutShippingAsset from "@/assets/ship-1.png.asset.json";
-const aboutShipping = aboutShippingAsset.url;
-import aboutWarehouseAsset from "@/assets/ship-2.png.asset.json";
-const aboutWarehouse = aboutWarehouseAsset.url;
-import aboutServiceAsset from "@/assets/ship-3.png.asset.json";
-const aboutService = aboutServiceAsset.url;
+import aboutDealerAsset from "@/assets/about-dealer.png";
+const aboutDealer = aboutDealerAsset;
+import aboutShippingAsset from "@/assets/ship-1.png";
+const aboutShipping = aboutShippingAsset;
+import aboutWarehouseAsset from "@/assets/ship-2.png";
+const aboutWarehouse = aboutWarehouseAsset;
+import aboutServiceAsset from "@/assets/ship-3.png";
+const aboutService = aboutServiceAsset;
 
 const PILLARS = [
   { icon: Globe, title: "Прямые поставки", lines: ["из США", "без посредников"] },

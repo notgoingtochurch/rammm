@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Play, ShieldCheck, Wrench, Boxes, Handshake, ArrowRight, Check } from "lucide-react";
-import reviewThumb from "@/assets/review-0.png.asset.json";
-import ytThumb from "@/assets/review-00.png.asset.json";
-import reviewBg from "@/assets/review-bg.png.asset.json";
+import reviewThumb from "@/assets/review-0.png";
+import ytThumb from "@/assets/review-00.png";
+import reviewBg from "@/assets/review-bg.png";
 
-const IMAGES = [reviewThumb.url];
+const IMAGES = [reviewThumb];
 
 const FILTERS = ["Все отзывы", "Фургон", "Шасси", "Перевозки", "Бизнес", "Сервис"] as const;
 
@@ -58,7 +58,7 @@ export function ReviewsSection() {
       <div className="relative overflow-hidden bg-[#fbfbfb]">
         <div
           className="relative mx-auto grid max-w-[1600px] items-center gap-8 bg-contain bg-right bg-no-repeat px-6 py-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]"
-          style={{ backgroundImage: `url(${reviewBg.url})` }}
+          style={{ backgroundImage: `url(${reviewBg})` }}
         >
           <div>
             <div className="text-muted-foreground flex items-center gap-3 text-xs">
@@ -166,7 +166,7 @@ export function ReviewsSection() {
           </ul>
           <div className="relative">
             <img
-              src={ytThumb.url}
+              src={ytThumb}
               alt="RAM ProMaster Center на RUTUBE"
               width={1024}
               height={576}

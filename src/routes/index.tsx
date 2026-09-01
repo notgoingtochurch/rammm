@@ -1,5 +1,5 @@
 import { type CSSProperties, type FormEvent, useState } from "react";
-import logoRam from "@/assets/logo-ram-svg.svg.asset.json";
+import logoRam from "@/assets/logo-ram-svg.svg";
 
 
 import { createFileRoute } from "@tanstack/react-router";
@@ -57,58 +57,58 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import heroVan from "@/assets/hero-section-bg.jpg.asset.json";
+import heroVan from "@/assets/hero-section-bg.jpg";
 import videoThumb from "@/assets/video-thumb.jpg";
-import modelSideAsset from "@/assets/van-low-roof-6.png.asset.json";
-import vanHighRoofAsset from "@/assets/van-high-roof-6.png.asset.json";
-import vanSuperHighRoofAsset from "@/assets/van-super-high-roof-2.png.asset.json";
-import vanExtHighRoofAsset from "@/assets/van-ext-high-roof-3.png.asset.json";
-const vanLowRoof = modelSideAsset.url;
-const vanHighRoof = vanHighRoofAsset.url;
-const vanSuperHighRoof = vanSuperHighRoofAsset.url;
-const vanExtHighRoof = vanExtHighRoofAsset.url;
-import interiorMainAsset from "@/assets/saloon.png.asset.json";
-const interiorMain = interiorMainAsset.url;
-import interiorDisplayAsset from "@/assets/media.png.asset.json";
-const interiorDisplay = interiorDisplayAsset.url;
-import interiorClusterAsset from "@/assets/panel.png.asset.json";
-const interiorCluster = interiorClusterAsset.url;
-import interiorStorageAsset from "@/assets/panel2.png.asset.json";
-const interiorStorage = interiorStorageAsset.url;
-import interiorSeatsAsset from "@/assets/seats.png.asset.json";
-const interiorSeats = interiorSeatsAsset.url;
-import vidExteriorAsset from "@/assets/video-1.png.asset.json";
-const vidExterior = vidExteriorAsset.url;
-import vidInteriorAsset from "@/assets/video-2.png.asset.json";
-const vidInterior = vidInteriorAsset.url;
-import vidEngineAsset from "@/assets/video-3.png.asset.json";
-const vidEngine = vidEngineAsset.url;
-import vidGearboxAsset from "@/assets/video-4.png.asset.json";
-const vidGearbox = vidGearboxAsset.url;
-import vidCargoAsset from "@/assets/video-5.png.asset.json";
-const vidCargo = vidCargoAsset.url;
-import vidCamperAsset from "@/assets/video-6.png.asset.json";
-const vidCamper = vidCamperAsset.url;
-import vidTestdriveAsset from "@/assets/video-7.png.asset.json";
-const vidTestdrive = vidTestdriveAsset.url;
-import vidOwnersAsset from "@/assets/video-8-2.png.asset.json";
-const vidOwners = vidOwnersAsset.url;
-import galleryHeroAsset from "@/assets/gal-ext-front-new.png.asset.json";
-const galleryHero = galleryHeroAsset.url;
+import modelSideAsset from "@/assets/van-low-roof-6.png";
+import vanHighRoofAsset from "@/assets/van-high-roof-6.png";
+import vanSuperHighRoofAsset from "@/assets/van-super-high-roof-2.png";
+import vanExtHighRoofAsset from "@/assets/van-ext-high-roof-3.png";
+const vanLowRoof = modelSideAsset;
+const vanHighRoof = vanHighRoofAsset;
+const vanSuperHighRoof = vanSuperHighRoofAsset;
+const vanExtHighRoof = vanExtHighRoofAsset;
+import interiorMainAsset from "@/assets/saloon.png";
+const interiorMain = interiorMainAsset;
+import interiorDisplayAsset from "@/assets/media.png";
+const interiorDisplay = interiorDisplayAsset;
+import interiorClusterAsset from "@/assets/panel.png";
+const interiorCluster = interiorClusterAsset;
+import interiorStorageAsset from "@/assets/panel2.png";
+const interiorStorage = interiorStorageAsset;
+import interiorSeatsAsset from "@/assets/seats.png";
+const interiorSeats = interiorSeatsAsset;
+import vidExteriorAsset from "@/assets/video-1.png";
+const vidExterior = vidExteriorAsset;
+import vidInteriorAsset from "@/assets/video-2.png";
+const vidInterior = vidInteriorAsset;
+import vidEngineAsset from "@/assets/video-3.png";
+const vidEngine = vidEngineAsset;
+import vidGearboxAsset from "@/assets/video-4.png";
+const vidGearbox = vidGearboxAsset;
+import vidCargoAsset from "@/assets/video-5.png";
+const vidCargo = vidCargoAsset;
+import vidCamperAsset from "@/assets/video-6.png";
+const vidCamper = vidCamperAsset;
+import vidTestdriveAsset from "@/assets/video-7.png";
+const vidTestdrive = vidTestdriveAsset;
+import vidOwnersAsset from "@/assets/video-8-2.png";
+const vidOwners = vidOwnersAsset;
+import galleryHeroAsset from "@/assets/gal-ext-front-new.png";
+const galleryHero = galleryHeroAsset;
 import dimSide from "@/assets/dim-side.jpg";
-import carCompareAsset from "@/assets/car-1-2.png.asset.json";
-import car2Asset from "@/assets/car-2-2.png.asset.json";
-import car3Asset from "@/assets/car-3-2.png.asset.json";
-import size1Asset from "@/assets/size-1.png.asset.json";
-import size2Asset from "@/assets/size-2.png.asset.json";
-import size3Asset from "@/assets/size-3.png.asset.json";
+import carCompareAsset from "@/assets/car-1-2.png";
+import car2Asset from "@/assets/car-2-2.png";
+import car3Asset from "@/assets/car-3-2.png";
+import size1Asset from "@/assets/size-1.png";
+import size2Asset from "@/assets/size-2.png";
+import size3Asset from "@/assets/size-3.png";
 
 import compSprinter from "@/assets/comp-sprinter.jpg";
 import compDucato from "@/assets/comp-ducato.jpg";
-import engineV6Asset from "@/assets/engine-1.png.asset.json";
-const engineV6 = engineV6Asset.url;
-import gearbox9hpAsset from "@/assets/engine-3.png.asset.json";
-import specVanAsset from "@/assets/engine-2.png.asset.json";
+import engineV6Asset from "@/assets/engine-1.png";
+const engineV6 = engineV6Asset;
+import gearbox9hpAsset from "@/assets/engine-3.png";
+import specVanAsset from "@/assets/engine-2.png";
 
 function EngineIcon({ className }: { className?: string }) {
   return (
@@ -319,9 +319,9 @@ const DIM_VARIANTS = [
 
 const COMPARISON = {
   rivals: [
-    { name: "RAM PROMASTER", image: carCompareAsset.url, own: true },
-    { name: "Mercedes-Benz Sprinter 311 CDI", image: car2Asset.url, own: false },
-    { name: "Fiat Ducato L2H2", image: car3Asset.url, own: false },
+    { name: "RAM PROMASTER", image: carCompareAsset, own: true },
+    { name: "Mercedes-Benz Sprinter 311 CDI", image: car2Asset, own: false },
+    { name: "Fiat Ducato L2H2", image: car3Asset, own: false },
   ],
   rows: [
     { icon: Ruler, label: "Длина", values: ["5413 мм", "5932 мм", "5413 мм"] },
@@ -638,7 +638,7 @@ function Index() {
         <div className="ram-header-inner mx-auto flex max-w-[1600px] items-center gap-8 px-6 py-3">
           <a href="/" className="flex items-center">
             <img
-              src={logoRam.url}
+              src={logoRam}
               alt="RAM ProMaster Center"
               width={173}
               height={55}
@@ -714,7 +714,7 @@ function Index() {
           className="ram-hero relative overflow-hidden"
           style={{
             backgroundColor: "#fdfdfb",
-            "--ram-hero-bg": `url(${heroVan.url})`,
+            "--ram-hero-bg": `url(${heroVan})`,
           } as CSSProperties}
         >
 
@@ -1148,7 +1148,7 @@ function Index() {
 
               <div className="ram-dim-schemes grid items-center gap-8 p-8 lg:grid-cols-[1.15fr_1.3fr_1fr]">
                 <img
-                  src={size1Asset.url}
+                  src={size1Asset}
                   alt={`RAM ProMaster ${dim.name} — вид сбоку с габаритами`}
                   width={380}
                   height={200}
@@ -1156,7 +1156,7 @@ function Index() {
                   className="w-full object-contain"
                 />
                 <img
-                  src={size2Asset.url}
+                  src={size2Asset}
                   alt={`RAM ProMaster ${dim.name} — вид спереди и сзади с габаритами`}
                   width={440}
                   height={200}
@@ -1164,7 +1164,7 @@ function Index() {
                   className="w-full object-contain"
                 />
                 <img
-                  src={size3Asset.url}
+                  src={size3Asset}
                   alt={`RAM ProMaster ${dim.name} — вид сверху, грузовой отсек`}
                   width={330}
                   height={200}
@@ -1334,7 +1334,7 @@ function Index() {
             <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.7fr)_minmax(0,1.1fr)]">
               <div className="rounded-[8px] bg-[#ebebeb] p-6">
                 <img
-                  src={gearbox9hpAsset.url}
+                  src={gearbox9hpAsset}
                   alt="9-ступенчатая автоматическая коробка передач"
                   width={1024}
                   height={1024}
@@ -1384,7 +1384,7 @@ function Index() {
 
               <div>
                 <img
-                  src={specVanAsset.url}
+                  src={specVanAsset}
                   alt="RAM ProMaster"
                   width={1280}
                   height={960}
