@@ -95,13 +95,9 @@ import vidOwnersAsset from "@/assets/video-8-2.png";
 const vidOwners = vidOwnersAsset;
 import galleryHeroAsset from "@/assets/gal-ext-front-new.png";
 const galleryHero = galleryHeroAsset;
-import dimSide from "@/assets/dim-side.jpg";
 import carCompareAsset from "@/assets/car-1-2.png";
 import car2Asset from "@/assets/car-2-2.png";
 import car3Asset from "@/assets/car-3-2.png";
-import size1Asset from "@/assets/size-1.png";
-import size2Asset from "@/assets/size-2.png";
-import size3Asset from "@/assets/size-3.png";
 
 import compSprinter from "@/assets/comp-sprinter.jpg";
 import compDucato from "@/assets/comp-ducato.jpg";
@@ -223,113 +219,20 @@ const GEARBOX_TAGS = [
   { icon: ShieldCheck, label: "Надёжность" },
 ];
 
-const DIM_STATS = [
-  { icon: Box, value: "До 16,0 м³", text: "Максимальный объём грузового отсека" },
-  { icon: Weight, value: "До 1820 кг", text: "Максимальная полезная нагрузка" },
-  { icon: Grid2x2, value: "ДО 4 ЕВРОПАЛЛЕТ", text: "Возможность размещения" },
-  { icon: MoveVertical, value: "До 2,1 м", text: "Высота стоя в грузовом отсеке" },
-];
-
-const DIM_VARIANTS = [
-  {
-    id: "L2H2",
-    name: "L2H2 Low Roof",
-    side: ["948 мм", "3450 мм", "1015 мм"],
-    total: "5413 мм",
-    height: "2524 мм",
-    widthMirrors: "2050 мм",
-    widthBody: "1790 мм",
-    rearHeight: "1790 мм",
-    floorWidth: "1870 мм",
-    floorLength: "2050 мм",
-    specs: [
-      { icon: Box, label: "Длина грузового отсека", value: "3120 мм" },
-      { icon: MoveVertical, label: "Высота грузового отсека", value: "1932 мм" },
-      { icon: MoveHorizontal, label: "Ширина между арками", value: "1422 мм" },
-      { icon: DoorOpen, label: "Ширина боковой двери", value: "1250 мм" },
-      { icon: DoorOpen, label: "Высота боковой двери", value: "1755 мм" },
-      { icon: DoorOpen, label: "Ширина задних дверей", value: "1562 мм" },
-      { icon: DoorOpen, label: "Высота задних дверей", value: "1790 мм" },
-    ],
-  },
-  {
-    id: "L3H2",
-    name: "L3H2 High Roof",
-    side: ["948 мм", "4035 мм", "1015 мм"],
-    total: "5998 мм",
-    height: "2524 мм",
-    widthMirrors: "2050 мм",
-    widthBody: "1790 мм",
-    rearHeight: "1790 мм",
-    floorWidth: "1870 мм",
-    floorLength: "2635 мм",
-    specs: [
-      { icon: Box, label: "Длина грузового отсека", value: "3705 мм" },
-      { icon: MoveVertical, label: "Высота грузового отсека", value: "1932 мм" },
-      { icon: MoveHorizontal, label: "Ширина между арками", value: "1422 мм" },
-      { icon: DoorOpen, label: "Ширина боковой двери", value: "1250 мм" },
-      { icon: DoorOpen, label: "Высота боковой двери", value: "1755 мм" },
-      { icon: DoorOpen, label: "Ширина задних дверей", value: "1562 мм" },
-      { icon: DoorOpen, label: "Высота задних дверей", value: "1790 мм" },
-    ],
-  },
-  {
-    id: "L3H3",
-    name: "L3H3 Super High Roof",
-    side: ["948 мм", "4035 мм", "1015 мм"],
-    total: "5998 мм",
-    height: "2775 мм",
-    widthMirrors: "2050 мм",
-    widthBody: "1790 мм",
-    rearHeight: "2030 мм",
-    floorWidth: "1870 мм",
-    floorLength: "2635 мм",
-    specs: [
-      { icon: Box, label: "Длина грузового отсека", value: "3705 мм" },
-      { icon: MoveVertical, label: "Высота грузового отсека", value: "2172 мм" },
-      { icon: MoveHorizontal, label: "Ширина между арками", value: "1422 мм" },
-      { icon: DoorOpen, label: "Ширина боковой двери", value: "1250 мм" },
-      { icon: DoorOpen, label: "Высота боковой двери", value: "1955 мм" },
-      { icon: DoorOpen, label: "Ширина задних дверей", value: "1562 мм" },
-      { icon: DoorOpen, label: "Высота задних дверей", value: "2030 мм" },
-    ],
-  },
-  {
-    id: "L4H3",
-    name: "L4H3 Super High Roof",
-    side: ["948 мм", "4035 мм", "1470 мм"],
-    total: "6363 мм",
-    height: "2775 мм",
-    widthMirrors: "2050 мм",
-    widthBody: "1790 мм",
-    rearHeight: "2030 мм",
-    floorWidth: "1870 мм",
-    floorLength: "3000 мм",
-    specs: [
-      { icon: Box, label: "Длина грузового отсека", value: "4070 мм" },
-      { icon: MoveVertical, label: "Высота грузового отсека", value: "2172 мм" },
-      { icon: MoveHorizontal, label: "Ширина между арками", value: "1422 мм" },
-      { icon: DoorOpen, label: "Ширина боковой двери", value: "1250 мм" },
-      { icon: DoorOpen, label: "Высота боковой двери", value: "1955 мм" },
-      { icon: DoorOpen, label: "Ширина задних дверей", value: "1562 мм" },
-      { icon: DoorOpen, label: "Высота задних дверей", value: "2030 мм" },
-    ],
-  },
-];
-
 const COMPARISON = {
   rivals: [
-    { name: "RAM PROMASTER", image: carCompareAsset, own: true },
-    { name: "Mercedes-Benz Sprinter 311 CDI", image: car2Asset, own: false },
-    { name: "Fiat Ducato L2H2", image: car3Asset, own: false },
+    { name: 'RAM PROMASTER 2500 159" HIGH ROOF', image: carCompareAsset, own: true },
+    { name: "Mercedes-Benz Sprinter 2500 High Roof", image: car2Asset, own: false },
+    { name: "Ford Transit 250 High Roof", image: car3Asset, own: false },
   ],
   rows: [
-    { icon: Ruler, label: "Длина", values: ["5413 мм", "5932 мм", "5413 мм"] },
-    { icon: MoveVertical, label: "Высота", values: ["2524 мм", "2596 мм", "2522 мм"] },
-    { icon: Package, label: "Объём", values: ["10,0 м³", "11,0 м³", "10,0 м³"] },
-    { icon: Weight, label: "Полезная нагрузка", values: ["до 1600 кг", "до 1565 кг", "до 1500 кг"] },
-    { icon: DoorOpen, label: "Ширина проёма сбоку", values: ["1250 мм", "1300 мм", "1250 мм"] },
-    { icon: DoorOpen, label: "Высота проёма сбоку", values: ["1755 мм", "1795 мм", "1755 мм"] },
+    { icon: Ruler, label: "Общая длина, мм", values: ["5998", "—", "—"] },
+    { icon: MoveVertical, label: "Высота, мм", values: ["2760", "—", "—"] },
+    { icon: Package, label: "Объём грузового отсека, м³", values: ["13,0", "—", "—"] },
+    { icon: Weight, label: "Полезная нагрузка, кг", values: ["до 1820", "—", "—"] },
+    { icon: CircleDot, label: "Привод", values: ["Передний", "Задний / Полный", "Задний / Полный"] },
+    { icon: Cog, label: "Двигатель / трансмиссия", values: ["3.6 Pentastar V6 276 л.с. / 9-АКПП", "—", "—"] },
+    { icon: MoveVertical, label: "Высота погрузки, мм", values: ["2524", "—", "—"] },
   ],
 };
 
@@ -367,13 +270,19 @@ const NAV = [
   "Контакты",
 ];
 
-const SPECS = ["2500 / 3500", '159" HIGH ROOF', "SUPER HIGH ROOF", "WINDOW VAN", "CUTAWAY"];
+const SPECS = [
+  "6 PENTASTAR V6 — 276 Л.С.",
+  "9-СТУПЕНЧАТЫЙ АВТОМАТ",
+  "Heavy Duty подвеска",
+  "АДАПТИВНЫЙ КРУИЗ-КОНТРОЛЬ STOP & GO",
+  "ЗАДНИЕ ДВЕРИ — ОТКРЫТИЕ НА 260°",
+];
 
 const FEATURES = [
-  { icon: ShieldCheck, title: "Официальный импорт", text: "Прямые поставки из США" },
-  { icon: Weight, title: "Категория B", text: "Полная масса до 3 500 кг" },
+  { icon: ShieldCheck, title: "СОЗДАН ДЛЯ ТЯЖЁЛОЙ РАБОТЫ", text: "RAM ProMaster 2500" },
+  { icon: Weight, title: "Категория C", text: "Полная масса свыше 3 500 кг" },
   { icon: Wrench, title: "Подготовка под бизнес", text: "Любые доработки и переоборудование" },
-  { icon: LifeBuoy, title: "Гарантия по России", text: "Сервис и запчасти" },
+  { icon: LifeBuoy, title: "ГАРАНТИЯ 1 ГОД ИЛИ 100.000", text: "Сервис и запчасти" },
 ];
 
 const MODELS = [
@@ -545,13 +454,11 @@ function formatRussianPhone(value: string) {
 
 
 function Index() {
-  const [dimTab, setDimTab] = useState(0);
   const [discountOpen, setDiscountOpen] = useState(false);
   const [discountPhone, setDiscountPhone] = useState("");
   const [discountConsent, setDiscountConsent] = useState(false);
   const [discountSubmitted, setDiscountSubmitted] = useState(false);
   const [headerMenuOpen, setHeaderMenuOpen] = useState(false);
-  const dim = DIM_VARIANTS[dimTab] ?? DIM_VARIANTS[0]!;
   const discountPhoneDigits = discountPhone.replace(/\D/g, "");
   const canSubmitDiscount = discountPhoneDigits.length === 11 && discountConsent;
 
@@ -651,7 +558,7 @@ function Index() {
             {NAV.map((item) => (
               <a
                 key={item}
-                href="#"
+                href={item === "Каталог" ? "#catalog" : "#"}
                 className="font-menu text-[13px] font-semibold tracking-wide text-foreground uppercase transition-colors hover:text-brand"
               >
                 {item}
@@ -660,8 +567,8 @@ function Index() {
           </nav>
 
           <div className="ram-header-actions ml-auto flex flex-row items-center gap-4">
-            <a href="tel:+78005559872" className="font-menu text-lg font-semibold transition-colors hover:text-brand">
-              8 (800) 555-98-72
+            <a href="tel:+79801588831" className="font-menu text-lg font-semibold transition-colors hover:text-brand">
+              +7 (980) 158-88-31
             </a>
             <button
               type="button"
@@ -687,7 +594,7 @@ function Index() {
               {NAV.map((item) => (
                 <a
                   key={item}
-                  href="#"
+                  href={item === "Каталог" ? "#catalog" : "#"}
                   onClick={() => setHeaderMenuOpen(false)}
                   className="font-menu text-sm font-semibold tracking-wide text-foreground uppercase transition-colors hover:text-brand"
                 >
@@ -745,7 +652,7 @@ function Index() {
 
                 <div className="ram-hero-price mt-8 flex items-baseline gap-2 font-menu">
                   <span className="text-sm text-muted-foreground uppercase">от</span>
-                  <span className="text-4xl font-bold">4 950 000 ₽</span>
+                  <span className="text-4xl font-bold">8 300 000 ₽</span>
                 </div>
 
                 <div className="ram-button-row mt-6 flex flex-wrap gap-3">
@@ -812,108 +719,74 @@ function Index() {
           </div>
         </section>
 
-        <section className="ram-models bg-surface py-16">
+        <section id="catalog" className="ram-promaster-overview scroll-mt-6 overflow-hidden bg-[#f5f5f4] py-12 text-[#161616] sm:py-16 lg:py-20">
           <div className="ram-container mx-auto max-w-[1600px] px-6">
-            <p className="text-[11px] font-bold text-brand uppercase">
-              Модельный ряд
-            </p>
-            <div className="mt-3 grid gap-6 lg:grid-cols-[minmax(0,1fr)_494px] lg:items-end">
+            <div className="grid gap-8 border-b border-black/10 pb-8 lg:grid-cols-[minmax(0,1fr)_520px] lg:items-end">
               <div>
-                <h2 className="font-display text-5xl leading-none font-bold tracking-tight uppercase sm:text-6xl lg:text-7xl">
-                  RAM Promaster
-                </h2>
-                <p className="mt-2 font-sans text-lg font-medium text-muted-foreground uppercase">
-                  Выберите идеальный автомобиль для вашего бизнеса
+                <p className="text-[11px] font-bold tracking-[0.18em] uppercase">
+                  <span className="text-brand">02</span>{" "}
+                  <span className="text-muted-foreground">Каталог</span>
                 </p>
+                <div className="mt-5 font-display text-5xl leading-[.88] font-bold tracking-tight uppercase sm:text-6xl lg:text-8xl">
+                  RAM ProMaster 2500
+                </div>
+                <p className="mt-2 font-display text-3xl leading-none font-light tracking-wide uppercase sm:text-4xl lg:text-5xl">159” High Roof</p>
+                <p className="mt-5 font-menu text-sm font-medium tracking-[0.08em] text-black/60 uppercase sm:text-lg">Габариты, объём и ключевые размеры</p>
               </div>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                RAM ProMaster — это линейка коммерческих автомобилей, созданных для{" "}
-                <span className="font-bold text-foreground">работы</span>. Разные размеры кузова,
-                высота крыши и конфигурации позволяют подобрать оптимальное решение под любые
-                задачи.
-              </p>
+
+              <div className="grid grid-cols-3 divide-x divide-black/10 border-y border-black/10 lg:border-y-0">
+                {[
+                  { icon: Box, label: "Объём грузового отсека", value: "13,0 м³" },
+                  { icon: Weight, label: "Полезная нагрузка", value: "до 1820 кг" },
+                  { icon: Grid2x2, label: "Вместимость", value: "до 5 европаллет" },
+                ].map(({ icon: Icon, label, value }) => (
+                  <div key={label} className="flex min-h-36 flex-col items-center justify-center px-2 py-5 text-center">
+                    <Icon className="h-9 w-9" strokeWidth={1.6} />
+                    <p className="mt-3 max-w-24 font-menu text-[9px] font-bold leading-tight uppercase sm:text-[10px]">{label}</p>
+                    <p className="mt-2 font-display text-xl leading-none font-bold uppercase sm:text-2xl">{value}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="mt-10 space-y-4">
-              {MODELS.map((m) => (
-                <article
-                  key={m.num}
-                  className="ram-model-card grid items-center gap-6 rounded-sm bg-background p-6 shadow-sm lg:grid-cols-[130px_minmax(0,300px)_minmax(0,1fr)_320px]"
-                >
-                  <span className="ram-model-num font-display text-[90px] leading-none font-bold text-border">
+            <div className="mt-8 grid gap-7 lg:grid-cols-12 lg:items-end">
+              <div className="lg:col-span-8">
+                <img src="/size-1.jpg" alt="RAM ProMaster 2500: вид сбоку с габаритами" width={1078} height={560} loading="lazy" className="w-full min-w-0 object-contain" />
+              </div>
+              <div className="lg:col-span-4">
+                <img src="/size-2.jpg" alt="RAM ProMaster 2500: передняя и задняя проекции" width={474} height={560} loading="lazy" className="w-full object-contain" />
+              </div>
+              <div className="lg:col-span-7">
+                <img src="/size-3.jpg" alt="RAM ProMaster 2500: грузовой отсек и габариты" width={1131} height={452} loading="lazy" className="w-full object-contain" />
+              </div>
+              <div className="lg:col-span-5">
+                <div className="flex h-full min-h-48 flex-col justify-center border-y border-black/10 px-7 py-6 text-center">
+                  <p className="font-display text-3xl font-bold uppercase">3705 мм</p>
+                  <p className="mt-1 text-xs font-medium tracking-[0.12em] text-black/60 uppercase">Длина грузового отсека</p>
+                  <div className="mx-auto mt-6 h-px w-full max-w-80 bg-black/60" />
+                  <p className="mt-5 font-display text-2xl font-bold uppercase">1870 мм</p>
+                  <p className="mt-1 text-xs font-medium tracking-[0.12em] text-black/60 uppercase">Ширина грузового отсека</p>
+                </div>
+              </div>
+            </div>
 
-                    {m.num}
-                  </span>
-
+            <div className="mt-9 grid gap-px border-y border-black/10 py-6 sm:grid-cols-2 lg:grid-cols-5">
+              {[
+                { icon: MoveVertical, title: "High Roof", text: "Полноценная высокая крыша" },
+                { icon: Grid2x2, title: "До 5 европаллет", text: "Оптимальная длина и ширина отсека" },
+                { icon: DoorOpen, title: "Задние двери 260°", text: "Удобная погрузка и работа с грузом" },
+                { icon: DoorOpen, title: "Правая сдвижная дверь", text: "Удобный боковой доступ" },
+                { icon: Package, title: "13,0 м³", text: "Объём грузового отсека" },
+              ].map(({ icon: Icon, title, text }) => (
+                <div key={title} className="flex gap-4 px-3 py-4 lg:border-r lg:border-black/10 lg:last:border-r-0">
+                  <Icon className="h-9 w-9 shrink-0 text-brand" strokeWidth={1.5} />
                   <div>
-                    <h3 className="font-display text-2xl font-bold tracking-tight uppercase">
-                      {m.name}
-                    </h3>
-                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{m.text}</p>
-                    <div className="mt-5 flex items-center gap-5">
-                      <button className="flex items-center gap-6 rounded-sm bg-accent px-4 py-2.5 text-[11px] font-bold tracking-wide text-accent-foreground uppercase transition-opacity hover:opacity-90">
-                        Подробнее
-                        <ArrowRight className="h-4 w-4" />
-                      </button>
-                      <button className="flex items-center gap-2 text-[11px] font-bold tracking-wide uppercase transition-colors hover:text-brand">
-                        Сравнить
-                        <Scale className="h-4 w-4" />
-                      </button>
-                    </div>
+                    <p className="font-display text-base font-bold tracking-wide uppercase">{title}</p>
+                    <p className="mt-1 text-xs leading-snug text-black/60">{text}</p>
                   </div>
-
-                  <img
-                    src={m.image}
-                    alt={`RAM ProMaster ${m.name} — вид сбоку`}
-                    width={1024}
-                    height={576}
-                    loading="lazy"
-                  className="ram-model-img h-40 w-full object-contain"
-                  />
-
-                  <div className="ram-model-meta flex items-center gap-6 lg:border-l lg:border-border lg:pl-6">
-                    <div className="flex-1 space-y-3">
-                      {[
-                        { icon: Ruler, label: "Длина", value: m.length },
-                        { icon: Box, label: "Объём", value: m.volume },
-                        { icon: Weight, label: "Полезная нагрузка", value: m.payload },
-                      ].map(({ icon: Icon, label, value }) => (
-                        <div key={label} className="flex items-center gap-3">
-                          <Icon className="h-5 w-5 shrink-0 text-foreground" strokeWidth={1.5} />
-                          <div>
-                            <p className="text-[10px] tracking-wide text-muted-foreground uppercase">
-                              {label}
-                            </p>
-                            <p className="text-sm font-bold">{value}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="text-right">
-                      <p className="text-[10px] tracking-wide text-muted-foreground uppercase">от</p>
-                      <p className="font-display text-2xl font-bold whitespace-nowrap">{m.price}</p>
-                    </div>
-                  </div>
-                </article>
+                </div>
               ))}
             </div>
-
-            <a
-              href="#"
-              className="ram-catalog-link mt-6 flex items-center justify-center gap-4 rounded-sm bg-background px-6 py-5 shadow-sm transition-colors hover:bg-secondary"
-            >
-              <FileText className="h-7 w-7 text-brand" strokeWidth={1.5} />
-              <span>
-                <span className="block font-display text-sm font-bold tracking-wide uppercase">
-                  Скачать полный каталог RAM Promaster
-                </span>
-                <span className="block text-sm text-muted-foreground">
-                  Технические характеристики, размеры и комплектации
-                </span>
-              </span>
-              <ArrowRight className="ml-6 h-5 w-5" />
-            </a>
           </div>
         </section>
 
@@ -934,11 +807,11 @@ function Index() {
                   <span className="text-brand">03</span>{" "}
                   <span className="opacity-80">Интерьер</span>
                 </p>
-                <h2 className="ram-interior-title mt-5 font-display text-5xl leading-[0.95] font-bold tracking-tight uppercase lg:text-6xl">
+                <div className="ram-interior-title mt-5 font-display text-5xl leading-[0.95] font-bold tracking-tight uppercase lg:text-6xl">
                   RAM Promaster
                   <br />
                   <span className="ram-interior-subtitle mt-[6px] inline-block font-sans text-[46px] font-normal opacity-50">Создан для работы</span>
-                </h2>
+                </div>
                 <p className="mt-6 max-w-md text-sm leading-relaxed opacity-75">
                   Просторный, функциональный и выносливый салон создан для ежедневной работы в любых
                   условиях. Каждая деталь продумана для вашего комфорта и эффективности.
@@ -974,11 +847,11 @@ function Index() {
           </div>
 
           <div className="ram-container mx-auto grid max-w-[1600px] gap-10 px-6 py-16 lg:grid-cols-[380px_minmax(0,1fr)]">
-            <h3 className="font-display text-4xl leading-[0.95] font-normal tracking-tight uppercase">
+            <div className="font-display text-4xl leading-[0.95] font-normal tracking-tight uppercase">
               Продуманный салон
               <br />
               <span className="mt-[15px] inline-block font-normal opacity-50">для профессионалов</span>
-            </h3>
+            </div>
 
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:border-l lg:border-border/20 lg:pl-10">
 
@@ -1001,11 +874,11 @@ function Index() {
                 <span className="text-brand">04</span>{" "}
                 <span className="text-muted-foreground">Видеоцентр</span>
               </p>
-              <h2 className="mt-4 font-display text-4xl leading-[0.95] font-medium tracking-tight uppercase lg:text-5xl">
+              <div className="mt-4 font-display text-4xl leading-[0.95] font-medium tracking-tight uppercase lg:text-5xl">
                 RAM Promaster
                 <br />
                 <span className="mt-[15px] inline-block font-normal text-muted-foreground">Без секретов</span>
-              </h2>
+              </div>
               <span className="mt-6 block h-0.5 w-12 bg-brand" />
               <p className="mt-6 text-sm leading-relaxed text-foreground">
                 Смотрите подробные обзоры и узнайте всё о возможностях, технологиях и подготовке RAM
@@ -1059,12 +932,12 @@ function Index() {
 
           <div className="ram-container mx-auto max-w-[1600px] px-6">
             <div className="mt-12 grid gap-8 rounded-sm bg-accent px-8 py-10 text-accent-foreground lg:grid-cols-[280px_minmax(0,1fr)]">
-              <h3 className="font-display text-2xl leading-tight font-medium tracking-tight uppercase">
+              <div className="font-display text-2xl leading-tight font-medium tracking-tight uppercase">
                 Почему смотрят
                 <br />
                 наши обзоры
                 <span className="mt-5 block h-0.5 w-12 bg-brand" />
-              </h3>
+              </div>
               <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-4 lg:border-l lg:border-border/20 lg:pl-8">
                 {VIDEO_REASONS.map(({ icon: Icon, title, text }, i) => (
                   <div
@@ -1085,170 +958,58 @@ function Index() {
           </div>
         </section>
 
-        {/* 05 Размеры и возможности */}
-        <section id="dimensions" className="ram-dimensions bg-surface py-20">
+        {/* 05 Габариты и сравнение */}
+        <section id="dimensions" className="ram-dimensions overflow-hidden bg-[#f7f7f6] pt-14 pb-0 text-[#171717] lg:pt-20 lg:pb-0">
           <div className="ram-container mx-auto max-w-[1600px] px-6">
-            <p className="flex items-center gap-4 font-sans text-xs font-bold tracking-[0.2em] uppercase">
-              <span className="text-brand">05</span>
-              <span>Размеры и возможности</span>
-            </p>
-
-            <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-start">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
               <div>
-                <h2 className="font-display text-5xl leading-[0.95] font-bold tracking-tight uppercase md:text-6xl">
-                  RAM Promaster
-                </h2>
-                <p className="mt-2 font-display text-2xl font-light tracking-tight text-muted-foreground uppercase md:text-3xl">
-                  Габариты, вместимость, полезная нагрузка
-                </p>
-                <p className="mt-6 max-w-md text-sm leading-relaxed text-foreground">
-                  Разные длины, высоты и конфигурации позволяют выбрать идеальный вариант
-                  для любых задач вашего бизнеса.
-                </p>
+                <p className="text-[11px] font-bold tracking-[0.18em] uppercase"><span className="text-brand">05</span>{" "}<span className="text-muted-foreground">Размеры и возможности</span></p>
+                <div className="mt-6 font-display text-5xl leading-[.9] font-bold tracking-tight uppercase sm:text-6xl lg:text-7xl">RAM ProMaster 2500</div>
+                <p className="mt-2 font-display text-3xl font-light uppercase sm:text-4xl">159” High Roof</p>
+                <p className="mt-3 font-menu text-base tracking-wide text-black/65 uppercase">Габариты, вместимость, полезная нагрузка</p>
               </div>
-
-              <div className="ram-dim-stats grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 lg:pt-4">
-                {DIM_STATS.map(({ icon: Icon, value, text }, i) => (
-                  <div
-                    key={value}
-                    className={`flex gap-3 ${i > 0 ? "sm:border-l sm:border-border sm:pl-6" : ""}`}
-                  >
-                    <Icon className="h-[39px] w-[39px] shrink-0 text-foreground" strokeWidth={1.5} />
-                    <div>
-                      <p className="font-display text-[17px] font-bold tracking-wide uppercase">
-                        {value}
-                      </p>
-                      <p className="mt-1.5 text-xs leading-[1.3] text-muted-foreground">
-                        {text}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+              <div className="grid grid-cols-2 divide-x divide-y divide-black/10 sm:grid-cols-4 sm:divide-y-0">
+                {[
+                  { icon: Cog, title: "3.6 Pentastar V6", value: "276 л.с.", text: "Атмосферный бензиновый двигатель без турбины" },
+                  { icon: Settings, title: "9-ступенчатый", value: "Автомат", text: "Плавность, комфорт и надёжность" },
+                  { icon: Wrench, title: "Heavy Duty", value: "Подвеска 2500", text: "Усиленная конструкция для тяжёлой работы" },
+                  { icon: MoveHorizontal, title: "Передний", value: "Привод", text: "Уверенная тяга и больше полезного пространства" },
+                ].map(({ icon: Icon, title, value, text }) => <div key={title} className="px-3 py-5 text-center"><Icon className="mx-auto h-8 w-8" strokeWidth={1.6} /><p className="mt-3 font-display text-sm font-bold uppercase">{title}</p><p className="font-display text-base font-bold uppercase">{value}</p><p className="mt-2 text-[10px] leading-snug text-black/60">{text}</p></div>)}
               </div>
             </div>
 
-            {/* Схемы */}
-            <div className="mt-12 rounded-sm border border-border bg-card">
-              <div className="ram-dim-tabs flex flex-wrap border-b border-border">
-                {DIM_VARIANTS.map((v, i) => (
-                  <button
-                    key={v.id}
-                    type="button"
-                    onClick={() => setDimTab(i)}
-                    className={`font-display px-7 py-4 text-xs font-bold tracking-[0.12em] uppercase transition-colors ${
-                      dimTab === i
-                        ? "bg-accent text-accent-foreground"
-                        : "border-r border-border text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    {v.name}
-                  </button>
-                ))}
-              </div>
-
-              <div className="ram-dim-schemes grid items-center gap-8 p-8 lg:grid-cols-[1.15fr_1.3fr_1fr]">
-                <img
-                  src={size1Asset}
-                  alt={`RAM ProMaster ${dim.name} — вид сбоку с габаритами`}
-                  width={380}
-                  height={200}
-                  loading="lazy"
-                  className="w-full object-contain"
-                />
-                <img
-                  src={size2Asset}
-                  alt={`RAM ProMaster ${dim.name} — вид спереди и сзади с габаритами`}
-                  width={440}
-                  height={200}
-                  loading="lazy"
-                  className="w-full object-contain"
-                />
-                <img
-                  src={size3Asset}
-                  alt={`RAM ProMaster ${dim.name} — вид сверху, грузовой отсек`}
-                  width={330}
-                  height={200}
-                  loading="lazy"
-                  className="w-full object-contain"
-                />
-              </div>
-
-
-              <div className="ram-dim-specs grid grid-cols-2 border-t border-border sm:grid-cols-4 xl:grid-cols-7">
-                {dim.specs.map(({ label, value }) => (
-                  <div key={label} className="border-r border-b border-border px-5 py-4">
-                    <div className="flex items-start gap-2">
-                      <p className="font-sans text-[10px] leading-tight font-normal tracking-wide uppercase">
-                        {label}
-                      </p>
-                    </div>
-
-                    <p className="mt-2 font-display text-lg font-bold">{value}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="mt-9 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
+              <img src="/size-4.jpg" alt="RAM ProMaster: вид сбоку и размеры" width={547} height={351} loading="lazy" className="h-auto w-fit max-w-full object-contain lg:h-[351px]" />
+              <img src="/size-5.jpg" alt="RAM ProMaster: передняя и задняя проекции" width={567} height={351} loading="lazy" className="h-auto w-fit max-w-full object-contain lg:h-[351px]" />
+              <img src="/size-6.jpg" alt="RAM ProMaster: грузовой отсек" width={425} height={351} loading="lazy" className="h-auto w-fit max-w-full object-contain lg:h-[351px]" />
             </div>
 
-            {/* Сравнение с конкурентами */}
-            <div className="ram-mini-comparison mt-8 grid gap-5 rounded-sm bg-accent p-5 text-accent-foreground xl:grid-cols-[180px_minmax(0,1fr)]">
-              <h3 className="font-display text-2xl leading-tight font-medium tracking-tight uppercase">
-                Сравнение
-                <br />с конкурентами
-                <span className="mt-3 block h-0.5 w-10 bg-brand" />
-              </h3>
+            <div className="mt-8 grid divide-y divide-black/10 overflow-hidden rounded-xl border border-black/10 bg-white sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-6">
+              {[
+                { icon: Box, label: "Объём грузового отсека", value: "13,0 м³" }, { icon: Weight, label: "Полезная нагрузка", value: "до 1820 кг" }, { icon: MoveVertical, label: "Высота грузового отсека", value: "1930 мм" }, { icon: MoveHorizontal, label: "Ширина между арками", value: "1422 мм" }, { icon: DoorOpen, label: "Боковой дверной проём", value: "1250 × 1755 мм" }, { icon: DoorOpen, label: "Задний дверной проём", value: "1562 × 1790 мм" },
+              ].map(({ icon: Icon, label, value }) => <div key={label} className="flex items-center gap-3 px-4 py-5"><Icon className="h-7 w-7 shrink-0" strokeWidth={1.5} /><div><p className="text-[9px] font-semibold leading-tight uppercase text-black/60">{label}</p><p className="mt-1 font-display text-lg font-bold uppercase">{value}</p></div></div>)}
+            </div>
+          </div>
 
-              <div className="grid gap-5 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
-                <div className="grid grid-cols-3 gap-3">
-                  {COMPARISON.rivals.map((r, i) => (
-                    <div
-                      key={r.name}
-                      className={`flex flex-col items-center text-center ${
-                        i > 0 ? "border-l border-accent-foreground/20 pl-3" : ""
-                      }`}
-                    >
-                      <p
-                        className={`mb-[15px] font-display text-[11px] leading-tight font-bold tracking-wide uppercase ${
-                          r.own ? "text-brand" : "text-accent-foreground opacity-70"
-                        }`}
-
-
-
-                      >
-                        {r.name}
-                      </p>
-                      <img
-                        src={r.image}
-                        alt={r.name}
-                        width={768}
-                        height={512}
-                        loading="lazy"
-                        className="mt-2 h-[70px] w-[80%] object-contain mix-blend-lighten"
-                      />
-                    </div>
-
-                  ))}
+          <div className="mt-12 bg-[#111214] py-12 text-white lg:py-16">
+            <div className="ram-container mx-auto grid max-w-[1600px] gap-10 px-6 lg:grid-cols-[260px_minmax(0,1fr)]">
+              <div><div className="font-display text-4xl leading-[.9] font-bold uppercase">Сравнение<br />с конкурентами</div><span className="mt-5 block h-1 w-16 bg-brand" /><p className="mt-12 max-w-48 text-xs leading-relaxed text-white/65 uppercase">Три лидера коммерческого транспорта. Важные параметры в одной таблице.</p><p className="mt-14 max-w-40 border-l border-brand pl-4 text-xs leading-relaxed text-white/75 uppercase">Выбирайте технику, которая работает на ваш бизнес</p></div>
+              <div>
+                <div className="grid grid-cols-[minmax(130px,1.4fr)_repeat(3,minmax(0,1fr))] border-b border-white/15 pb-5 text-center">
+                  <div aria-hidden="true" />
+                  {COMPARISON.rivals.map((r) => <div key={r.name} className="border-l border-white/15 px-3"><img src={r.image} alt={r.name} width={768} height={512} loading="lazy" className="mx-auto h-24 w-full object-contain" /><p className={`mt-2 font-display text-xs font-bold uppercase ${r.own ? "text-brand" : "text-white"}`}>{r.name}</p></div>)}
                 </div>
-
+                <div>{COMPARISON.rows.map(({ icon: Icon, label, values }) => <div key={label} className="grid grid-cols-[minmax(130px,1.4fr)_repeat(3,minmax(0,1fr))] items-center border-b border-white/10 py-3"><span className="flex gap-2 pr-2 text-[11px] text-white/70"><Icon className="h-4 w-4 shrink-0" strokeWidth={1.5} />{label}</span>{values.map((value, i) => <span key={`${label}-${i}`} className={`border-l border-white/10 px-2 text-center text-xs ${i === 0 ? "font-bold text-brand" : "text-white/65"}`}>{value}</span>)}</div>)}</div>
+              </div>
+            </div>
+            <div className="mt-10 border-t border-white/15">
+              <div className="ram-container mx-auto flex max-w-[1600px] flex-col gap-5 px-6 pt-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  {COMPARISON.rows.map(({ icon: Icon, label, values }) => (
-                    <div
-                      key={label}
-                      className="grid grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))] items-center gap-2 border-b border-border/15 py-1.5"
-                    >
-                      <span className="flex items-center gap-1.5 text-[11px] opacity-80">
-                        <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={1.5} />
-                        {label}
-                      </span>
-                      {values.map((v, i) => (
-                        <span
-                          key={`${label}-${i}`}
-                          className={`text-[11px] ${i === 0 ? "font-semibold text-brand" : "opacity-70"}`}
-                        >
-                          {v}
-                        </span>
-                      ))}
-                    </div>
-                  ))}
+                  <p className="font-display text-2xl font-bold tracking-wide uppercase">RAM ProMaster Center</p>
+                  <p className="mt-1 text-xs tracking-wide text-white/65 uppercase">Официальные поставки. Профессиональное сопровождение.</p>
+                </div>
+                <div className="-mx-6 bg-brand px-8 py-6 text-left sm:mx-0 sm:min-w-72 sm:text-center">
+                  <p className="font-menu text-[10px] tracking-[0.45em] uppercase">Built for Business</p>
                 </div>
               </div>
             </div>
@@ -1274,9 +1035,9 @@ function Index() {
                 <span className="ml-3 opacity-70">Технологии и производительность</span>
               </p>
 
-              <h2 className="font-display mt-6 text-5xl leading-[0.95] font-medium tracking-tight uppercase lg:text-6xl">
+              <div className="font-display mt-6 text-5xl leading-[0.95] font-medium tracking-tight uppercase lg:text-6xl">
                 Pentastar<sup className="align-super text-2xl">®</sup> V6 3.6L
-              </h2>
+              </div>
               <p className="font-sans mt-2 text-2xl font-normal tracking-tight uppercase opacity-80 lg:text-3xl">
                 Мощь. Надёжность. Эффективность.
               </p>
@@ -1327,9 +1088,9 @@ function Index() {
 
         <section className="ram-tech-specs bg-[#f5f5f5]">
           <div className="ram-container mx-auto max-w-[1600px] px-6 py-16">
-            <h2 className="font-display text-4xl font-medium tracking-tight uppercase">
+            <div className="font-display text-4xl font-medium tracking-tight uppercase">
               Технические характеристики
-            </h2>
+            </div>
 
             <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.7fr)_minmax(0,1.1fr)]">
               <div className="rounded-[8px] bg-[#ebebeb] p-6">
@@ -1341,11 +1102,11 @@ function Index() {
                   loading="lazy"
                   className="w-full object-contain"
                 />
-                <h3 className="font-sans mt-4 text-base leading-tight font-medium tracking-tight uppercase">
+                <div className="font-sans mt-4 text-base leading-tight font-medium tracking-tight uppercase">
                   9HP9 9-ступенчатая
                   <br />
                   автоматическая коробка
-                </h3>
+                </div>
                 <p className="text-muted-foreground mt-3 text-xs leading-relaxed">
                   Современная автоматическая коробка передач обеспечивает плавное переключение,
                   высокую эффективность и отличную динамику.
@@ -1392,9 +1153,9 @@ function Index() {
                   className="w-full rounded-[8px] object-contain"
                 />
                 <div className="rounded-[8px] bg-[#ebebeb] p-6">
-                  <h3 className="font-display text-base font-bold tracking-tight uppercase">
+                  <div className="font-display text-base font-bold tracking-tight uppercase">
                     Производительность
-                  </h3>
+                  </div>
                   <ul className="mt-4 space-y-2.5">
                     {PERFORMANCE.map((p) => (
                       <li key={p} className="text-muted-foreground flex gap-2.5 text-xs leading-snug">
@@ -1416,9 +1177,9 @@ function Index() {
 
                   <Icon className="text-brand h-8 w-8 shrink-0" strokeWidth={1.3} />
                   <div>
-                    <h4 className="font-sans text-sm font-medium tracking-tight uppercase">
+                    <div className="font-sans text-sm font-medium tracking-tight uppercase">
                       {title}
-                    </h4>
+                    </div>
                     <p className="mt-2 text-xs leading-relaxed opacity-65">{text}</p>
                   </div>
                 </div>

@@ -13,7 +13,6 @@ import {
   Send,
 } from "lucide-react";
 import contactHeroAsset from "@/assets/contact-0.png";
-import contactMap from "@/assets/contact-map.jpg";
 import contactManagerAsset from "@/assets/contact-men.png";
 import footerLogoAsset from "@/assets/footer-logo.png";
 
@@ -21,7 +20,7 @@ const CONTACTS = [
   {
     icon: Phone,
     label: "Телефон",
-    value: "8 (800) 555-98-72",
+    value: "+7 (980) 158-88-31",
     lines: ["Ежедневно с 9:00 до 21:00. Звонок по России бесплатный"],
   },
   {
@@ -35,12 +34,6 @@ const CONTACTS = [
     label: "E-mail",
     value: "info@ducatocenter.ru",
     lines: ["Для коммерческих предложений и сотрудничества"],
-  },
-  {
-    icon: Globe,
-    label: "Сайт",
-    value: "https://ducatocenter.ru/",
-    lines: ["Вся информация о моделях, ценах и услугах"],
   },
 ];
 
@@ -84,14 +77,14 @@ export function ContactsSection() {
         >
           <div>
             <div className="flex items-center gap-3">
-              <span className="text-brand font-display text-xs font-bold">14</span>
+              <span className="text-brand font-display text-xs font-bold">13</span>
               <span className="text-xs font-semibold tracking-normal uppercase">/ Контакты</span>
             </div>
-            <h2 className="font-display mt-6 text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
+            <div className="font-display mt-6 text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
               RAM Promaster
               <br />
               <span className="text-brand font-medium">Center</span>
-            </h2>
+            </div>
             <p className="font-sans text-muted-foreground mt-3 text-lg font-medium tracking-tight uppercase">
               Надёжный партнёр для вашего бизнеса
             </p>
@@ -102,7 +95,7 @@ export function ContactsSection() {
           </div>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {CONTACTS.map(({ icon: Icon, label, value, lines }) => (
             <div key={label} className="border-border bg-card rounded-[5px] border p-5">
               <div className="flex items-start gap-3">
@@ -125,15 +118,11 @@ export function ContactsSection() {
 
         <div className="border-border bg-card mt-6 grid gap-0 overflow-hidden rounded-[5px] border lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)]">
           <div className="p-8">
-            <h3 className="font-sans text-xl font-medium tracking-tight uppercase">
+            <div className="font-sans text-xl font-medium tracking-tight uppercase">
               Наш офис и склад
-            </h3>
+            </div>
             <p className="text-muted-foreground mt-4 text-xs leading-relaxed">
-              Московская область, г. Домодедово,
-              <br />
-              мкр. Белые Столбы, ул. Промышленная, 10
-              <br />
-              (территория логистического комплекса)
+              Москва, ул. 1-й Дорожный проезд, д. 5
             </p>
             <ul className="mt-5 grid gap-2.5">
               {OFFICE.map((o) => (
@@ -151,31 +140,21 @@ export function ContactsSection() {
             </button>
           </div>
           <div className="relative min-h-[320px]">
-            <img
-              src={contactMap}
-              alt="Карта проезда к RAM ProMaster Center"
-              width={1200}
-              height={700}
+            <iframe
+              title="Карта проезда к Fiat Ducato Центр"
+              src="https://yandex.ru/map-widget/v1/?ll=37.621417%2C55.615151&z=16&l=map&pt=37.621417%2C55.615151%2Cpm2rdm"
               loading="lazy"
-              className="h-full w-full object-cover"
+              allowFullScreen
+              className="h-full min-h-[320px] w-full border-0"
             />
-            <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-3">
-              <MapPin className="text-brand h-8 w-8 shrink-0 fill-brand/20" strokeWidth={1.5} />
-              <div className="bg-card border-border border px-4 py-2">
-                <p className="font-display text-[11px] font-bold tracking-tight uppercase">
-                  RAM ProMaster Center
-                </p>
-                <p className="text-muted-foreground text-[10px]">ул. Промышленная, 10</p>
-              </div>
-            </div>
           </div>
         </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-3">
           <div className="border-border rounded-[5px] border p-8">
-            <h3 className="font-sans text-xl font-medium tracking-tight uppercase">
+            <div className="font-sans text-xl font-medium tracking-tight uppercase">
               Оставьте заявку
-            </h3>
+            </div>
             <p className="text-muted-foreground mt-3 text-[11px] leading-relaxed">
               Наш специалист свяжется с вами и ответит на все вопросы
             </p>
@@ -213,9 +192,9 @@ export function ContactsSection() {
           </div>
 
           <div className="border-border rounded-[5px] border p-8">
-            <h3 className="font-sans text-xl font-medium tracking-tight uppercase">
+            <div className="font-sans text-xl font-medium tracking-tight uppercase">
               Почему выбирают нас
-            </h3>
+            </div>
             <div className="mt-6 grid gap-6">
               {WHY.map(({ icon: Icon, title, text }) => (
                 <div key={title} className="flex gap-4">
@@ -223,9 +202,9 @@ export function ContactsSection() {
                     <Icon className="h-4 w-4" strokeWidth={1.4} />
                   </span>
                   <div>
-                    <h4 className="font-sans text-xs font-bold tracking-tight uppercase">
+                    <div className="font-sans text-xs font-bold tracking-tight uppercase">
                       {title}
-                    </h4>
+                    </div>
                     <p className="text-muted-foreground mt-1.5 text-[11px] leading-relaxed">
                       {text}
                     </p>
@@ -239,9 +218,9 @@ export function ContactsSection() {
             className="bg-accent text-accent-foreground relative overflow-hidden rounded-[5px] bg-contain bg-right-bottom bg-no-repeat p-8"
             style={{ backgroundImage: `url(${contactManagerAsset})` }}
           >
-            <h3 className="font-sans text-xl font-medium tracking-tight uppercase">
+            <div className="font-sans text-xl font-medium tracking-tight uppercase">
               Нужна консультация?
-            </h3>
+            </div>
             <p className="mt-4 max-w-[60%] text-[11px] leading-relaxed opacity-70">
               Наш эксперт поможет подобрать подходящую модель и комплектацию под ваш бизнес и
               бюджет.
@@ -297,9 +276,9 @@ export function ContactsSection() {
 
           {FOOTER_COLS.map((col) => (
             <div key={col.title}>
-              <h4 className="font-sans text-xs font-bold tracking-[0.14em] uppercase">
+              <div className="font-sans text-xs font-bold tracking-[0.14em] uppercase">
                 {col.title}
-              </h4>
+              </div>
               <ul className="mt-5 grid gap-2.5">
                 {col.items.map((i) => (
                   <li key={i} className="text-[11px] opacity-65 transition-opacity hover:opacity-100">
@@ -311,13 +290,13 @@ export function ContactsSection() {
           ))}
 
           <div>
-            <h4 className="font-sans text-xs font-bold tracking-[0.14em] uppercase">Контакты</h4>
+            <div className="font-sans text-xs font-bold tracking-[0.14em] uppercase">Контакты</div>
             <ul className="mt-5 grid gap-3 text-[11px]">
               <li className="flex gap-3">
                 <Phone className="text-brand mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.5} />
                 <span>
-                  <a href="tel:88005559872" className="hover:text-brand transition-colors">
-                    8 (800) 555-98-72
+                  <a href="tel:+79801588831" className="hover:text-brand transition-colors">
+                    +7 (980) 158-88-31
                   </a>
                   <br />
                   <span className="opacity-60">Ежедневно с 9:00 до 21:00</span>
@@ -336,19 +315,8 @@ export function ContactsSection() {
                 </a>
               </li>
               <li className="flex gap-3">
-                <Globe className="text-brand mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.5} />
-                <a
-                  href="https://ducatocenter.ru/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-brand transition-colors"
-                >
-                  https://ducatocenter.ru/
-                </a>
-              </li>
-              <li className="flex gap-3">
                 <MapPin className="text-brand mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.5} />
-                МО, г. Домодедово, мкр. Белые Столбы, ул. Промышленная, 10
+                Москва, ул. 1-й Дорожный проезд, д. 5
               </li>
             </ul>
           </div>

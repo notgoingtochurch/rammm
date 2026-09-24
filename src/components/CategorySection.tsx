@@ -99,17 +99,17 @@ export function CategorySection() {
         <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
           <div>
             <div className="mt-6 flex items-center gap-3">
-              <span className="text-brand font-display text-xs font-bold">13</span>
+              <span className="text-brand font-display text-xs font-bold">12</span>
               <span className="text-xs font-semibold uppercase">
                 / КАТЕГОРИИ B ИЛИ C
               </span>
             </div>
-            <h2 className="font-display mt-6 text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
+            <div className="font-display mt-6 text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
               RAM Promaster
 
               <br />
               категория B или C?
-            </h2>
+            </div>
             <span className="bg-brand mt-5 block h-0.5 w-14" />
             <p className="text-foreground mt-5 max-w-[400px] text-sm leading-relaxed">
               Какой RAM ProMaster можно эксплуатировать с обычными правами категории B, а когда
@@ -137,9 +137,9 @@ export function CategorySection() {
                   {c.letter}
                 </span>
                 <div>
-                  <h3 className="font-display text-2xl leading-none font-bold tracking-tight uppercase">
+                  <div className="font-display text-2xl leading-none font-bold tracking-tight uppercase">
                     {c.name}
-                  </h3>
+                  </div>
                   {c.sub && (
                     <p className="font-display mt-1 text-xl leading-none font-bold tracking-tight uppercase">
                       {c.sub}
@@ -195,9 +195,9 @@ export function CategorySection() {
         </div>
 
         <div className="border-border mt-8 rounded-[5px] border p-8">
-          <h3 className="font-sans text-xl font-bold tracking-tight uppercase">
+          <div className="font-sans text-xl font-bold tracking-tight uppercase">
             Что нужно знать?
-          </h3>
+          </div>
           <div className="divide-border mt-6 grid sm:grid-cols-2 sm:divide-x lg:grid-cols-4">
             {KNOW.map((k) => (
               <div key={k.title} className="flex gap-4 px-6 py-4 first:pl-0 last:pr-0">
@@ -213,9 +213,9 @@ export function CategorySection() {
                   )
                 )}
                 <div>
-                  <h4 className="font-sans text-xs font-bold tracking-tight uppercase">
+                  <div className="font-sans text-xs font-bold tracking-tight uppercase">
                     {k.title}
-                  </h4>
+                  </div>
                   <p className="text-muted-foreground mt-2 text-[11px] leading-relaxed">{k.text}</p>
                 </div>
               </div>
@@ -236,11 +236,11 @@ export function CategorySection() {
 
         <div className="border-border mt-6 grid items-center gap-6 rounded-[5px] border p-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           <div>
-            <h3 className="font-['Montserrat',sans-serif] text-xl leading-[1.25] font-bold tracking-tight uppercase sm:text-2xl">
+            <div className="font-['Montserrat',sans-serif] text-xl leading-[1.25] font-bold tracking-tight uppercase sm:text-2xl">
               Не уверены, какой <span className="text-brand">RAM</span>
               <br />
               вам подойдёт?
-            </h3>
+            </div>
             <p className="text-muted-foreground mt-2 text-xs">
               Наши специалисты помогут подобрать автомобиль под:
             </p>

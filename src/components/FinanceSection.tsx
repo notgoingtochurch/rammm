@@ -167,15 +167,15 @@ export function FinanceSection() {
         >
           <div>
             <div className="text-muted-foreground flex items-center gap-3 text-xs">
-              <span className="text-brand font-display font-bold">10</span>
+              <span className="text-brand font-display font-bold">09</span>
               <span>/</span>
               <span className="text-foreground font-semibold tracking-normal uppercase">
                 Финансовые программы и защита
               </span>
             </div>
-            <h2 className="font-display mt-5 text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
+            <div className="font-display mt-5 text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
               Кредит, лизинг и гарантия
-            </h2>
+            </div>
             <p className="text-foreground mt-5 max-w-md text-xs leading-relaxed">
               Мы предлагаем гибкие финансовые решения для бизнеса и частных клиентов, а также
               надёжную гарантию на все автомобили RAM ProMaster.
@@ -200,9 +200,9 @@ export function FinanceSection() {
                 <div className="flex items-start gap-3">
                   <Icon className="text-brand h-6 w-6 shrink-0" strokeWidth={1.4} />
                   <div>
-                    <h3 className="font-sans text-base font-bold uppercase">
+                    <div className="font-sans text-base font-bold uppercase">
                       {title}
-                    </h3>
+                    </div>
                     <p className="text-muted-foreground mt-0.5 text-[11px] tracking-tight uppercase">
                       {subtitle}
                     </p>
@@ -240,9 +240,9 @@ export function FinanceSection() {
             <div className="flex items-stretch gap-3">
               <ShieldCheck className="h-auto w-10 shrink-0 self-stretch text-white" strokeWidth={1.4} />
               <div>
-                <h3 className="font-sans text-sm font-bold uppercase">
+                <div className="font-sans text-sm font-bold uppercase">
                   Гарантия производителя
-                </h3>
+                </div>
                 <p className="font-sans mt-1 text-xl leading-none font-bold uppercase">
                   1 год / 20 000 км
                 </p>
@@ -266,9 +266,9 @@ export function FinanceSection() {
             <div className="flex items-start gap-3">
               <Plus className="text-brand h-6 w-6 shrink-0" strokeWidth={1.4} />
               <div>
-                <h3 className="font-sans text-sm font-bold uppercase">
+                <div className="font-sans text-sm font-bold uppercase">
                   Расширенная гарантия
-                </h3>
+                </div>
                 <p className="font-sans mt-1 text-xl leading-none font-bold uppercase">
                   До 3 лет / 150 000 км
                 </p>
@@ -297,11 +297,11 @@ export function FinanceSection() {
             <div className="p-4">
               <div className="flex items-start gap-3">
                 <Wrench className="text-brand h-6 w-6 shrink-0" strokeWidth={1.4} />
-                <h3 className="font-sans text-sm leading-tight font-bold uppercase">
+                <div className="font-sans text-sm leading-tight font-bold uppercase">
                   Сервисная поддержка
                   <br />
                   по всей России
-                </h3>
+                </div>
               </div>
               <p className="text-muted-foreground mt-3 text-[11px] leading-relaxed">
                 Собственный сервисный центр и партнёрская сеть позволяют обслуживать ваш RAM
@@ -329,9 +329,9 @@ export function FinanceSection() {
 
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.8fr)_minmax(0,0.9fr)]">
           <div className="border-border rounded-[6px] border p-4">
-            <h4 className="font-sans text-sm font-bold uppercase">
+            <div className="font-sans text-sm font-bold uppercase">
               Преимущества финансирования
-            </h4>
+            </div>
             <ul className="mt-3 space-y-1.5">
               {ADVANTAGES.map((i) => (
                 <li key={i} className="flex gap-2 text-[11px] leading-snug">
@@ -343,9 +343,9 @@ export function FinanceSection() {
           </div>
 
           <div className="border-border rounded-[6px] border p-4">
-            <h4 className="font-sans text-sm font-bold uppercase">
+            <div className="font-sans text-sm font-bold uppercase">
               Рассчитайте ежемесячный платёж
-            </h4>
+            </div>
             <div className="mt-3 grid gap-3 sm:grid-cols-4">
               <div>
                 <label className="text-muted-foreground text-[10px] tracking-wide uppercase">
@@ -424,11 +424,11 @@ export function FinanceSection() {
 
           <div className="border-border rounded-[6px] border p-4">
             <FileText className="text-brand h-7 w-7" strokeWidth={1.3} />
-            <h4 className="font-sans mt-3 text-sm leading-tight font-bold uppercase">
+            <div className="font-sans mt-3 text-sm leading-tight font-bold uppercase">
               Полная защита
               <br />
               вашего бизнеса
-            </h4>
+            </div>
             <p className="text-muted-foreground mt-2 text-[11px] leading-relaxed">
               Вы получаете не только надёжный автомобиль, но и уверенность в завтрашнем дне.
             </p>

@@ -86,7 +86,7 @@ const GUARANTEES = [
 
 export function TrimsSection() {
   return (
-    <section id="trims" className="border-border border-t py-16">
+    <section id="trims" className="hidden border-border border-t py-16">
       <div className="mx-auto max-w-[1600px] px-6">
         <div className="flex items-center gap-3">
           <span className="text-brand font-display text-xs font-bold">07</span>
@@ -95,9 +95,9 @@ export function TrimsSection() {
 
         <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.75fr)_minmax(0,1.15fr)] lg:items-start">
           <div>
-            <h2 className="font-display text-4xl leading-none font-bold tracking-tight uppercase sm:text-5xl">
+            <div className="font-display text-4xl leading-none font-bold tracking-tight uppercase sm:text-5xl">
               RAM Promaster
-            </h2>
+            </div>
             <p className="text-muted-foreground font-display mt-1 text-2xl leading-none font-light tracking-tight uppercase sm:text-3xl">
               Выберите свою комплектацию
             </p>
@@ -116,7 +116,7 @@ export function TrimsSection() {
               >
                 <Icon className="mt-0.5 h-6 w-6 shrink-0" strokeWidth={1.3} />
                 <div>
-                  <h3 className="font-sans text-xs font-medium tracking-tight uppercase">{title}</h3>
+                  <div className="font-sans text-xs font-medium tracking-tight uppercase">{title}</div>
                   <p className="text-muted-foreground mt-1 text-[11px] leading-snug">{text}</p>
                 </div>
               </div>
@@ -140,9 +140,9 @@ export function TrimsSection() {
 
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h3 className="font-display text-2xl leading-none font-bold tracking-tight uppercase">
+                  <div className="font-display text-2xl leading-none font-bold tracking-tight uppercase">
                     {trim.name}
-                  </h3>
+                  </div>
                   <p className="text-muted-foreground mt-1.5 font-sans text-[11px] font-medium tracking-wide uppercase">
                     {trim.subtitle}
                   </p>
@@ -236,7 +236,7 @@ export function TrimsSection() {
             >
               <Icon className="h-8 w-8 shrink-0" strokeWidth={1.3} />
               <div>
-                <h4 className="font-sans text-xs font-medium tracking-tight uppercase">{title}</h4>
+                <div className="font-sans text-xs font-medium tracking-tight uppercase">{title}</div>
                 <p className="text-muted-foreground mt-1 text-[11px]">{text}</p>
               </div>
             </div>

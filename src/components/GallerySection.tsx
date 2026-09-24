@@ -51,7 +51,7 @@ export function GallerySection() {
     <section id="gallery" className="border-border border-t py-16">
       <div className="mx-auto max-w-[1600px] px-6">
         <div className="text-muted-foreground flex items-center gap-3 text-xs">
-          <span className="text-brand font-display font-bold">09</span>
+          <span className="text-brand font-display font-bold">08</span>
           <span>/</span>
           <span className="text-foreground font-semibold tracking-normal uppercase">
             Фотогалерея
@@ -60,9 +60,9 @@ export function GallerySection() {
 
         <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)_minmax(0,1.3fr)] lg:items-center">
           <div>
-            <h2 className="font-display text-4xl leading-none font-bold tracking-tight uppercase sm:text-5xl">
+            <div className="font-display text-4xl leading-none font-bold tracking-tight uppercase sm:text-5xl">
               RAM Promaster
-            </h2>
+            </div>
             <p className="text-muted-foreground font-sans mt-1 text-2xl leading-none font-light tracking-tight uppercase sm:text-3xl">
               Фотогалерея
             </p>
@@ -114,7 +114,7 @@ export function GallerySection() {
             >
               <Icon className="text-brand h-7 w-7 shrink-0" strokeWidth={1.3} />
               <div>
-                <h4 className="font-sans text-xs font-medium tracking-tight uppercase">{title}</h4>
+                <div className="font-sans text-xs font-medium tracking-tight uppercase">{title}</div>
                 {lines.map((l) => (
                   <p key={l} className="text-muted-foreground mt-1 text-[11px] leading-snug">
                     {l}

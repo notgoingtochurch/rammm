@@ -89,7 +89,7 @@ export function CompetitorsSection({ onDiscountClick }: CompetitorsSectionProps)
     <section id="competitors" className="border-border border-t bg-[#f8f9f9] py-16">
       <div className="mx-auto max-w-[1600px] px-6">
         <div className="flex items-center gap-3">
-          <span className="text-brand font-display text-xs font-bold">12</span>
+          <span className="text-brand font-display text-xs font-bold">11</span>
           <span className="text-xs font-semibold tracking-normal uppercase">
             / Сравнение с конкурентами
           </span>
@@ -97,11 +97,11 @@ export function CompetitorsSection({ onDiscountClick }: CompetitorsSectionProps)
 
         <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.6fr)] lg:items-center">
           <div>
-            <h2 className="font-display text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
+            <div className="font-display text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
               RAM Promaster
               <br />
               vs конкуренты
-            </h2>
+            </div>
             <p className="font-sans text-muted-foreground mt-[8px] text-xl leading-none font-light tracking-normal uppercase sm:text-2xl">
               Честное сравнение параметров
             </p>
@@ -163,17 +163,17 @@ export function CompetitorsSection({ onDiscountClick }: CompetitorsSectionProps)
           </table>
         </div>
 
-        <h3 className="font-sans mt-12 text-center text-xl font-medium tracking-normal uppercase sm:text-2xl">
+        <div className="font-sans mt-12 text-center text-xl font-medium tracking-normal uppercase sm:text-2xl">
           Почему <span className="text-brand">RAM Promaster</span> выгоднее
-        </h3>
+        </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {REASONS.map(({ icon: Icon, title, text }) => (
             <div key={title} className="border-border bg-card rounded-[6px] border p-5">
               <Icon className="text-brand h-7 w-7" strokeWidth={1.3} />
-              <h4 className="font-sans mt-3 text-xs font-medium tracking-normal uppercase">
+              <div className="font-sans mt-3 text-xs font-medium tracking-normal uppercase">
                 {title}
-              </h4>
+              </div>
               <p className="text-muted-foreground mt-2 text-[11px] leading-relaxed">{text}</p>
             </div>
           ))}

@@ -113,13 +113,13 @@ export function AboutSection() {
         <div className="relative mx-auto grid max-w-[1600px] gap-10 px-6 py-14 lg:grid-cols-2 lg:items-center lg:py-24">
           <div>
             <div className="flex items-center gap-3">
-              <span className="text-brand font-display text-xs font-bold">08</span>
+              <span className="text-brand font-display text-xs font-bold">07</span>
               <span className="text-xs font-semibold tracking-normal uppercase">О нас</span>
             </div>
 
-            <h2 className="font-display mt-6 text-4xl leading-none font-bold tracking-tight uppercase sm:text-5xl">
+            <div className="font-display mt-6 text-4xl leading-none font-bold tracking-tight uppercase sm:text-5xl">
               RAM Promaster Center
-            </h2>
+            </div>
             <p className="font-sans mt-[10px] text-2xl leading-none font-light tracking-tight uppercase opacity-70 sm:text-3xl">
               Официальный поставщик
               <br />в России
@@ -137,9 +137,9 @@ export function AboutSection() {
                   className={i > 0 ? "border-white/10 sm:border-l sm:pl-6" : undefined}
                 >
                   <Icon className="text-brand h-7 w-7" strokeWidth={1.3} />
-                  <h3 className="font-sans mt-4 text-xs font-medium tracking-tight uppercase">
+                  <div className="font-sans mt-4 text-xs font-medium tracking-tight uppercase">
                     {title}
-                  </h3>
+                  </div>
                   {lines.map((l) => (
                     <p key={l} className="mt-1 text-[11px] leading-snug opacity-65">
                       {l}
@@ -167,11 +167,11 @@ export function AboutSection() {
       <div className="mx-auto max-w-[1600px] px-6 py-14">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,2fr)_minmax(0,0.75fr)]">
           <div>
-            <h3 className="font-display text-xl leading-tight font-bold tracking-tight uppercase">
+            <div className="font-display text-xl leading-tight font-bold tracking-tight uppercase">
               Почему выбирают
               <br />
               RAM Promaster Center?
-            </h3>
+            </div>
             <ul className="mt-6 space-y-2.5">
               {REASONS.map((r) => (
                 <li key={r} className="text-muted-foreground flex gap-2.5 text-xs leading-snug">
@@ -194,9 +194,9 @@ export function AboutSection() {
                   className="h-full min-h-[240px] w-full object-cover"
                 />
                 <div className="text-accent-foreground absolute inset-x-0 bottom-0 w-full bg-black/40 p-4">
-                  <h4 className="font-sans text-sm font-medium tracking-tight uppercase">
+                  <div className="font-sans text-sm font-medium tracking-tight uppercase">
                     {c.title}
-                  </h4>
+                  </div>
                   <p className="mt-1.5 text-[11px] leading-snug opacity-75">{c.text}</p>
                 </div>
               </div>
@@ -204,11 +204,11 @@ export function AboutSection() {
           </div>
 
           <div className="border-border rounded-[6px] border p-6">
-            <h4 className="font-display text-base leading-tight font-bold tracking-tight uppercase">
+            <div className="font-display text-base leading-tight font-bold tracking-tight uppercase">
               ПРИЕЗЖАЙТЕ К НАМ
               <br />
               RAM PROMASTER CENTER
-            </h4>
+            </div>
             <ul className="mt-5 space-y-3">
               {CONTACTS.map(({ icon: Icon, text }) => (
                 <li key={text} className="flex gap-2.5 text-[11px] leading-snug">
@@ -234,7 +234,7 @@ export function AboutSection() {
             >
               <Icon className="text-brand h-8 w-8 shrink-0" strokeWidth={1.3} />
               <div>
-                <h4 className="font-sans text-sm font-medium tracking-tight uppercase">{title}</h4>
+                <div className="font-sans text-sm font-medium tracking-tight uppercase">{title}</div>
                 <div className="mt-2 space-y-0.5">
                   {lines.map((l, i) =>
                     bold.includes(i) ? (
