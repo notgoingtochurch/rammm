@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Percent,
   Briefcase,
@@ -11,6 +10,7 @@ import {
   Cpu,
   Fuel,
 } from "lucide-react";
+import { useState } from "react";
 import leasingBgAsset from "@/assets/leasing-bg.png";
 import finCreditAsset from "@/assets/fin-credit.png";
 const finCredit = finCreditAsset;
@@ -20,6 +20,7 @@ const finLeasing = finLeasingAsset;
 import finTradeinAsset from "@/assets/fin-tradein.png";
 const finTradein = finTradeinAsset;
 import finServiceAsset from "@/assets/fin-service-2.png";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 
 const finService = finServiceAsset;
 
@@ -127,39 +128,32 @@ const ADVANTAGES = [
   "Все автомобили застрахованы на этапе поставки",
 ];
 
-const MODELS = [
-  { label: 'RAM ProMaster 2500 159" High Roof', price: 5350000 },
-  { label: 'RAM ProMaster 3500 159" High Roof', price: 5850000 },
-  { label: 'RAM ProMaster 1500 136" Low Roof', price: 4950000 },
-];
-const DOWN = [
-  { label: "0%", v: 0 },
-  { label: "10%", v: 0.1 },
-  { label: "20%", v: 0.2 },
-  { label: "30%", v: 0.3 },
-  { label: "50%", v: 0.5 },
-];
-const TERMS = [36, 48, 60, 84];
-
-const fmt = (n: number) => new Intl.NumberFormat("ru-RU").format(Math.round(n));
-
 export function FinanceSection() {
-  const [model, setModel] = useState(0);
-  const [down, setDown] = useState(3);
-  const [term, setTerm] = useState(2);
-
-  const price = MODELS[model]?.price ?? 0;
-  const downSum = price * (DOWN[down]?.v ?? 0);
-  const rate = 0.089 / 12;
-  const n = TERMS[term] ?? 60;
-  const principal = price - downSum;
-  const monthly = (principal * rate) / (1 - Math.pow(1 + rate, -n));
-
+  const [privacyOpen, setPrivacyOpen] = useState(false);
   const selectCls =
     "border-border bg-background focus:border-brand mt-2 h-[38px] w-full rounded-[6px] border px-3 text-xs outline-none";
 
   return (
     <section id="finance" className="border-border border-t">
+      <Dialog open={privacyOpen} onOpenChange={setPrivacyOpen}>
+        <DialogContent className="h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl p-0">
+          <DialogTitle className="sr-only">Согласие на обработку персональных данных</DialogTitle>
+          <DialogDescription className="sr-only">Текст согласия на обработку персональных данных</DialogDescription>
+          <div className="h-full overflow-y-auto px-6 py-8 text-sm leading-relaxed">
+            <div className="font-display mb-6 text-2xl font-bold uppercase">
+              Согласие на обработку персональных данных
+            </div>
+            <div className="grid gap-4">
+              <p>Пользователь, оставляя обращение или заявку на сайте ramvan.ru, создавая аккаунт и/или соглашаясь с офертой на сайте, принимает настоящее Согласие на обработку персональных данных.</p>
+              <p>Пользователь, действуя свободно, своей волей и в своём интересе, подтверждая свою дееспособность, даёт своё согласие ООО «ДТ» (ОГРН: 1267700021896, ИНН: 9714087010, КПП: 771401001, адрес юридического лица: 125040, город Москва, вн.тер. г. Муниципальный Округ Беговой, ул. Скаковая, дом 17, строение 1) на обработку своих персональных данных как с использованием, так и без использования средств автоматизации для целей обработки входящих запросов физических лиц, консультирования, направления комментариев, аналитики действий пользователя на сайте и функционирования сайта, а также выполнения обязательств по договору оферты, принятому пользователем на сайте.</p>
+              <p>Согласие предоставлено для использования следующих персональных данных: фамилия, имя, отчество; номера контактных телефонов; адреса электронной почты; место работы и занимаемая должность; адрес; сведения о местоположении; тип, версия и язык операционной системы и браузера; тип устройства и разрешение его экрана; страницы, открываемые пользователем; IP-адрес.</p>
+              <p>Обработка персональных данных может включать следующие действия: сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (распространение, предоставление, доступ), обезличивание, блокирование, удаление и уничтожение.</p>
+              <p>Настоящее согласие может быть отозвано путём направления субъектом персональных данных или его представителем письменного заявления по адресу: ООО «ДТ», 125040, город Москва, вн.тер. г. Муниципальный Округ Беговой, ул. Скаковая, дом 17, строение 1, либо по адресу электронной почты: info@autodt.ru. В случае отзыва согласия ООО «ДТ» вправе продолжить обработку персональных данных в случаях, предусмотренных Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+              <p>Настоящее согласие предоставляется на неопределённый срок и действует весь период обработки персональных данных. Запросы относительно персональных данных могут быть направлены по электронному адресу: info@ducatocenter.ru.</p>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
       <div className="bg-surface relative overflow-hidden">
         <div
           className="relative mx-auto grid max-w-[1600px] items-center gap-8 bg-contain bg-right bg-no-repeat px-6 py-12 lg:grid-cols-2"
@@ -244,7 +238,7 @@ export function FinanceSection() {
                   Гарантия производителя
                 </div>
                 <p className="font-sans mt-1 text-xl leading-none font-bold uppercase">
-                  1 год / 20 000 км
+                  1 год / 100 000 км
                 </p>
               </div>
             </div>
@@ -343,83 +337,30 @@ export function FinanceSection() {
           </div>
 
           <div className="border-border rounded-[6px] border p-4">
-            <div className="font-sans text-sm font-bold uppercase">
-              Рассчитайте ежемесячный платёж
-            </div>
-            <div className="mt-3 grid gap-3 sm:grid-cols-4">
-              <div>
-                <label className="text-muted-foreground text-[10px] tracking-wide uppercase">
-                  Модель
-                </label>
-                <select
-                  className={selectCls}
-                  value={model}
-                  onChange={(e) => setModel(Number(e.target.value))}
-                >
-                  {MODELS.map((m, i) => (
-                    <option key={m.label} value={i}>
-                      {m.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="text-muted-foreground text-[10px] tracking-wide uppercase">
-                  Стоимость авто
-                </label>
-                <div className="border-border mt-2 flex h-[38px] items-center rounded-[6px] border px-3 text-xs">{fmt(price)} ₽</div>
-              </div>
-              <div>
-                <label className="text-muted-foreground text-[10px] tracking-wide uppercase">
-                  Первоначальный взнос
-                </label>
-                <select
-                  className={selectCls}
-                  value={down}
-                  onChange={(e) => setDown(Number(e.target.value))}
-                >
-                  {DOWN.map((d, i) => (
-                    <option key={d.label} value={i}>
-                      {d.label} ({fmt(price * d.v)} ₽)
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="text-muted-foreground text-[10px] tracking-wide uppercase">
-                  Срок кредита
-                </label>
-                <select
-                  className={selectCls}
-                  value={term}
-                  onChange={(e) => setTerm(Number(e.target.value))}
-                >
-                  {TERMS.map((t, i) => (
-                    <option key={t} value={i}>
-                      {t} месяцев
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            <div className="bg-surface mt-3 flex flex-wrap items-center gap-3 rounded-[6px] p-3">
-              <span className="font-sans text-xs font-bold uppercase">
-                Ежемесячный платёж
-              </span>
-              <span className="font-sans flex-1 text-lg font-bold uppercase">
-                от <span className="text-brand">{fmt(monthly)} ₽</span> / мес.
-              </span>
-              <button
-                type="button"
-                className="font-sans bg-brand text-brand-foreground rounded-[6px] px-6 py-2.5 text-[11px] font-bold uppercase"
-              >
-                Рассчитать
-              </button>
-            </div>
-            <p className="text-muted-foreground mt-2 text-[10px]">
-              Расчёт предварительный и не является публичной офертой.
+            <div className="font-sans text-sm font-bold uppercase">Оставьте заявку</div>
+            <p className="text-muted-foreground mt-2 text-[11px] leading-relaxed">
+              Мы свяжемся с вами и расскажем об условиях покупки, кредита и лизинга.
             </p>
+            <form className="mt-4 grid gap-3" onSubmit={(event) => event.preventDefault()}>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <input className={selectCls} placeholder="Ваше имя" />
+                <input className={selectCls} type="tel" placeholder="Телефон" />
+              </div>
+              <label className="text-muted-foreground flex items-start gap-2 text-[10px] leading-snug">
+                <input type="checkbox" className="mt-0.5 accent-brand" />
+                Я согласен на обработку{" "}
+                <button
+                  type="button"
+                  onClick={() => setPrivacyOpen(true)}
+                  className="underline underline-offset-2 hover:text-foreground"
+                >
+                  персональных данных
+                </button>
+              </label>
+              <button type="submit" className="font-sans bg-brand text-brand-foreground rounded-[6px] px-6 py-3 text-[11px] font-bold uppercase">
+                Отправить заявку
+              </button>
+            </form>
           </div>
 
           <div className="border-border rounded-[6px] border p-4">

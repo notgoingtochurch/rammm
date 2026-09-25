@@ -94,7 +94,7 @@ const HELP = [
 
 export function CategorySection() {
   return (
-    <section id="category" className="border-border border-t pt-0 pb-16">
+    <section id="category" className="hidden border-border border-t pt-0 pb-16">
       <div className="mx-auto max-w-[1600px] px-6">
         <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
           <div>

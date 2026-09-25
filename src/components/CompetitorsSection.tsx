@@ -6,7 +6,7 @@ import {
   Box,
   Weight,
   Ruler,
-  CalendarClock,
+  DoorOpen,
   ShieldCheck,
   CircleDollarSign,
   Tag,
@@ -19,55 +19,57 @@ import {
 } from "lucide-react";
 import vsRam from "@/assets/vs-ram.jpg";
 import compareBg from "@/assets/compare-bg.png";
-import vsTransit from "@/assets/vs-transit.jpg";
+import compDucato from "@/assets/comp-ducato.jpg";
 import vsSprinter from "@/assets/vs-sprinter.jpg";
 import vsCrafter from "@/assets/vs-crafter.jpg";
 
 const RIVALS = [
-  { name: "RAM ProMaster", image: vsRam, ours: true },
-  { name: "Ford Transit", image: vsTransit, ours: false },
+  { name: 'RAM ProMaster 2500 159" High Roof', image: vsRam, ours: true },
+  { name: "FIAT Ducato MAXI L3H2", image: compDucato, ours: false },
   { name: "Mercedes-Benz Sprinter", image: vsSprinter, ours: false },
-  { name: "VW Crafter", image: vsCrafter, ours: false },
+  { name: "Volkswagen Crafter", image: vsCrafter, ours: false },
 ];
 
 const ROWS: { icon: typeof Cog; label: string; values: string[]; accent?: boolean }[] = [
   {
+    icon: Tag,
+    label: "Рынок / происхождение",
+    values: ["США / производство Мексика", "Европа / Stellantis", "Европа", "Европа"],
+  },
+  {
     icon: Cog,
     label: "Двигатель",
-    values: ["2.2 MultiJet III дизель", "2.0 EcoBlue дизель", "2.0 CDI дизель", "2.0 TDI дизель"],
+    values: ["3.6 Pentastar V6, бензин", "2.2 MultiJet, дизель", "2.0 CDI, дизель", "2.0 TDI, дизель"],
   },
-  { icon: Gauge, label: "Мощность", values: ["140 / 180 л.с.", "130 / 170 л.с.", "114 / 150 / 190 л.с.", "102 / 140 / 177 л.с."] },
+  { icon: Gauge, label: "Мощность", values: ["276 л.с.", "140 л.с.", "190 л.с. (сравниваемая версия)", "170 л.с. (сравниваемая версия)"] },
   {
     icon: Settings2,
     label: "Коробка передач",
-    values: [
-      "6-ст. механическая\n9-ст. автомат (опция)",
-      "6-ст. механическая\n10-ст. автомат (опция)",
-      "6-ст. механическая\n9-ст. автомат (опция)",
-      "6-ст. механическая\n8-ст. автомат (опция)",
-    ],
+    values: ["9-ступенчатый автомат", "6-ступенчатая механика", "9-ступенчатый автомат", "8-ступенчатый автомат"],
   },
   {
     icon: GitFork,
     label: "Привод",
-    values: ["Передний", "Передний / Полный (AWD)", "Задний / Полный (4MATIC)", "Передний / Полный (4MOTION)"],
+    values: ["Передний", "Передний", "Задний / полный (в зависимости от версии)", "Передний / задний / полный 4MOTION"],
   },
-  { icon: Box, label: "Грузовой объём (max)", values: ["17,0 м³", "15,1 м³", "17,0 м³", "16,1 м³"] },
-  { icon: Weight, label: "Полезная нагрузка (max)", values: ["до 1 820 кг", "до 1 708 кг", "до 2 158 кг", "до 2 136 кг"] },
-  { icon: Ruler, label: "Высота кузова (max)", values: ["2 765 мм (H3)", "2 786 мм (H3)", "2 796 мм (H3)", "2 798 мм (H3)"] },
-  { icon: Ruler, label: "Длина кузова (max)", values: ["6 363 мм (L4)", "6 706 мм (L4)", "6 967 мм (L4)", "6 836 мм (L4)"] },
-  { icon: CalendarClock, label: "Межсервисный интервал", values: ["20 000 км / 1 год", "20 000 км / 1 год", "25 000 км / 1 год", "20 000 км / 1 год"] },
+  { icon: Weight, label: "Полная масса", values: ["4 037 кг", "до 4 000 кг (MAXI)", "зависит от версии", "зависит от версии"] },
+  { icon: Weight, label: "Полезная нагрузка", values: ["до 1 820 кг", "зависит от исполнения", "зависит от исполнения", "зависит от исполнения"] },
+  { icon: Box, label: "Объём грузового отсека", values: ["≈13,0–13,3 м³", "≈13,0 м³", "зависит от длины/высоты кузова", "зависит от длины/высоты кузова"] },
+  { icon: Ruler, label: "Длина автомобиля", values: ["5 998 мм", "5 998 мм", "зависит от версии", "зависит от версии"] },
+  { icon: Ruler, label: "Высота автомобиля", values: ["≈2 760 мм", "≈2 524 мм", "зависит от версии", "зависит от версии"] },
+  { icon: Ruler, label: "Длина грузового отсека", values: ["≈3 705–3 736 мм", "≈3 705 мм", "зависит от версии", "зависит от версии"] },
+  { icon: Ruler, label: "Высота грузового отсека", values: ["≈1 930–1 971 мм", "≈1 932 мм", "зависит от версии", "зависит от версии"] },
+  { icon: DoorOpen, label: "Задние двери", values: ["открывание 260°", "до 270° в соответствующей комплектации", "зависит от исполнения", "зависит от исполнения"] },
   {
     icon: ShieldCheck,
-    label: "Гарантия",
-    values: ["1 год или 20 000 км", "2 года без ограничения пробега", "2 года без ограничения пробега", "2 года без ограничения пробега"],
+    label: "Цена в России",
+    values: ["8 300 000 ₽", "4 910 000 ₽", "≈13 500 000 ₽", "≈11 200 000–11 600 000 ₽"],
     accent: true,
   },
   {
     icon: CircleDollarSign,
-    label: "Стоимость (от)",
-    values: ["от 4 280 000 ₽", "от 4 950 000 ₽", "от 6 450 000 ₽", "от 5 480 000 ₽"],
-    accent: true,
+    label: "Примечание по цене",
+    values: ["Цена пользователя / RAM ProMaster Center", "Цена FIAT Ducato Center, L3H2 MAXI 2025", "Ориентир по актуальным предложениям РФ", "Ориентир по актуальным предложениям РФ"],
   },
 ];
 
@@ -120,7 +122,7 @@ export function CompetitorsSection({ onDiscountClick }: CompetitorsSectionProps)
         </div>
 
         <div className="border-border mt-12 overflow-x-auto rounded-[5px] border">
-          <table className="w-full min-w-[900px] border-collapse text-xs">
+          <table className="w-full min-w-[1400px] border-collapse text-xs">
             <thead>
               <tr>
                 <th className="border-border w-[20%] border-b px-5 py-3 text-left text-[11px] font-bold tracking-[0.12em] uppercase">
@@ -129,7 +131,7 @@ export function CompetitorsSection({ onDiscountClick }: CompetitorsSectionProps)
                 {RIVALS.map((r) => (
                   <th
                     key={r.name}
-                    className={`border-border border-b px-4 py-3 text-center text-[11px] font-bold tracking-[0.12em] uppercase ${
+                    className={`border-border border-b border-l px-4 py-3 text-center text-[11px] font-bold tracking-[0.12em] uppercase ${
                       r.ours ? "bg-brand text-brand-foreground" : ""
                     }`}
                   >
@@ -140,7 +142,7 @@ export function CompetitorsSection({ onDiscountClick }: CompetitorsSectionProps)
             </thead>
             <tbody>
               {ROWS.map(({ icon: Icon, label, values, accent }) => (
-                <tr key={label} className="border-border border-b last:border-b-0">
+                <tr key={label} className={`border-border border-b last:border-b-0 ${label === "Цена в России" ? "bg-[#efefef]" : ""}`}>
                   <td className="px-5 py-3">
                     <span className="flex items-center gap-3 text-[11px] font-semibold tracking-wide uppercase">
                       <Icon className="h-4 w-4 shrink-0" strokeWidth={1.3} />
@@ -150,9 +152,9 @@ export function CompetitorsSection({ onDiscountClick }: CompetitorsSectionProps)
                   {values.map((v, i) => (
                     <td
                       key={i}
-                      className={`text-foreground px-4 py-3 text-center leading-snug whitespace-pre-line ${
+                      className={`text-foreground border-l border-border px-4 py-3 text-center leading-snug whitespace-pre-line ${
                         label === "Стоимость (от)" ? "font-semibold" : "font-medium"
-                      } ${i === 0 ? `bg-brand/5 ${accent ? "text-brand" : ""}` : ""}`}
+                      } ${label === "Цена в России" && i === 0 ? "bg-brand text-white font-bold" : i === 0 ? `bg-brand/5 ${accent ? "text-brand" : ""}` : ""}`}
                     >
                       {v}
                     </td>

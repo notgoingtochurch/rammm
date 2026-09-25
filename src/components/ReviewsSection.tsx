@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Play, ShieldCheck, Wrench, Boxes, Handshake, ArrowRight, Check } from "lucide-react";
+import { Play, ArrowRight, Check } from "lucide-react";
 import ytThumb from "@/assets/review-00.png";
 import reviewBg from "@/assets/review-bg.png";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -53,13 +53,6 @@ const YT_POINTS = [
   "Видео с выдач и поставок",
   "Обзоры комплектаций и доработок",
   "Советы по эксплуатации",
-];
-
-const GUARANTEES = [
-  { icon: ShieldCheck, title: "1 год\nили 20 000 км", text: "гарантия на все автомобили RAM ProMaster" },
-  { icon: Wrench, title: "Сервис\nпо всей России", text: "собственные и партнёрские сервисные центры" },
-  { icon: Boxes, title: "Склад запчастей\nв наличии", text: "оригинальные запчасти и аналоги для всех моделей" },
-  { icon: Handshake, title: "Поддержка 24/7", text: "мы всегда на связи и готовы помочь вам в любой ситуации" },
 ];
 
 export function ReviewsSection() {
@@ -201,22 +194,6 @@ export function ReviewsSection() {
           </a>
         </div>
 
-        <div className="border-border mt-6 grid items-stretch gap-0 overflow-hidden rounded-[5px] border sm:grid-cols-2 lg:grid-cols-4">
-          {GUARANTEES.map(({ icon: Icon, title, text }) => (
-            <div
-              key={title}
-              className="relative flex gap-3 p-4 after:absolute after:right-0 after:top-1/2 after:hidden after:h-[70%] after:w-px after:-translate-y-1/2 after:bg-border sm:[&:nth-child(odd)]:after:block lg:after:block lg:last:after:hidden before:absolute before:bottom-0 before:left-1/2 before:h-px before:w-[70%] before:-translate-x-1/2 before:bg-border last:before:hidden sm:[&:nth-last-child(-n+2)]:before:hidden lg:before:hidden"
-            >
-              <Icon className="text-foreground h-9 w-9 shrink-0" strokeWidth={1.3} />
-              <div>
-                <div className="text-brand font-sans text-[13px] leading-tight font-medium tracking-normal whitespace-pre-line uppercase">
-                  {title}
-                </div>
-                <p className="text-muted-foreground mt-1 font-sans text-[10px] leading-snug">{text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

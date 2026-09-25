@@ -1,35 +1,19 @@
 import { useState } from "react";
 import { Camera, BadgeCheck, Eye, ShieldCheck } from "lucide-react";
-import extFrontAsset from "@/assets/gal-ext-front-new.png";
-import extRearAsset from "@/assets/gal-ext-rear-new.png";
-import extSideAsset from "@/assets/gal-ext-side-new.png";
-import extSide2Asset from "@/assets/gal-ext-side2-new.png";
-import intDashAsset from "@/assets/gal-int-3-new.png";
-import cargoNewAsset from "@/assets/gal-cargo-new.png";
-import engineNewAsset from "@/assets/gal-engine-new.png";
-import wheelNewAsset from "@/assets/gal-wheel-new.png";
-import badgeNewAsset from "@/assets/gal-badge-new.png";
-
-import intCabinAsset from "@/assets/gal-int-1-new.png";
-import intSeatsAsset from "@/assets/gal-int-2-new.png";
-import detLightNewAsset from "@/assets/gal-det-light-new.png";
-
-const FILTERS = ["Все фото", "Экстерьер", "Интерьер", "Грузовой отсек", "Детали"] as const;
-type Filter = (typeof FILTERS)[number];
-
-const PHOTOS: { src: string; alt: string; cat: Exclude<Filter, "Все фото"> }[] = [
-  { src: extFrontAsset, alt: "RAM ProMaster вид спереди", cat: "Экстерьер" },
-  { src: extRearAsset, alt: "RAM ProMaster вид сзади", cat: "Экстерьер" },
-  { src: extSideAsset, alt: "RAM ProMaster вид сбоку", cat: "Экстерьер" },
-  { src: extSide2Asset, alt: "RAM ProMaster вид сбоку", cat: "Экстерьер" },
-  { src: intCabinAsset, alt: "Салон RAM ProMaster", cat: "Интерьер" },
-  { src: intSeatsAsset, alt: "Сиденья RAM ProMaster", cat: "Интерьер" },
-  { src: intDashAsset, alt: "Панель приборов RAM ProMaster", cat: "Интерьер" },
-  { src: cargoNewAsset, alt: "Грузовой отсек RAM ProMaster", cat: "Грузовой отсек" },
-  { src: detLightNewAsset, alt: "Фара RAM ProMaster", cat: "Детали" },
-  { src: engineNewAsset, alt: "Двигатель Pentastar V6", cat: "Детали" },
-  { src: wheelNewAsset, alt: "Колесо RAM ProMaster", cat: "Детали" },
-  { src: badgeNewAsset, alt: "Шильдик 2500 ProMaster", cat: "Детали" },
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
+const PHOTOS: { src: string; alt: string; cat?: string }[] = [
+  { src: "/ram-images/ram-1.jpg", alt: "RAM ProMaster фото 1", cat: "Детали" },
+  { src: "/ram-images/ram-2.jpg", alt: "RAM ProMaster фото 2", cat: "Детали" },
+  { src: "/ram-images/ram-3.jpg", alt: "RAM ProMaster фото 3", cat: "Детали" },
+  { src: "/ram-images/ram-4.jpeg", alt: "RAM ProMaster фото 4", cat: "Детали" },
+  { src: "/ram-images/ram-5.jpg", alt: "RAM ProMaster фото 5", cat: "Детали" },
+  { src: "/ram-images/ram-6.avif", alt: "RAM ProMaster фото 6", cat: "Детали" },
+  { src: "/ram-images/ram-7.jpg", alt: "RAM ProMaster фото 7", cat: "Детали" },
+  { src: "/ram-images/ram-8.jpg", alt: "RAM ProMaster фото 8", cat: "Детали" },
+  { src: "/ram-images/ram-9.jpg", alt: "RAM ProMaster фото 9", cat: "Детали" },
+  { src: "/ram-images/ram-10.jpg", alt: "RAM ProMaster фото 10", cat: "Детали" },
+  { src: "/ram-images/ram-11.jpg", alt: "RAM ProMaster фото 11", cat: "Детали" },
+  { src: "/ram-images/ram-12.jpg", alt: "RAM ProMaster фото 12", cat: "Детали" },
 ];
 
 const NOTES = [
@@ -44,8 +28,19 @@ const NOTES = [
 ];
 
 export function GallerySection() {
-  const [filter, setFilter] = useState<Filter>("Все фото");
-  const photos = filter === "Все фото" ? PHOTOS : PHOTOS.filter((p) => p.cat === filter);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const photos = PHOTOS;
+  const selectedPhoto = selectedIndex === null ? null : photos[selectedIndex];
+
+  const showPrevious = () => {
+    if (selectedIndex === null) return;
+    setSelectedIndex((selectedIndex - 1 + photos.length) % photos.length);
+  };
+
+  const showNext = () => {
+    if (selectedIndex === null) return;
+    setSelectedIndex((selectedIndex + 1) % photos.length);
+  };
 
   return (
     <section id="gallery" className="border-border border-t py-16">
@@ -72,28 +67,17 @@ export function GallerySection() {
             Реальные фотографии автомобилей RAM ProMaster из поставок в Россию. Актуальные
             комплектации, детали интерьера и экстерьера, грузовой отсек.
           </p>
-
-          <div className="flex flex-wrap gap-3 lg:justify-end">
-            {FILTERS.map((f) => (
-              <button
-                key={f}
-                type="button"
-                onClick={() => setFilter(f)}
-                className={`font-sans rounded-[8px] border px-5 py-2.5 text-[11px] font-medium tracking-normal uppercase transition-colors ${
-                  filter === f
-                    ? "bg-brand text-brand-foreground border-brand"
-                    : "border-border hover:bg-surface"
-                }`}
-              >
-                {f}
-              </button>
-            ))}
-          </div>
         </div>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {photos.map((p) => (
-            <div key={p.alt} className="bg-surface group overflow-hidden rounded-[8px]">
+          {photos.map((p, index) => (
+            <button
+              key={p.src}
+              type="button"
+              onClick={() => setSelectedIndex(index)}
+              className="bg-surface group cursor-pointer overflow-hidden rounded-[8px] text-left"
+              aria-label={`Открыть фото: ${p.alt}`}
+            >
               <img
                 src={p.src}
                 alt={p.alt}
@@ -102,9 +86,41 @@ export function GallerySection() {
                 loading="lazy"
                 className="h-[220px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-            </div>
+            </button>
           ))}
         </div>
+
+        <Dialog open={selectedPhoto !== null} onOpenChange={(open) => !open && setSelectedIndex(null)}>
+          <DialogContent className="w-[calc(100vw-32px)] max-w-5xl border-0 bg-black/95 p-3 sm:p-5">
+            <DialogTitle className="sr-only">{selectedPhoto?.alt ?? "Фотография"}</DialogTitle>
+            <DialogDescription className="sr-only">Просмотр фотографий галереи</DialogDescription>
+            {selectedPhoto ? (
+              <div className="relative flex items-center justify-center">
+                <img
+                  src={selectedPhoto.src}
+                  alt={selectedPhoto.alt}
+                  className="max-h-[78vh] w-full object-contain"
+                />
+                <button
+                  type="button"
+                  onClick={showPrevious}
+                  aria-label="Предыдущее фото"
+                  className="absolute left-2 flex h-10 w-10 items-center justify-center rounded-full bg-white/85 text-2xl text-black transition-colors hover:bg-white sm:left-4"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  onClick={showNext}
+                  aria-label="Следующее фото"
+                  className="absolute right-2 flex h-10 w-10 items-center justify-center rounded-full bg-white/85 text-2xl text-black transition-colors hover:bg-white sm:right-4"
+                >
+                  ›
+                </button>
+              </div>
+            ) : null}
+          </DialogContent>
+        </Dialog>
 
         <div className="bg-surface mt-10 grid gap-8 rounded-[8px] p-8 sm:grid-cols-2 lg:grid-cols-4">
           {NOTES.map(({ icon: Icon, title, lines }, i) => (

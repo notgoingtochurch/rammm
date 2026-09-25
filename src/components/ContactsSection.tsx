@@ -12,21 +12,62 @@ import {
   Youtube,
   Send,
 } from "lucide-react";
+import { useState } from "react";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import contactHeroAsset from "@/assets/contact-0.png";
 import contactManagerAsset from "@/assets/contact-men.png";
 import footerLogoAsset from "@/assets/footer-logo.png";
+
+const AGREEMENT_TEXT = [
+  "Пользователь, оставляя обращение, заявку на сайте ramvan.ru (далее также – сайт), создавая аккаунт и/или соглашаясь с офертой на сайте, принимает настоящее Согласие на обработку персональных данных.",
+  "Пользователь, действуя свободно, своей волей и в своём интересе, подтверждая свою дееспособность, даёт своё согласие ООО «ДТ» (ОГРН: 1267700021896, ИНН: 9714087010, КПП: 771401001, адрес юридического лица: 125040, город Москва, вн.тер. г. Муниципальный Округ Беговой, ул. Скаковая, дом 17, строение 1) на обработку своих персональных данных как с использованием, так и без использования средств автоматизации для целей обработки входящих запросов физических лиц (пользователей), консультирования, направления комментариев физическим лицам (пользователям), аналитики действий пользователя на сайте и функционирования сайта, а также выполнения обязательств по договору оферты, принятому пользователем на сайте.",
+  "Согласие предоставлено для использования моих следующих персональных данных: фамилия, имя, отчество; номера контактных телефонов; адреса электронной почты; место работы и занимаемая должность; адрес; сведения о местоположении; тип, версия и язык операционной системы и браузера; тип устройства и разрешение его экрана; страницы, открываемые пользователем; IP-адрес.",
+  "Обработка моих персональных данных может включать следующие действия: сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (распространение, предоставление, доступ), обезличивание, блокирование, удаление и уничтожение.",
+  "Настоящее согласие может быть отозвано путём направления субъектом персональных данных (пользователем) или его представителем письменного заявления по адресу: ООО «ДТ», 125040, город Москва, вн.тер. г. Муниципальный Округ Беговой, ул. Скаковая, дом 17, строение 1, либо по адресу электронной почты: info@autodt.ru. В случае отзыва согласия ООО «ДТ» вправе продолжить обработку персональных данных в случаях, предусмотренных пунктами 2–11 части 1 статьи 6, пунктами 2–10 части 2 статьи 10 и частью 2 статьи 11 Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных».",
+  "Настоящее согласие предоставляется на неопределённый срок и действует весь период обработки персональных данных. Запросы относительно персональных данных могут быть направлены по электронному адресу: info@ducatocenter.ru.",
+];
+
+const PRIVACY_POLICY_TEXT = [
+  "1. ОБЩИЕ ПОЛОЖЕНИЯ",
+  "Настоящее Положение об обработке персональных данных разработано в соответствии с Конституцией Российской Федерации, Трудовым кодексом Российской Федерации, Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» и иными нормативными правовыми актами Российской Федерации.",
+  "Оператором персональных данных является ООО «ДТ» (ОГРН: 1267700021896, ИНН: 9714087010, КПП: 771401001, адрес: 125040, город Москва, вн.тер. г. Муниципальный Округ Беговой, ул. Скаковая, дом 17, строение 1).",
+  "Целью настоящего Положения является обеспечение защиты прав и свобод человека и гражданина при обработке его персональных данных, в том числе защиты права на неприкосновенность частной жизни, личную и семейную тайну.",
+  "Обработка персональных данных осуществляется на законной и справедливой основе, ограничивается достижением конкретных, заранее определённых и законных целей и не допускает обработки данных, несовместимой с целями их сбора.",
+  "Оператор назначает ответственное лицо за организацию обработки персональных данных, принимает необходимые правовые, организационные и технические меры для защиты данных от неправомерного доступа, изменения, раскрытия, блокирования и уничтожения.",
+  "2. ОБЕСПЕЧЕНИЕ ОПЕРАТОРОМ ПРАВ СУБЪЕКТА ПЕРСОНАЛЬНЫХ ДАННЫХ",
+  "Субъект персональных данных имеет право получать сведения об обработке своих персональных данных, требовать их уточнения, блокирования или уничтожения, если данные являются неполными, устаревшими, неточными, незаконно полученными или не нужны для заявленной цели обработки.",
+  "Оператор обеспечивает возможность ознакомления субъекта с документами и сведениями, определяющими политику в отношении обработки персональных данных, а также отвечает на обращения и запросы субъекта или его представителя в порядке, установленном законодательством Российской Федерации.",
+  "Распространение персональных данных и использование их в целях продвижения товаров, работ и услуг допускаются только при наличии предварительного согласия субъекта персональных данных.",
+  "3. ПОЛУЧЕНИЕ, ОБРАБОТКА И ХРАНЕНИЕ ПЕРСОНАЛЬНЫХ ДАННЫХ",
+  "Оператор получает персональные данные непосредственно от субъекта либо от его представителя. Обработка осуществляется с согласия субъекта, за исключением случаев, предусмотренных законодательством Российской Федерации.",
+  "К обрабатываемым данным могут относиться фамилия, имя, отчество, номера телефонов, адрес электронной почты, адрес, сведения о местоположении, данные об устройстве и браузере, посещённых страницах и IP-адресе.",
+  "Оператор не обрабатывает специальные категории персональных данных, касающиеся расовой или национальной принадлежности, политических взглядов, религиозных или философских убеждений и интимной жизни, если иное прямо не предусмотрено законом.",
+  "Персональные данные хранятся в форме, позволяющей определить субъекта, не дольше, чем этого требуют цели обработки. По достижении целей обработки или при утрате необходимости их достижения данные уничтожаются либо обезличиваются.",
+  "4. ПЕРЕДАЧА ПЕРСОНАЛЬНЫХ ДАННЫХ",
+  "Оператор вправе передавать персональные данные третьим лицам только в случаях, предусмотренных законодательством Российской Федерации, договором с субъектом или его согласием.",
+  "Передача данных государственным органам и органам местного самоуправления осуществляется в соответствии с требованиями закона и в пределах их полномочий.",
+  "При поручении обработки персональных данных другому лицу оператор обеспечивает соблюдение этим лицом требований законодательства, конфиденциальность данных и безопасность их обработки.",
+  "Трансграничная передача персональных данных допускается только при соблюдении требований Федерального закона № 152-ФЗ «О персональных данных».",
+  "5. ДОСТУП К ПЕРСОНАЛЬНЫМ ДАННЫМ",
+  "Доступ к персональным данным имеют только работники оператора и иные лица, которым данные необходимы для выполнения обязанностей или исполнения договора. Эти лица обязаны сохранять конфиденциальность персональных данных.",
+  "Субъект персональных данных вправе обратиться к оператору с запросом о предоставлении сведений об обработке его данных. Запрос должен позволять идентифицировать заявителя и подтверждать его личность или полномочия представителя.",
+  "Копирование и предоставление персональных данных третьим лицам осуществляются только в случаях и порядке, предусмотренных законодательством Российской Федерации.",
+  "6. ОТВЕТСТВЕННОСТЬ ЗА НАРУШЕНИЕ ТРЕБОВАНИЙ ПОЛОЖЕНИЯ",
+  "Лица, виновные в нарушении требований законодательства Российской Федерации и настоящего Положения, несут ответственность в соответствии с законодательством Российской Федерации.",
+  "Контроль за соблюдением требований настоящего Положения осуществляет ответственное лицо, назначенное оператором. Положение подлежит пересмотру при изменении законодательства или условий обработки персональных данных.",
+];
 
 const CONTACTS = [
   {
     icon: Phone,
     label: "Телефон",
-    value: "+7 (980) 158-88-31",
+    value: "+7 980 158-88-31",
     lines: ["Ежедневно с 9:00 до 21:00. Звонок по России бесплатный"],
   },
   {
     icon: MessageCircle,
     label: "WhatsApp / Telegram",
-    value: "+7 (980) 158-88-31",
+    value: "+7 980 158-88-31",
     lines: ["Напишите нам ответим в течение 5 минут"],
   },
   {
@@ -68,8 +109,45 @@ const FOOTER_COLS = [
 ];
 
 export function ContactsSection() {
+  const [agreementOpen, setAgreementOpen] = useState(false);
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+
   return (
     <section id="contacts" className="border-border border-t bg-[#FDFDFE] pt-0 pb-16">
+      <Dialog open={agreementOpen} onOpenChange={setAgreementOpen}>
+        <DialogContent className="h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl p-0">
+          <DialogTitle className="sr-only">Пользовательское соглашение</DialogTitle>
+          <DialogDescription className="sr-only">Текст пользовательского соглашения</DialogDescription>
+          <div className="h-full overflow-y-auto px-6 py-8 text-sm leading-relaxed">
+            <div className="font-display mb-6 text-2xl font-bold uppercase">
+              Согласие на обработку персональных данных
+            </div>
+            <div className="grid gap-4">
+              {AGREEMENT_TEXT.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+      <Dialog open={privacyOpen} onOpenChange={setPrivacyOpen}>
+        <DialogContent className="h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl p-0">
+          <DialogTitle className="sr-only">Политика обработки персональных данных</DialogTitle>
+          <DialogDescription className="sr-only">Текст политики обработки персональных данных</DialogDescription>
+          <div className="h-full overflow-y-auto px-6 py-8 text-sm leading-relaxed">
+            <div className="font-display mb-6 text-2xl font-bold uppercase">
+              Положение об обработке персональных данных
+            </div>
+            <div className="grid gap-4">
+              {PRIVACY_POLICY_TEXT.map((paragraph, index) => (
+                <p key={`${index}-${paragraph}`} className={paragraph.match(/^\d+\./) ? "font-bold" : undefined}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
       <div className="mx-auto max-w-[1600px] px-6">
         <div
           className="grid min-h-[420px] items-center gap-8 bg-contain bg-right bg-no-repeat"
@@ -77,7 +155,7 @@ export function ContactsSection() {
         >
           <div>
             <div className="flex items-center gap-3">
-              <span className="text-brand font-display text-xs font-bold">13</span>
+              <span className="text-brand font-display text-xs font-bold">12</span>
               <span className="text-xs font-semibold tracking-normal uppercase">/ Контакты</span>
             </div>
             <div className="font-display mt-6 text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
@@ -105,7 +183,15 @@ export function ContactsSection() {
                 <div>
                   <p className="text-[10px] font-semibold tracking-[0.16em] uppercase">{label}</p>
                   <p className="font-sans mt-1 text-sm font-bold tracking-tight break-all">
-                    {value}
+                    {value.startsWith("+") ? (
+                      <a href="tel:+79801588831" className="hover:text-brand transition-colors">
+                        {value}
+                      </a>
+                    ) : value.includes("@") ? (
+                      <a href={`mailto:${value}`} className="hover:text-brand transition-colors">
+                        {value}
+                      </a>
+                    ) : value}
                   </p>
                 </div>
               </div>
@@ -169,10 +255,6 @@ export function ContactsSection() {
                   placeholder="Телефон"
                 />
               </div>
-              <input
-                className="border-border bg-background placeholder:text-muted-foreground rounded-[5px] border px-4 py-3 text-[11px] outline-none focus:border-brand"
-                placeholder="E-mail"
-              />
               <textarea
                 rows={4}
                 className="border-border bg-background placeholder:text-muted-foreground rounded-[5px] border px-4 py-3 text-[11px] outline-none focus:border-brand"
@@ -180,7 +262,14 @@ export function ContactsSection() {
               />
               <label className="text-muted-foreground flex items-start gap-2.5 text-[10px] leading-snug">
                 <input type="checkbox" className="accent-brand mt-0.5 h-3.5 w-3.5 shrink-0" />
-                Я согласен на обработку персональных данных
+                Я согласен на обработку{" "}
+                <button
+                  type="button"
+                  onClick={() => setAgreementOpen(true)}
+                  className="underline underline-offset-2 hover:text-foreground"
+                >
+                  персональных данных
+                </button>
               </label>
               <button
                 type="submit"
@@ -222,21 +311,29 @@ export function ContactsSection() {
               Нужна консультация?
             </div>
             <p className="mt-4 max-w-[60%] text-[11px] leading-relaxed opacity-70">
-              Наш эксперт поможет подобрать подходящую модель и комплектацию под ваш бизнес и
-              бюджет.
+              Если хотите обсудить покупку, поставку автомобиля, комплектацию или сервис лично,
+              звоните в любое удобное время.
             </p>
             <span className="bg-brand mt-6 block h-0.5 w-14" />
             <p className="mt-5 text-[11px] leading-relaxed opacity-80">
-              Алексей — руководитель отдела продаж
+              Кирилл Васильевич — директор
             </p>
             <ul className="mt-5 grid gap-3 text-[11px]">
               <li className="flex items-center gap-3">
                 <Phone className="text-brand h-4 w-4 shrink-0" strokeWidth={1.5} />
-                +7 (980) 158-88-31
+                <a href="tel:+79801588831" className="hover:text-brand transition-colors">
+                  +7 980 158-88-31
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="text-brand h-4 w-4 shrink-0" strokeWidth={1.5} />
-                sales@ducatocenter.ru
+                <a href="mailto:sales@ducatocenter.ru" className="hover:text-brand transition-colors">
+                  sales@ducatocenter.ru
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <MapPin className="text-brand h-4 w-4 shrink-0" strokeWidth={1.5} />
+                Москва, ул 1 Дорожный проезд д. 5
               </li>
               <li className="flex items-center gap-3 opacity-70">
                 <MessageCircle className="text-brand h-4 w-4 shrink-0" strokeWidth={1.5} />
@@ -248,7 +345,7 @@ export function ContactsSection() {
       </div>
 
       <footer className="bg-accent text-accent-foreground mt-16">
-        <div className="mx-auto grid max-w-[1600px] gap-10 px-6 py-14 lg:grid-cols-[minmax(0,1.1fr)_repeat(3,minmax(0,0.8fr))_minmax(0,1.2fr)]">
+        <div className="hidden mx-auto grid max-w-[1600px] gap-10 px-6 py-14 lg:grid-cols-[minmax(0,1.1fr)_repeat(3,minmax(0,0.8fr))_minmax(0,1.2fr)]">
           <div>
             <img
               src={footerLogoAsset}
@@ -296,7 +393,7 @@ export function ContactsSection() {
                 <Phone className="text-brand mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.5} />
                 <span>
                   <a href="tel:+79801588831" className="hover:text-brand transition-colors">
-                    +7 (980) 158-88-31
+                    +7 980 158-88-31
                   </a>
                   <br />
                   <span className="opacity-60">Ежедневно с 9:00 до 21:00</span>
@@ -305,7 +402,7 @@ export function ContactsSection() {
               <li className="flex gap-3">
                 <MessageCircle className="text-brand mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.5} />
                 <a href="tel:+79801588831" className="hover:text-brand transition-colors">
-                  +7 (980) 158-88-31
+                  +7 980 158-88-31
                 </a>
               </li>
               <li className="flex gap-3">
@@ -326,8 +423,20 @@ export function ContactsSection() {
           <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-4 px-6 py-5 text-[10px] opacity-60">
             <p>© 2026 RAM ProMaster Center. Все права защищены.</p>
             <p className="flex gap-6">
-              <span>Политика конфиденциальности</span>
-              <span>Пользовательское соглашение</span>
+              <button
+                type="button"
+                onClick={() => setPrivacyOpen(true)}
+                className="underline-offset-2 transition-colors hover:text-white hover:underline"
+              >
+                Политика обработки персональных данных
+              </button>
+              <button
+                type="button"
+                onClick={() => setAgreementOpen(true)}
+                className="underline-offset-2 transition-colors hover:text-white hover:underline"
+              >
+                Пользовательское соглашение
+              </button>
             </p>
           </div>
         </div>

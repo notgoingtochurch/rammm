@@ -1,4 +1,4 @@
-import { type CSSProperties, type FormEvent, useState } from "react";
+import { type CSSProperties, type FormEvent, useEffect, useState } from "react";
 import logoRam from "@/assets/logo-ram-svg.svg";
 
 
@@ -96,11 +96,10 @@ const vidOwners = vidOwnersAsset;
 import galleryHeroAsset from "@/assets/gal-ext-front-new.png";
 const galleryHero = galleryHeroAsset;
 import carCompareAsset from "@/assets/car-1-2.png";
-import car2Asset from "@/assets/car-2-2.png";
-import car3Asset from "@/assets/car-3-2.png";
 
 import compSprinter from "@/assets/comp-sprinter.jpg";
 import compDucato from "@/assets/comp-ducato.jpg";
+import compCrafter from "@/assets/vs-crafter.jpg";
 import engineV6Asset from "@/assets/engine-1.png";
 const engineV6 = engineV6Asset;
 import gearbox9hpAsset from "@/assets/engine-3.png";
@@ -222,17 +221,25 @@ const GEARBOX_TAGS = [
 const COMPARISON = {
   rivals: [
     { name: 'RAM PROMASTER 2500 159" HIGH ROOF', image: carCompareAsset, own: true },
-    { name: "Mercedes-Benz Sprinter 2500 High Roof", image: car2Asset, own: false },
-    { name: "Ford Transit 250 High Roof", image: car3Asset, own: false },
+    { name: "FIAT Ducato MAXI L3H2", image: compDucato, own: false },
+    { name: "Mercedes-Benz Sprinter", image: compSprinter, own: false },
+    { name: "Volkswagen Crafter", image: compCrafter, own: false },
   ],
   rows: [
-    { icon: Ruler, label: "Общая длина, мм", values: ["5998", "—", "—"] },
-    { icon: MoveVertical, label: "Высота, мм", values: ["2760", "—", "—"] },
-    { icon: Package, label: "Объём грузового отсека, м³", values: ["13,0", "—", "—"] },
-    { icon: Weight, label: "Полезная нагрузка, кг", values: ["до 1820", "—", "—"] },
-    { icon: CircleDot, label: "Привод", values: ["Передний", "Задний / Полный", "Задний / Полный"] },
-    { icon: Cog, label: "Двигатель / трансмиссия", values: ["3.6 Pentastar V6 276 л.с. / 9-АКПП", "—", "—"] },
-    { icon: MoveVertical, label: "Высота погрузки, мм", values: ["2524", "—", "—"] },
+    { icon: CircleDot, label: "Рынок / происхождение", values: ["США / производство Мексика", "Европа / Stellantis", "Европа", "Европа"] },
+    { icon: Cog, label: "Двигатель", values: ["3.6 Pentastar V6, бензин", "2.2 MultiJet, дизель", "2.0 CDI, дизель", "2.0 TDI, дизель"] },
+    { icon: Gauge, label: "Мощность", values: ["276 л.с.", "140 л.с.", "190 л.с.", "170 л.с."] },
+    { icon: Settings, label: "Коробка передач", values: ["9-ступенчатый автомат", "6-ступенчатая механика", "9-ступенчатый автомат", "8-ступенчатый автомат"] },
+    { icon: CircleDot, label: "Привод", values: ["Передний", "Передний", "Задний / полный", "Передний / задний / полный 4MOTION"] },
+    { icon: Weight, label: "Полная масса", values: ["4 037 кг", "до 4 000 кг (MAXI)", "зависит от версии", "зависит от версии"] },
+    { icon: Weight, label: "Полезная нагрузка", values: ["до 1 820 кг", "зависит от исполнения", "зависит от исполнения", "зависит от исполнения"] },
+    { icon: Package, label: "Объём грузового отсека", values: ["≈13,0–13,3 м³", "≈13,0 м³", "зависит от длины/высоты", "зависит от длины/высоты"] },
+    { icon: Ruler, label: "Длина автомобиля", values: ["5 998 мм", "5 998 мм", "зависит от версии", "зависит от версии"] },
+    { icon: MoveVertical, label: "Высота автомобиля", values: ["≈2 760 мм", "≈2 524 мм", "зависит от версии", "зависит от версии"] },
+    { icon: Ruler, label: "Длина грузового отсека", values: ["≈3 705–3 736 мм", "≈3 705 мм", "зависит от версии", "зависит от версии"] },
+    { icon: MoveVertical, label: "Высота грузового отсека", values: ["≈1 930–1 971 мм", "≈1 932 мм", "зависит от версии", "зависит от версии"] },
+    { icon: DoorOpen, label: "Задние двери", values: ["открывание 260°", "до 270°", "зависит от исполнения", "зависит от исполнения"] },
+    { icon: Coins, label: "Цена в России", values: ["8 300 000 ₽", "4 910 000 ₽", "≈13 500 000 ₽", "≈11 200 000–11 600 000 ₽"] },
   ],
 };
 
@@ -263,10 +270,10 @@ export const Route = createFileRoute("/")({
 
 const NAV = [
   "Каталог",
-  "Модели",
+  "Интерьер",
   "Характеристики",
-  "Гарантия",
-  "О компании",
+  "Лизинг",
+  "Отзывы",
   "Контакты",
 ];
 
@@ -459,8 +466,20 @@ function Index() {
   const [discountConsent, setDiscountConsent] = useState(false);
   const [discountSubmitted, setDiscountSubmitted] = useState(false);
   const [headerMenuOpen, setHeaderMenuOpen] = useState(false);
+  const [cookiesVisible, setCookiesVisible] = useState(false);
+  const [cookiesPolicyOpen, setCookiesPolicyOpen] = useState(false);
+  const [personalDataOpen, setPersonalDataOpen] = useState(false);
   const discountPhoneDigits = discountPhone.replace(/\D/g, "");
   const canSubmitDiscount = discountPhoneDigits.length === 11 && discountConsent;
+
+  useEffect(() => {
+    setCookiesVisible(window.localStorage.getItem("ram-cookies-accepted") !== "1");
+  }, []);
+
+  const acceptCookies = () => {
+    window.localStorage.setItem("ram-cookies-accepted", "1");
+    setCookiesVisible(false);
+  };
 
   const openDiscountDialog = () => {
     setDiscountOpen(true);
@@ -479,6 +498,111 @@ function Index() {
 
   return (
     <div className="ram-page min-h-screen bg-background">
+      {cookiesVisible ? (
+        <div className="fixed right-4 bottom-4 left-4 z-50 flex flex-col gap-4 rounded-[8px] border border-border bg-accent p-5 text-accent-foreground shadow-2xl sm:right-6 sm:bottom-6 sm:left-auto sm:max-w-[440px]">
+          <div>
+            <p className="mt-2 text-xs leading-relaxed opacity-75">
+              Этот сайт использует файлы cookie 🍪, чтобы обеспечить вам максимальное удобство.{' '}
+              <button
+                type="button"
+                onClick={() => setCookiesPolicyOpen(true)}
+                className="underline underline-offset-2 transition-opacity hover:opacity-70"
+              >
+                Читать далее
+              </button>
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={acceptCookies}
+            className="bg-brand text-brand-foreground rounded-[5px] px-5 py-3 text-[11px] font-bold tracking-wide uppercase transition-opacity hover:opacity-90"
+          >
+            Понятно
+          </button>
+        </div>
+      ) : null}
+      <Dialog open={cookiesPolicyOpen} onOpenChange={setCookiesPolicyOpen}>
+        <DialogContent className="h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl p-0">
+          <DialogHeader className="sr-only">
+            <DialogTitle>Политика обработки cookie</DialogTitle>
+            <DialogDescription>Текст политики обработки cookie-файлов</DialogDescription>
+          </DialogHeader>
+          <div className="h-full overflow-y-auto px-6 py-8 text-sm leading-relaxed">
+            <div className="font-display mb-6 text-2xl font-bold uppercase">
+              Политика обработки cookie
+            </div>
+            <div className="grid gap-4">
+              <p>
+                На сайте ramvan.ru («Сервис») владелец Сервиса — ООО «ДТ» (далее — Оператор) —
+                использует cookie-файлы. Политика распространяется на зарегистрированных и
+                незарегистрированных пользователей Сервиса. Продолжая использование Сервиса,
+                Пользователь соглашается с условиями Политики обработки cookie-файлов.
+              </p>
+              <p>
+                В случае несогласия с её условиями Пользователь вправе прекратить использование
+                Сервиса или отключить использование cookie-файлов в настройках своего браузера или
+                устройства.
+              </p>
+              <p className="font-bold">Что такое cookie-файлы</p>
+              <p>
+                Cookie — небольшие текстовые файлы. Они записываются на устройство, которое
+                Пользователь использует для взаимодействия с Сервисом, и хранят информацию об
+                активности пользователя. Cookie-файлы используются, чтобы обеспечить корректность
+                работы Сервиса.
+              </p>
+              <p>
+                С помощью cookie-файлов Оператор может настроить отображение информации в
+                соответствии с разрешением экрана, сохранить факт авторизации, настройки личного
+                кабинета и корзины, а также проводить аналитику действий Пользователя для
+                улучшения пользовательского опыта.
+              </p>
+              <p className="font-bold">Какие cookie-файлы используются на Сервисе и для чего</p>
+              <p>
+                Оператор может использовать функциональные cookie для управления Сайтом и ускорения
+                загрузки страниц, cookie предпочтений для запоминания настроек пользователя,
+                cookie безопасности для обеспечения безопасных каналов взаимодействия и
+                аналитические cookie для статистики использования Сайта, просмотра страниц,
+                действий и ошибок.
+              </p>
+              <p className="font-bold">Использование аналитических систем</p>
+              <p>
+                На Сервисе могут использоваться аналитические сервисы для сбора статистических и
+                технических данных: частоты посещения, просмотренных страниц, источников перехода,
+                поисковых запросов и времени, проведённого на Сервисе. Оператор вправе прекратить
+                использование одних систем или начать использовать другие подобные системы.
+              </p>
+              <p className="font-bold">Как управлять cookie-файлами</p>
+              <p>
+                По умолчанию настройки большинства браузеров и устройств позволяют принимать
+                cookie-файлы. Пользователь может отказаться от их использования, изменив настройки
+                браузера или устройства. При отказе некоторые функции Сервиса могут быть
+                недоступны.
+              </p>
+              <p className="font-bold">Изменение политики обработки cookie-файлов</p>
+              <p>Оператор вправе в любой момент изменить условия Политики без уведомления Пользователя.</p>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+      <Dialog open={personalDataOpen} onOpenChange={setPersonalDataOpen}>
+        <DialogContent className="h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl p-0">
+          <DialogTitle className="sr-only">Согласие на обработку персональных данных</DialogTitle>
+          <DialogDescription className="sr-only">Текст согласия на обработку персональных данных</DialogDescription>
+          <div className="h-full overflow-y-auto px-6 py-8 text-sm leading-relaxed">
+            <div className="font-display mb-6 text-2xl font-bold uppercase">
+              Согласие на обработку персональных данных
+            </div>
+            <div className="grid gap-4">
+              <p>Пользователь, оставляя обращение или заявку на сайте ramvan.ru, создавая аккаунт и/или соглашаясь с офертой на сайте, принимает настоящее Согласие на обработку персональных данных.</p>
+              <p>Пользователь, действуя свободно, своей волей и в своём интересе, подтверждая свою дееспособность, даёт своё согласие ООО «ДТ» (ОГРН: 1267700021896, ИНН: 9714087010, КПП: 771401001, адрес юридического лица: 125040, город Москва, вн.тер. г. Муниципальный Округ Беговой, ул. Скаковая, дом 17, строение 1) на обработку своих персональных данных как с использованием, так и без использования средств автоматизации для целей обработки входящих запросов физических лиц, консультирования, направления комментариев, аналитики действий пользователя на сайте и функционирования сайта, а также выполнения обязательств по договору оферты, принятому пользователем на сайте.</p>
+              <p>Согласие предоставлено для использования следующих персональных данных: фамилия, имя, отчество; номера контактных телефонов; адреса электронной почты; место работы и занимаемая должность; адрес; сведения о местоположении; тип, версия и язык операционной системы и браузера; тип устройства и разрешение его экрана; страницы, открываемые пользователем; IP-адрес.</p>
+              <p>Обработка персональных данных может включать следующие действия: сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (распространение, предоставление, доступ), обезличивание, блокирование, удаление и уничтожение.</p>
+              <p>Настоящее согласие может быть отозвано путём направления субъектом персональных данных или его представителем письменного заявления по адресу: ООО «ДТ», 125040, город Москва, вн.тер. г. Муниципальный Округ Беговой, ул. Скаковая, дом 17, строение 1, либо по адресу электронной почты: info@autodt.ru. В случае отзыва согласия ООО «ДТ» вправе продолжить обработку персональных данных в случаях, предусмотренных Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+              <p>Настоящее согласие предоставляется на неопределённый срок и действует весь период обработки персональных данных. Запросы относительно персональных данных могут быть направлены по электронному адресу: info@ducatocenter.ru.</p>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
       <Dialog open={discountOpen} onOpenChange={setDiscountOpen}>
         <DialogContent className="w-[calc(100vw-32px)] rounded-[8px] border-border p-6 sm:max-w-[440px]">
           <DialogHeader>
@@ -521,7 +645,14 @@ function Index() {
                 className="accent-brand mt-0.5 h-3.5 w-3.5 shrink-0"
                 required
               />
-              Я согласен на обработку персональных данных
+              Я согласен на обработку{" "}
+              <button
+                type="button"
+                onClick={() => setPersonalDataOpen(true)}
+                className="underline underline-offset-2 hover:text-foreground"
+              >
+                персональных данных
+              </button>
             </label>
 
             <button
@@ -558,7 +689,7 @@ function Index() {
             {NAV.map((item) => (
               <a
                 key={item}
-                href={item === "Каталог" ? "#catalog" : "#"}
+                href={item === "Каталог" ? "#catalog" : item === "Интерьер" ? "#interior" : item === "Характеристики" ? "#tech" : item === "Лизинг" ? "#finance" : item === "Отзывы" ? "#reviews" : item === "Контакты" ? "#contacts" : "#"}
                 className="font-menu text-[13px] font-semibold tracking-wide text-foreground uppercase transition-colors hover:text-brand"
               >
                 {item}
@@ -568,7 +699,7 @@ function Index() {
 
           <div className="ram-header-actions ml-auto flex flex-row items-center gap-4">
             <a href="tel:+79801588831" className="font-menu text-lg font-semibold transition-colors hover:text-brand">
-              +7 (980) 158-88-31
+              +7 980 158-88-31
             </a>
             <button
               type="button"
@@ -594,7 +725,7 @@ function Index() {
               {NAV.map((item) => (
                 <a
                   key={item}
-                  href={item === "Каталог" ? "#catalog" : "#"}
+                  href={item === "Каталог" ? "#catalog" : item === "Интерьер" ? "#interior" : item === "Характеристики" ? "#tech" : item === "Лизинг" ? "#finance" : item === "Отзывы" ? "#reviews" : item === "Контакты" ? "#contacts" : "#"}
                   onClick={() => setHeaderMenuOpen(false)}
                   className="font-menu text-sm font-semibold tracking-wide text-foreground uppercase transition-colors hover:text-brand"
                 >
@@ -721,68 +852,80 @@ function Index() {
 
         <section id="catalog" className="ram-promaster-overview scroll-mt-6 overflow-hidden bg-[#f5f5f4] py-12 text-[#161616] sm:py-16 lg:py-20">
           <div className="ram-container mx-auto max-w-[1600px] px-6">
-            <div className="grid gap-8 border-b border-black/10 pb-8 lg:grid-cols-[minmax(0,1fr)_520px] lg:items-end">
+            <div className="grid gap-8 border-b border-black/10 pb-8 lg:grid-cols-2 lg:items-end">
               <div>
                 <p className="text-[11px] font-bold tracking-[0.18em] uppercase">
                   <span className="text-brand">02</span>{" "}
                   <span className="text-muted-foreground">Каталог</span>
                 </p>
-                <div className="mt-5 font-display text-5xl leading-[.88] font-bold tracking-tight uppercase sm:text-6xl lg:text-8xl">
+                <div className="mt-5 font-display text-4xl leading-[.88] font-bold tracking-tight uppercase sm:text-5xl lg:text-7xl">
                   RAM ProMaster 2500
                 </div>
                 <p className="mt-2 font-display text-3xl leading-none font-light tracking-wide uppercase sm:text-4xl lg:text-5xl">159” High Roof</p>
                 <p className="mt-5 font-menu text-sm font-medium tracking-[0.08em] text-black/60 uppercase sm:text-lg">Габариты, объём и ключевые размеры</p>
               </div>
 
-              <div className="grid grid-cols-3 divide-x divide-black/10 border-y border-black/10 lg:border-y-0">
+              <div className="grid grid-cols-2 divide-x divide-y divide-black/10 border-y border-black/10 sm:grid-cols-4 sm:divide-y-0 lg:border-y-0">
                 {[
-                  { icon: Box, label: "Объём грузового отсека", value: "13,0 м³" },
-                  { icon: Weight, label: "Полезная нагрузка", value: "до 1820 кг" },
-                  { icon: Grid2x2, label: "Вместимость", value: "до 5 европаллет" },
-                ].map(({ icon: Icon, label, value }) => (
-                  <div key={label} className="flex min-h-36 flex-col items-center justify-center px-2 py-5 text-center">
-                    <Icon className="h-9 w-9" strokeWidth={1.6} />
-                    <p className="mt-3 max-w-24 font-menu text-[9px] font-bold leading-tight uppercase sm:text-[10px]">{label}</p>
-                    <p className="mt-2 font-display text-xl leading-none font-bold uppercase sm:text-2xl">{value}</p>
+                  { icon: Cog, image: "/engine-motor.svg", title: "3.6 Pentastar V6", value: "276 л.с.", text: "Атмосферный бензиновый двигатель без турбины" },
+                  { icon: Settings, image: "/gearshift.svg", title: "9-ступенчатый", value: "Автомат", text: "Плавность, комфорт и надёжность" },
+                  { icon: Wrench, image: "/damper.svg", title: "Heavy Duty", value: "Подвеска 2500", text: "Усиленная конструкция для тяжёлой работы" },
+                  { icon: MoveHorizontal, image: "/chassis.svg", title: "Передний", value: "Привод", text: "Уверенная тяга и большой полезный объём пространства" },
+                ].map(({ icon: Icon, image, title, value, text }) => (
+                  <div key={title} className="flex min-h-44 flex-col items-center justify-center px-3 py-5 text-center">
+                    {image ? <img src={image} alt="" className="h-9 w-9 object-contain" /> : <Icon className="h-9 w-9" strokeWidth={1.6} />}
+                    <p className="mt-3 font-display text-base leading-none font-bold uppercase">{title}</p>
+                    <p className="mt-1 font-display text-xl leading-none font-bold uppercase">{value}</p>
+                    <p className="mt-3 text-[10px] leading-snug text-black/60">{text}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="mt-8 grid gap-7 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-8">
-                <img src="/size-1.jpg" alt="RAM ProMaster 2500: вид сбоку с габаритами" width={1078} height={560} loading="lazy" className="w-full min-w-0 object-contain" />
+              <div className="grid gap-7 lg:col-span-12 lg:grid-cols-[1.2fr_1fr] lg:items-start">
+                <div>
+                  <img src="/size-1.jpg" alt="RAM ProMaster 2500: вид сбоку с габаритами" width={1078} height={560} loading="lazy" className="ram-catalog-photo ram-catalog-photo-side" />
+                </div>
+                <div>
+                  <img src="/size-2.jpg" alt="RAM ProMaster 2500: передняя и задняя проекции" width={474} height={560} loading="lazy" className="ram-catalog-photo ram-catalog-photo-front" />
+                </div>
               </div>
-              <div className="lg:col-span-4">
-                <img src="/size-2.jpg" alt="RAM ProMaster 2500: передняя и задняя проекции" width={474} height={560} loading="lazy" className="w-full object-contain" />
+              <div className="ram-catalog-lower-media grid lg:col-span-9 lg:items-center">
+                <img src="/size-3.jpg" alt="RAM ProMaster 2500: грузовой отсек и габариты" width={1131} height={452} loading="lazy" className="ram-catalog-photo ram-catalog-photo-cargo" />
+                <img src="/size-3-1.jpg" alt="RAM ProMaster 2500: задняя часть и размеры" width={662} height={298} loading="lazy" className="ram-catalog-photo ram-catalog-photo-cargo-door" />
               </div>
-              <div className="lg:col-span-7">
-                <img src="/size-3.jpg" alt="RAM ProMaster 2500: грузовой отсек и габариты" width={1131} height={452} loading="lazy" className="w-full object-contain" />
-              </div>
-              <div className="lg:col-span-5">
-                <div className="flex h-full min-h-48 flex-col justify-center border-y border-black/10 px-7 py-6 text-center">
-                  <p className="font-display text-3xl font-bold uppercase">3705 мм</p>
-                  <p className="mt-1 text-xs font-medium tracking-[0.12em] text-black/60 uppercase">Длина грузового отсека</p>
-                  <div className="mx-auto mt-6 h-px w-full max-w-80 bg-black/60" />
-                  <p className="mt-5 font-display text-2xl font-bold uppercase">1870 мм</p>
-                  <p className="mt-1 text-xs font-medium tracking-[0.12em] text-black/60 uppercase">Ширина грузового отсека</p>
+              <div className="lg:col-span-3">
+                <div className="flex h-full min-h-48 flex-col justify-center px-7 py-6 text-left">
+                  <div>
+                    <p className="font-display text-4xl font-bold leading-none uppercase tracking-tight">3705 мм</p>
+                    <p className="mt-2 text-sm font-medium text-black/60 uppercase">Длина грузового отсека</p>
+                  </div>
+                  <div className="my-7 h-px w-full bg-black/20" />
+                  <div>
+                    <p className="font-display text-4xl font-bold leading-none uppercase tracking-tight">1870 мм</p>
+                    <p className="mt-2 text-sm font-medium text-black/60 uppercase">Ширина грузового отсека</p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-9 grid gap-px border-y border-black/10 py-6 sm:grid-cols-2 lg:grid-cols-5">
+            <div className="mt-9 grid gap-px border-y border-black/10 py-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8">
               {[
-                { icon: MoveVertical, title: "High Roof", text: "Полноценная высокая крыша" },
-                { icon: Grid2x2, title: "До 5 европаллет", text: "Оптимальная длина и ширина отсека" },
+                { icon: Box, title: "13,0 м³", text: "Объём грузового отсека" },
+                { icon: Weight, title: "До 1820 кг", text: "Полезная нагрузка" },
+                { icon: MoveVertical, title: "1930 мм", text: "Высота грузового отсека" },
+                { icon: MoveHorizontal, title: "1422 мм", text: "Ширина между арками" },
+                { icon: DoorOpen, title: "1250 × 1755 мм", text: "Боковой дверной проём" },
+                { icon: DoorOpen, title: "1562 × 1790 мм", text: "Задний дверной проём" },
                 { icon: DoorOpen, title: "Задние двери 260°", text: "Удобная погрузка и работа с грузом" },
-                { icon: DoorOpen, title: "Правая сдвижная дверь", text: "Удобный боковой доступ" },
-                { icon: Package, title: "13,0 м³", text: "Объём грузового отсека" },
+                { icon: Grid2x2, title: "До 5 европаллет", text: "Оптимальная длина и ширина отсека" },
               ].map(({ icon: Icon, title, text }) => (
-                <div key={title} className="flex gap-4 px-3 py-4 lg:border-r lg:border-black/10 lg:last:border-r-0">
-                  <Icon className="h-9 w-9 shrink-0 text-brand" strokeWidth={1.5} />
+                <div key={title} className="flex gap-3 px-3 py-4 lg:border-r lg:border-black/10 lg:last:border-r-0">
+                  <Icon className="h-8 w-8 shrink-0 text-foreground" strokeWidth={1.5} />
                   <div>
-                    <p className="font-display text-base font-bold tracking-wide uppercase">{title}</p>
-                    <p className="mt-1 text-xs leading-snug text-black/60">{text}</p>
+                    <p className="font-display text-lg leading-none font-bold uppercase">{title}</p>
+                    <p className="mt-2 text-[9px] leading-tight text-black/60 uppercase">{text}</p>
                   </div>
                 </div>
               ))}
@@ -790,7 +933,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="ram-interior bg-accent text-accent-foreground">
+        <section id="interior" className="ram-interior scroll-mt-6 bg-accent text-accent-foreground">
           <div className="grid lg:grid-cols-2">
             <img
               src={interiorMain}
@@ -958,8 +1101,8 @@ function Index() {
           </div>
         </section>
 
-        {/* 05 Габариты и сравнение */}
-        <section id="dimensions" className="ram-dimensions overflow-hidden bg-[#f7f7f6] pt-14 pb-0 text-[#171717] lg:pt-20 lg:pb-0">
+        {/* 11 Сравнение с конкурентами */}
+        <section id="dimensions" className="hidden ram-dimensions overflow-hidden bg-[#f7f7f6] pt-14 pb-0 text-[#171717] lg:pt-20 lg:pb-0">
           <div className="ram-container mx-auto max-w-[1600px] px-6">
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
               <div>
@@ -993,13 +1136,13 @@ function Index() {
 
           <div className="mt-12 bg-[#111214] py-12 text-white lg:py-16">
             <div className="ram-container mx-auto grid max-w-[1600px] gap-10 px-6 lg:grid-cols-[260px_minmax(0,1fr)]">
-              <div><div className="font-display text-4xl leading-[.9] font-bold uppercase">Сравнение<br />с конкурентами</div><span className="mt-5 block h-1 w-16 bg-brand" /><p className="mt-12 max-w-48 text-xs leading-relaxed text-white/65 uppercase">Три лидера коммерческого транспорта. Важные параметры в одной таблице.</p><p className="mt-14 max-w-40 border-l border-brand pl-4 text-xs leading-relaxed text-white/75 uppercase">Выбирайте технику, которая работает на ваш бизнес</p></div>
+              <div><div className="font-display text-4xl leading-[.9] font-bold uppercase"><span className="text-brand">11</span> /<br />Сравнение<br />с конкурентами</div><span className="mt-5 block h-1 w-16 bg-brand" /><p className="mt-12 max-w-48 text-xs leading-relaxed text-white/65 uppercase">Лидеры коммерческого транспорта. Важные параметры в одной таблице.</p><p className="mt-14 max-w-40 border-l border-brand pl-4 text-xs leading-relaxed text-white/75 uppercase">Выбирайте технику, которая работает на ваш бизнес</p></div>
               <div>
-                <div className="grid grid-cols-[minmax(130px,1.4fr)_repeat(3,minmax(0,1fr))] border-b border-white/15 pb-5 text-center">
+                <div className="grid grid-cols-[minmax(130px,1.2fr)_repeat(4,minmax(0,1fr))] border-b border-white/15 pb-5 text-center">
                   <div aria-hidden="true" />
                   {COMPARISON.rivals.map((r) => <div key={r.name} className="border-l border-white/15 px-3"><img src={r.image} alt={r.name} width={768} height={512} loading="lazy" className="mx-auto h-24 w-full object-contain" /><p className={`mt-2 font-display text-xs font-bold uppercase ${r.own ? "text-brand" : "text-white"}`}>{r.name}</p></div>)}
                 </div>
-                <div>{COMPARISON.rows.map(({ icon: Icon, label, values }) => <div key={label} className="grid grid-cols-[minmax(130px,1.4fr)_repeat(3,minmax(0,1fr))] items-center border-b border-white/10 py-3"><span className="flex gap-2 pr-2 text-[11px] text-white/70"><Icon className="h-4 w-4 shrink-0" strokeWidth={1.5} />{label}</span>{values.map((value, i) => <span key={`${label}-${i}`} className={`border-l border-white/10 px-2 text-center text-xs ${i === 0 ? "font-bold text-brand" : "text-white/65"}`}>{value}</span>)}</div>)}</div>
+                <div>{COMPARISON.rows.map(({ icon: Icon, label, values }) => <div key={label} className="grid grid-cols-[minmax(130px,1.2fr)_repeat(4,minmax(0,1fr))] items-center border-b border-white/10 py-3"><span className="flex gap-2 pr-2 text-[11px] text-white/70"><Icon className="h-4 w-4 shrink-0" strokeWidth={1.5} />{label}</span>{values.map((value, i) => <span key={`${label}-${i}`} className={`border-l border-white/10 px-2 text-center text-xs ${i === 0 ? "font-bold text-brand" : "text-white/65"}`}>{value}</span>)}</div>)}</div>
               </div>
             </div>
             <div className="mt-10 border-t border-white/15">

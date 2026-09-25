@@ -60,7 +60,7 @@ const CARDS = [
 
 const CONTACTS = [
   { icon: MapPin, text: "Московская область, г. Чехов, Симферопольское шоссе, вл. 2, стр. 1" },
-  { icon: Phone, text: "+7 (980) 158-88-31" },
+  { icon: Phone, text: "+7 980 158-88-31" },
   { icon: Send, text: "@kirillvsevenduro" },
   { icon: Mail, text: "info@ducatocenter.ru" },
   { icon: Mail, text: "k.potamoshnev@autodt.ru" },
@@ -213,7 +213,15 @@ export function AboutSection() {
               {CONTACTS.map(({ icon: Icon, text }) => (
                 <li key={text} className="flex gap-2.5 text-[11px] leading-snug">
                   <Icon className="text-brand mt-0.5 h-3.5 w-3.5 shrink-0" strokeWidth={1.8} />
-                  {text}
+                  {text.startsWith("+") ? (
+                    <a href="tel:+79801588831" className="hover:text-brand transition-colors">
+                      {text}
+                    </a>
+                  ) : text.includes("@") ? (
+                    <a href={`mailto:${text}`} className="hover:text-brand transition-colors">
+                      {text}
+                    </a>
+                  ) : text}
                 </li>
               ))}
             </ul>

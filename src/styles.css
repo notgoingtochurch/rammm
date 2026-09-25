@@ -169,6 +169,46 @@
 }
 
 @layer components {
+  /* Подгонка размеров фотографий каталога: меняйте width/height здесь. */
+  .ram-catalog-photo {
+    display: block;
+    width: var(--catalog-photo-width, 100%);
+    height: var(--catalog-photo-height, auto);
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  .ram-catalog-photo-side {
+    --catalog-photo-width: 100%;
+    --catalog-photo-height: auto;
+  }
+
+  .ram-catalog-photo-front {
+    --catalog-photo-width: 100%;
+    --catalog-photo-height: auto;
+  }
+
+  .ram-catalog-photo-cargo {
+    --catalog-photo-width: 100%;
+    --catalog-photo-height: auto;
+  }
+
+  .ram-catalog-photo-cargo-door {
+    --catalog-photo-width: 100%;
+    --catalog-photo-height: auto;
+  }
+
+  /* Внутренние секции блока каталога: меняйте пропорции и расстояние здесь. */
+  .ram-catalog-lower-media {
+    gap: var(--catalog-lower-media-gap, 28px);
+  }
+
+  @media (min-width: 1024px) {
+    .ram-catalog-lower-media {
+      grid-template-columns: var(--catalog-lower-media-columns, .7fr 1fr);
+    }
+  }
+
   .ram-page {
     overflow-x: clip;
   }
