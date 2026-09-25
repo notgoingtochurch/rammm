@@ -41,6 +41,7 @@ import {
   Check,
   Menu,
   X,
+  ArrowUp,
 } from "lucide-react";
 import { TrimsSection } from "@/components/TrimsSection";
 import { AboutSection } from "@/components/AboutSection";
@@ -469,11 +470,17 @@ function Index() {
   const [cookiesVisible, setCookiesVisible] = useState(false);
   const [cookiesPolicyOpen, setCookiesPolicyOpen] = useState(false);
   const [personalDataOpen, setPersonalDataOpen] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const discountPhoneDigits = discountPhone.replace(/\D/g, "");
   const canSubmitDiscount = discountPhoneDigits.length === 11 && discountConsent;
 
   useEffect(() => {
     setCookiesVisible(window.localStorage.getItem("ram-cookies-accepted") !== "1");
+
+    const handleScroll = () => setShowBackToTop(window.scrollY > 400);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const acceptCookies = () => {
@@ -672,7 +679,7 @@ function Index() {
         </DialogContent>
       </Dialog>
 
-      <header className="ram-header relative z-40 border-b border-border bg-background">
+      <header className="ram-header sticky top-0 z-40 border-b border-border bg-background">
         <div className="ram-header-inner mx-auto flex max-w-[1600px] items-center gap-8 px-6 py-3">
           <a href="/" className="flex items-center">
             <img
@@ -1340,6 +1347,17 @@ function Index() {
         <ContactsSection />
 
       </main>
+
+      {showBackToTop ? (
+        <button
+          type="button"
+          aria-label="Вернуться наверх"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed right-5 bottom-5 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-brand text-brand-foreground shadow-lg transition-transform hover:scale-105"
+        >
+          <ArrowUp className="h-5 w-5" strokeWidth={2} />
+        </button>
+      ) : null}
 
 
     </div>

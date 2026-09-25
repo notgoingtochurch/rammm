@@ -218,12 +218,14 @@ export function ContactsSection() {
                 </li>
               ))}
             </ul>
-            <button
-              type="button"
+            <a
+              href="https://yandex.ru/maps/?text=Москва%2C%20ул.%201-й%20Дорожный%20проезд%2C%20д.%205"
+              target="_blank"
+              rel="noreferrer"
               className="border-brand text-brand mt-6 rounded-[5px] border px-6 py-3 text-[11px] font-bold tracking-normal uppercase transition-colors hover:bg-brand hover:text-brand-foreground"
             >
               Построить маршрут
-            </button>
+            </a>
           </div>
           <div className="relative min-h-[320px]">
             <iframe
