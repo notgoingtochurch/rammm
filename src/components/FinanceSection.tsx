@@ -136,10 +136,10 @@ export function FinanceSection() {
   return (
     <section id="finance" className="border-border border-t">
       <Dialog open={privacyOpen} onOpenChange={setPrivacyOpen}>
-        <DialogContent className="h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl p-0">
+        <DialogContent className="max-h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl overflow-hidden p-0">
           <DialogTitle className="sr-only">Согласие на обработку персональных данных</DialogTitle>
           <DialogDescription className="sr-only">Текст согласия на обработку персональных данных</DialogDescription>
-          <div className="h-full overflow-y-auto px-6 py-8 text-sm leading-relaxed">
+          <div className="max-h-[calc(100vh-32px)] overflow-y-auto px-6 py-8 text-sm leading-relaxed">
             <div className="font-display mb-6 text-2xl font-bold uppercase">
               Согласие на обработку персональных данных
             </div>

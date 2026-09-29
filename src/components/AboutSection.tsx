@@ -34,7 +34,7 @@ const REASONS = [
   "Официальный импортёр и поставщик",
   "Только новые автомобили 2024–2025 года",
   "Полное соответствие стандартам РФ",
-  "Гарантия 1 год или 20 000 км",
+  "Гарантия 1 год или 100 000 км",
   "Кредит, лизинг, trade-in",
   "Доставка в любой регион России",
   "Прозрачное ценообразование",
@@ -59,8 +59,8 @@ const CARDS = [
 ];
 
 const CONTACTS = [
-  { icon: MapPin, text: "Московская область, г. Чехов, Симферопольское шоссе, вл. 2, стр. 1" },
-  { icon: Phone, text: "+7 980 158-88-31" },
+  { icon: MapPin, text: "Москва, ул 1 Дорожный проезд д. 5" },
+  { icon: Phone, text: "+7 (499) 711 - 9161" },
   { icon: Send, text: "@kirillvsevenduro" },
   { icon: Mail, text: "info@ducatocenter.ru" },
   { icon: Mail, text: "k.potamoshnev@autodt.ru" },
@@ -77,7 +77,7 @@ const TERMS = [
   {
     icon: ShieldCheck,
     title: "Гарантия",
-    lines: ["1 ГОД", "ИЛИ 20 000 КМ", "на все автомобили", "и работы"],
+    lines: ["1 ГОД", "ИЛИ 100 000 КМ", "на все автомобили", "и работы"],
     bold: [0, 1],
   },
   {
@@ -214,7 +214,7 @@ export function AboutSection() {
                 <li key={text} className="flex gap-2.5 text-[11px] leading-snug">
                   <Icon className="text-brand mt-0.5 h-3.5 w-3.5 shrink-0" strokeWidth={1.8} />
                   {text.startsWith("+") ? (
-                    <a href="tel:+79801588831" className="hover:text-brand transition-colors">
+                    <a href="tel:+74997119161" className="hover:text-brand transition-colors">
                       {text}
                     </a>
                   ) : text.includes("@") ? (
@@ -225,12 +225,14 @@ export function AboutSection() {
                 </li>
               ))}
             </ul>
-            <button
-              type="button"
-              className="border-brand text-brand hover:bg-brand hover:text-brand-foreground mt-6 w-full rounded-[5px] border px-4 py-2.5 text-[11px] font-bold tracking-normal uppercase transition-colors"
+            <a
+              href="https://yandex.ru/maps/?text=Москва%2C%20ул.%201-й%20Дорожный%20проезд%2C%20д.%205"
+              target="_blank"
+              rel="noreferrer"
+              className="border-brand text-brand mt-6 inline-flex rounded-[5px] border px-6 py-3 text-[11px] font-bold tracking-normal uppercase transition-colors hover:bg-brand hover:text-brand-foreground"
             >
               Построить маршрут
-            </button>
+            </a>
           </div>
         </div>
 

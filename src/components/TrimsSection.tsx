@@ -78,7 +78,7 @@ const COMPARE_ROWS: { label: string; values: string[] }[] = [
 ];
 
 const GUARANTEES = [
-  { icon: ShieldCheck, title: "Гарантия 1 год", text: "или 20 000 км пробега" },
+  { icon: ShieldCheck, title: "Гарантия 1 год", text: "или 100 000 км пробега" },
   { icon: Wrench, title: "Сервис по всей России", text: "Официальные партнёры" },
   { icon: Truck, title: "Быстрая доставка", text: "от 30 до 45 дней" },
   { icon: Percent, title: "Лизинг и кредит", text: "Выгодные условия" },

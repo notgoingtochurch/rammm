@@ -226,6 +226,10 @@
     max-width: 100%;
   }
 
+  .ram-page img {
+    overflow-clip-margin: unset;
+  }
+
   .ram-page button,
   .ram-page a,
   .ram-page select,

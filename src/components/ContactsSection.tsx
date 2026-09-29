@@ -61,13 +61,13 @@ const CONTACTS = [
   {
     icon: Phone,
     label: "Телефон",
-    value: "+7 980 158-88-31",
-    lines: ["Ежедневно с 9:00 до 21:00. Звонок по России бесплатный"],
+    value: "+7 (499) 711 - 9161",
+    lines: ["Ежедневно с 10:00 до 19:00"],
   },
   {
     icon: MessageCircle,
     label: "WhatsApp / Telegram",
-    value: "+7 980 158-88-31",
+    value: "+7 (499) 711 - 9161",
     lines: ["Напишите нам ответим в течение 5 минут"],
   },
   {
@@ -79,7 +79,6 @@ const CONTACTS = [
 ];
 
 const OFFICE = [
-  "15 минут от МКАД по трассе М-4 «Дон»",
   "Удобный заезд для грузового транспорта",
   "Большая закрытая территория",
   "Демонстрационные автомобили в наличии",
@@ -115,10 +114,10 @@ export function ContactsSection() {
   return (
     <section id="contacts" className="border-border border-t bg-[#FDFDFE] pt-0 pb-16">
       <Dialog open={agreementOpen} onOpenChange={setAgreementOpen}>
-        <DialogContent className="h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl p-0">
+        <DialogContent className="max-h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl overflow-hidden p-0">
           <DialogTitle className="sr-only">Пользовательское соглашение</DialogTitle>
           <DialogDescription className="sr-only">Текст пользовательского соглашения</DialogDescription>
-          <div className="h-full overflow-y-auto px-6 py-8 text-sm leading-relaxed">
+          <div className="max-h-[calc(100vh-32px)] overflow-y-auto px-6 py-8 text-sm leading-relaxed">
             <div className="font-display mb-6 text-2xl font-bold uppercase">
               Согласие на обработку персональных данных
             </div>
@@ -131,10 +130,10 @@ export function ContactsSection() {
         </DialogContent>
       </Dialog>
       <Dialog open={privacyOpen} onOpenChange={setPrivacyOpen}>
-        <DialogContent className="h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl p-0">
+        <DialogContent className="max-h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl overflow-hidden p-0">
           <DialogTitle className="sr-only">Политика обработки персональных данных</DialogTitle>
           <DialogDescription className="sr-only">Текст политики обработки персональных данных</DialogDescription>
-          <div className="h-full overflow-y-auto px-6 py-8 text-sm leading-relaxed">
+          <div className="max-h-[calc(100vh-32px)] overflow-y-auto px-6 py-8 text-sm leading-relaxed">
             <div className="font-display mb-6 text-2xl font-bold uppercase">
               Положение об обработке персональных данных
             </div>
@@ -184,7 +183,7 @@ export function ContactsSection() {
                   <p className="text-[10px] font-semibold tracking-[0.16em] uppercase">{label}</p>
                   <p className="font-sans mt-1 text-sm font-bold tracking-tight break-all">
                     {value.startsWith("+") ? (
-                      <a href="tel:+79801588831" className="hover:text-brand transition-colors">
+                      <a href="tel:+74997119161" className="hover:text-brand transition-colors">
                         {value}
                       </a>
                     ) : value.includes("@") ? (
@@ -222,7 +221,7 @@ export function ContactsSection() {
               href="https://yandex.ru/maps/?text=Москва%2C%20ул.%201-й%20Дорожный%20проезд%2C%20д.%205"
               target="_blank"
               rel="noreferrer"
-              className="border-brand text-brand mt-6 rounded-[5px] border px-6 py-3 text-[11px] font-bold tracking-normal uppercase transition-colors hover:bg-brand hover:text-brand-foreground"
+              className="border-brand text-brand mt-6 inline-flex rounded-[5px] border px-6 py-3 text-[11px] font-bold tracking-normal uppercase transition-colors hover:bg-brand hover:text-brand-foreground"
             >
               Построить маршрут
             </a>
@@ -323,8 +322,8 @@ export function ContactsSection() {
             <ul className="mt-5 grid gap-3 text-[11px]">
               <li className="flex items-center gap-3">
                 <Phone className="text-brand h-4 w-4 shrink-0" strokeWidth={1.5} />
-                <a href="tel:+79801588831" className="hover:text-brand transition-colors">
-                  +7 980 158-88-31
+                <a href="tel:+74997119161" className="hover:text-brand transition-colors">
+                  +7 (499) 711 - 9161
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -339,7 +338,7 @@ export function ContactsSection() {
               </li>
               <li className="flex items-center gap-3 opacity-70">
                 <MessageCircle className="text-brand h-4 w-4 shrink-0" strokeWidth={1.5} />
-                Ежедневно с 9:00 до 21:00
+                Ежедневно с 10:00 до 19:00
               </li>
             </ul>
           </div>
@@ -394,17 +393,17 @@ export function ContactsSection() {
               <li className="flex gap-3">
                 <Phone className="text-brand mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.5} />
                 <span>
-                  <a href="tel:+79801588831" className="hover:text-brand transition-colors">
-                    +7 980 158-88-31
+                  <a href="tel:+74997119161" className="hover:text-brand transition-colors">
+                    +7 (499) 711 - 9161
                   </a>
                   <br />
-                  <span className="opacity-60">Ежедневно с 9:00 до 21:00</span>
+                  <span className="opacity-60">Ежедневно с 10:00 до 19:00</span>
                 </span>
               </li>
               <li className="flex gap-3">
                 <MessageCircle className="text-brand mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.5} />
-                <a href="tel:+79801588831" className="hover:text-brand transition-colors">
-                  +7 980 158-88-31
+                <a href="tel:+74997119161" className="hover:text-brand transition-colors">
+                  +7 (499) 711 - 9161
                 </a>
               </li>
               <li className="flex gap-3">

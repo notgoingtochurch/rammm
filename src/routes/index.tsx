@@ -483,6 +483,20 @@ function Index() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const callbackShownKey = "ram-callback-shown";
+
+    if (window.sessionStorage.getItem(callbackShownKey) === "1") return;
+
+    const callbackTimer = window.setTimeout(() => {
+      window.sessionStorage.setItem(callbackShownKey, "1");
+      setDiscountSubmitted(false);
+      setDiscountOpen(true);
+    }, 15_000);
+
+    return () => window.clearTimeout(callbackTimer);
+  }, []);
+
   const acceptCookies = () => {
     window.localStorage.setItem("ram-cookies-accepted", "1");
     setCookiesVisible(false);
@@ -529,12 +543,12 @@ function Index() {
         </div>
       ) : null}
       <Dialog open={cookiesPolicyOpen} onOpenChange={setCookiesPolicyOpen}>
-        <DialogContent className="h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl p-0">
+        <DialogContent className="max-h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl overflow-hidden p-0">
           <DialogHeader className="sr-only">
             <DialogTitle>Политика обработки cookie</DialogTitle>
             <DialogDescription>Текст политики обработки cookie-файлов</DialogDescription>
           </DialogHeader>
-          <div className="h-full overflow-y-auto px-6 py-8 text-sm leading-relaxed">
+          <div className="max-h-[calc(100vh-32px)] overflow-y-auto px-6 py-8 text-sm leading-relaxed">
             <div className="font-display mb-6 text-2xl font-bold uppercase">
               Политика обработки cookie
             </div>
@@ -592,10 +606,10 @@ function Index() {
         </DialogContent>
       </Dialog>
       <Dialog open={personalDataOpen} onOpenChange={setPersonalDataOpen}>
-        <DialogContent className="h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl p-0">
+        <DialogContent className="max-h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl overflow-hidden p-0">
           <DialogTitle className="sr-only">Согласие на обработку персональных данных</DialogTitle>
           <DialogDescription className="sr-only">Текст согласия на обработку персональных данных</DialogDescription>
-          <div className="h-full overflow-y-auto px-6 py-8 text-sm leading-relaxed">
+          <div className="max-h-[calc(100vh-32px)] overflow-y-auto px-6 py-8 text-sm leading-relaxed">
             <div className="font-display mb-6 text-2xl font-bold uppercase">
               Согласие на обработку персональных данных
             </div>
@@ -614,7 +628,7 @@ function Index() {
         <DialogContent className="w-[calc(100vw-32px)] rounded-[8px] border-border p-6 sm:max-w-[440px]">
           <DialogHeader>
             <DialogTitle className="font-display text-2xl font-bold tracking-tight uppercase">
-              Получить скидку
+              Обратный звонок
             </DialogTitle>
             <DialogDescription>
               Оставьте номер телефона, и менеджер свяжется с вами.
@@ -705,15 +719,15 @@ function Index() {
           </nav>
 
           <div className="ram-header-actions ml-auto flex flex-row items-center gap-4">
-            <a href="tel:+79801588831" className="font-menu text-lg font-semibold transition-colors hover:text-brand">
-              +7 980 158-88-31
+            <a href="tel:+74997119161" className="font-menu text-lg font-semibold transition-colors hover:text-brand">
+              +7 (499) 711 - 9161
             </a>
             <button
               type="button"
               onClick={openDiscountDialog}
               className="ram-discount-button bg-brand font-menu text-brand-foreground flex h-[42px] items-center rounded-sm px-6 text-xs font-semibold tracking-wide uppercase transition-opacity hover:opacity-90"
             >
-              Получить скидку
+              Обратный звонок
             </button>
             <button
               type="button"

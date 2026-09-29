@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Play, ArrowRight, Check } from "lucide-react";
-import ytThumb from "@/assets/review-00.png";
+import ytThumb from "@/assets/rutube-promaster-thumb.jpg";
 import reviewBg from "@/assets/review-bg.png";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 const REVIEW_IMAGES = import.meta.glob("../assets/reviews/*.jpg", {
@@ -57,6 +57,7 @@ const YT_POINTS = [
 
 export function ReviewsSection() {
   const [selectedReview, setSelectedReview] = useState<Review | null>(null);
+  const [featuredVideoOpen, setFeaturedVideoOpen] = useState(false);
 
   return (
     <section id="reviews" className="border-border border-t">
@@ -165,26 +166,31 @@ export function ReviewsSection() {
               </li>
             ))}
           </ul>
-          <div className="relative">
+          <button
+            type="button"
+            onClick={() => setFeaturedVideoOpen(true)}
+            aria-label="Смотреть видео Ram ProMaster"
+            className="group relative w-full cursor-pointer text-left shadow-none"
+          >
             <img
               src={ytThumb}
-              alt="RAM ProMaster Center на RUTUBE"
+              alt="Превью видео Ram ProMaster на RUTUBE"
               width={1024}
               height={576}
               loading="lazy"
-              className="h-[110px] w-full rounded-[15px] object-cover"
+              className="h-[210px] w-full rounded-[15px] object-cover shadow-none"
             />
-            <div className="absolute inset-0 flex items-center justify-center rounded-[15px] bg-black/30">
+            <div className="absolute inset-0 flex items-center justify-center rounded-[15px]">
               <span className="bg-brand flex h-10 w-10 items-center justify-center rounded-full">
-                <Play className="h-4 w-4 fill-white text-white" />
+                <Play className="h-4 w-4 fill-white text-white transition-transform group-hover:scale-110" />
               </span>
             </div>
             <span className="absolute bottom-2 left-2 text-[10px] font-bold tracking-[0.14em] text-white uppercase whitespace-pre-line">
               {"\n\n"}
             </span>
-          </div>
+          </button>
           <a
-            href="https://rutube.ru"
+            href="https://rutube.ru/channel/25956461/"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-brand text-brand-foreground hover:bg-accent inline-flex items-center justify-center gap-3 rounded-[5px] px-8 py-3.5 text-[11px] font-bold tracking-[0.14em] uppercase transition-colors"
@@ -193,6 +199,22 @@ export function ReviewsSection() {
             <ArrowRight className="h-4 w-4" />
           </a>
         </div>
+
+        <Dialog open={featuredVideoOpen} onOpenChange={setFeaturedVideoOpen}>
+          <DialogContent className="w-[calc(100vw-32px)] max-w-5xl rounded-[8px] border-border bg-black p-3 sm:p-5">
+            <DialogTitle className="sr-only">Ram ProMaster как одна из вершин концерна Stellantis</DialogTitle>
+            <DialogDescription className="sr-only">Видео на RUTUBE</DialogDescription>
+            <div className="aspect-video w-full overflow-hidden rounded-[6px] bg-black">
+              <iframe
+                src="https://rutube.ru/play/embed/d4762685f4fbe494c4151ce4d2ddf85d"
+                title="Ram ProMaster как одна из вершин концерна Stellantis"
+                allow="autoplay; fullscreen"
+                allowFullScreen
+                className="h-full w-full border-0"
+              />
+            </div>
+          </DialogContent>
+        </Dialog>
 
       </div>
     </section>
