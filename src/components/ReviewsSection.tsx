@@ -63,7 +63,7 @@ export function ReviewsSection() {
     <section id="reviews" className="border-border border-t">
       <div className="relative overflow-hidden bg-[#fbfbfb]">
         <div
-          className="relative mx-auto grid max-w-[1600px] items-center gap-8 bg-contain bg-right bg-no-repeat px-6 py-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]"
+          className="ram-reviews-hero relative mx-auto grid max-w-[1600px] items-center gap-8 bg-contain bg-right bg-no-repeat px-6 py-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]"
           style={{ backgroundImage: `url(${reviewBg})` }}
         >
           <div>
@@ -89,7 +89,7 @@ export function ReviewsSection() {
       </div>
 
       <div className="mx-auto max-w-[1600px] px-6 py-10">
-        <div className="mt-6 grid gap-6 font-sans tracking-normal sm:grid-cols-2 lg:grid-cols-5">
+        <div className="ram-reviews-grid mt-6 grid gap-6 font-sans tracking-normal sm:grid-cols-2 lg:grid-cols-5">
           {REVIEWS.map((r) => (
             <article
               key={r.videoId}
@@ -178,7 +178,7 @@ export function ReviewsSection() {
               width={1024}
               height={576}
               loading="lazy"
-              className="h-[210px] w-full rounded-[15px] object-cover shadow-none"
+              className="ram-featured-video-img h-[210px] w-full rounded-[15px] object-cover shadow-none"
             />
             <div className="absolute inset-0 flex items-center justify-center rounded-[15px]">
               <span className="bg-brand flex h-10 w-10 items-center justify-center rounded-full">

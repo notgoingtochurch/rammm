@@ -180,7 +180,7 @@ export function FinanceSection() {
       </Dialog>
       <div className="bg-surface relative overflow-hidden">
         <div
-          className="relative mx-auto grid max-w-[1600px] items-center gap-8 bg-contain bg-right bg-no-repeat px-6 py-12 lg:grid-cols-2"
+          className="ram-finance-hero relative mx-auto grid max-w-[1600px] items-center gap-8 bg-contain bg-right bg-no-repeat px-6 py-12 lg:grid-cols-2"
           style={{ backgroundImage: `url(${leasingBgAsset})` }}
         >
           <div>
@@ -234,12 +234,6 @@ export function FinanceSection() {
                     </li>
                   ))}
                 </ul>
-                <button
-                  type="button"
-                  className="font-sans bg-accent text-accent-foreground hover:bg-brand mt-4 rounded-[6px] px-4 py-2 text-[11px] font-bold uppercase transition-colors"
-                >
-                  {cta}
-                </button>
               </div>
             </div>
           ))}
@@ -303,12 +297,6 @@ export function FinanceSection() {
                 </li>
               ))}
             </ul>
-            <button
-              type="button"
-              className="font-sans border-brand text-brand hover:bg-brand hover:text-brand-foreground mt-4 rounded-[6px] border px-5 py-2 text-[11px] font-bold uppercase transition-colors"
-            >
-              Подробнее
-            </button>
           </div>
 
           <div className="border-border grid overflow-hidden rounded-[6px] border sm:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
@@ -371,7 +359,7 @@ export function FinanceSection() {
                 <input className={selectCls} name="name" placeholder="Ваше имя" required />
                 <input className={selectCls} name="phone" type="tel" placeholder="Телефон" required />
               </div>
-              <label className="text-muted-foreground flex items-start gap-2 text-[10px] leading-snug">
+              <label className="ram-consent-label text-muted-foreground flex items-start gap-2 text-[10px] leading-snug">
                 <input type="checkbox" required className="mt-0.5 accent-brand" />
                 Я согласен на обработку{" "}
                 <button

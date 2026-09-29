@@ -137,7 +137,7 @@ export function ContactsSection() {
   };
 
   return (
-    <section id="contacts" className="border-border border-t bg-[#FDFDFE] pt-0 pb-16">
+    <section id="contacts" className="border-border border-t bg-[#FDFDFE] pt-0 pb-0">
       <Dialog open={agreementOpen} onOpenChange={setAgreementOpen}>
         <DialogContent className="max-h-[calc(100vh-32px)] w-[calc(100vw-32px)] max-w-4xl overflow-hidden p-0">
           <DialogTitle className="sr-only">Пользовательское соглашение</DialogTitle>
@@ -174,7 +174,7 @@ export function ContactsSection() {
       </Dialog>
       <div className="mx-auto max-w-[1600px] px-6">
         <div
-          className="grid min-h-[420px] items-center gap-8 bg-contain bg-right bg-no-repeat"
+          className="ram-contacts-hero grid min-h-[420px] items-center gap-8 bg-contain bg-right bg-no-repeat"
           style={{ backgroundImage: `url(${contactHeroAsset})` }}
         >
           <div>
@@ -293,7 +293,7 @@ export function ContactsSection() {
                 placeholder="Комментарий"
                 name="comment"
               />
-              <label className="text-muted-foreground flex items-start gap-2.5 text-[10px] leading-snug">
+              <label className="ram-consent-label text-muted-foreground flex items-start gap-2.5 text-[10px] leading-snug">
                 <input type="checkbox" required className="accent-brand mt-0.5 h-3.5 w-3.5 shrink-0" />
                 Я согласен на обработку{" "}
                 <button
@@ -456,9 +456,9 @@ export function ContactsSection() {
         </div>
 
         <div className="border-t border-white/10">
-          <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-4 px-6 py-5 text-[10px] opacity-60">
+          <div className="ram-footer-bottom mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-4 px-6 py-5 text-[10px] opacity-60">
             <p>© 2026 RAM ProMaster Center. Все права защищены.</p>
-            <p className="flex gap-6">
+            <p className="ram-footer-links flex gap-6">
               <button
                 type="button"
                 onClick={() => setPrivacyOpen(true)}

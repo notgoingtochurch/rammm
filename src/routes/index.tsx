@@ -676,7 +676,7 @@ function Index() {
               />
             </label>
 
-            <label className="text-muted-foreground flex items-start gap-2.5 text-[10px] leading-snug">
+            <label className="ram-consent-label text-muted-foreground flex items-start gap-2.5 text-[10px] leading-snug">
               <input
                 type="checkbox"
                 checked={discountConsent}
@@ -886,7 +886,7 @@ function Index() {
                         <p className="font-display text-sm font-bold tracking-wide uppercase">
                           Обзор на RAM
                         </p>
-                        <span className="text-xs opacity-70">03:42</span>
+                        <span className="text-xs opacity-70">5:44</span>
                       </div>
                     </div>
                   </div>
@@ -928,7 +928,7 @@ function Index() {
                 <p className="mt-5 font-menu text-sm font-medium tracking-[0.08em] text-black/60 uppercase sm:text-lg">Габариты, объём и ключевые размеры</p>
               </div>
 
-              <div className="grid grid-cols-2 divide-x divide-y divide-black/10 border-y border-black/10 sm:grid-cols-4 sm:divide-y-0 lg:border-y-0">
+              <div className="grid grid-cols-2 sm:grid-cols-4">
                 {[
                   { icon: Cog, image: "/engine-motor.svg", title: "3.6 Pentastar V6", value: "276 л.с.", text: "Атмосферный бензиновый двигатель без турбины" },
                   { icon: Settings, image: "/gearshift.svg", title: "9-ступенчатый", value: "Автомат", text: "Плавность, комфорт и надёжность" },
@@ -959,12 +959,12 @@ function Index() {
                 <img src="/size-3-1.jpg" alt="RAM ProMaster 2500: задняя часть и размеры" width={662} height={298} loading="lazy" className="ram-catalog-photo ram-catalog-photo-cargo-door" />
               </div>
               <div className="lg:col-span-3">
-                <div className="flex h-full min-h-48 flex-col justify-center px-7 py-6 text-left">
+                <div className="ram-cargo-dimensions flex h-full min-h-48 flex-col justify-center px-7 py-6 text-left">
                   <div>
                     <p className="font-display text-4xl font-bold leading-none uppercase tracking-tight">3705 мм</p>
                     <p className="mt-2 text-sm font-medium text-black/60 uppercase">Длина грузового отсека</p>
                   </div>
-                  <div className="my-7 h-px w-full bg-black/20" />
+                  <div className="ram-cargo-divider my-7 h-px w-full bg-black/20" />
                   <div>
                     <p className="font-display text-4xl font-bold leading-none uppercase tracking-tight">1870 мм</p>
                     <p className="mt-2 text-sm font-medium text-black/60 uppercase">Ширина грузового отсека</p>
@@ -1025,7 +1025,7 @@ function Index() {
                 <span className="mt-6 block h-0.5 w-16 bg-brand" />
               </div>
 
-              <div className="ram-interior-cards -mt-[40px] -ml-[60px] grid gap-[10px] pr-[30px] sm:grid-cols-2 xl:grid-cols-4">
+              <div className="ram-interior-cards -mt-[40px] ml-0 grid gap-[10px] pr-0 sm:grid-cols-2 xl:-ml-[60px] xl:pr-[30px] xl:grid-cols-4">
                 {INTERIOR_CARDS.map((c) => (
                   <div
                     key={c.title}
@@ -1053,7 +1053,7 @@ function Index() {
           </div>
 
           <div className="ram-container mx-auto grid max-w-[1600px] gap-10 px-6 py-16 lg:grid-cols-[380px_minmax(0,1fr)]">
-            <div className="font-display text-4xl leading-[0.95] font-normal tracking-tight uppercase">
+            <div className="ram-interior-heading font-display text-4xl leading-[0.95] font-normal tracking-tight uppercase">
               Продуманный салон
               <br />
               <span className="mt-[15px] inline-block font-normal opacity-50">для профессионалов</span>
@@ -1223,15 +1223,15 @@ function Index() {
         </section>
         {/* 06 — Технологии и производительность */}
         <section id="tech" className="ram-tech bg-[#000000] text-accent-foreground">
-          <div className="ram-container relative mx-auto max-w-[1600px] px-6 py-8">
-            <div className="ram-tech-visual pointer-events-none absolute top-1/2 right-0 hidden h-[460px] w-[62%] -translate-y-1/2 items-center justify-center lg:flex">
+          <div className="ram-tech-container ram-container relative mx-auto max-w-[1600px] px-6 py-8">
+            <div className="ram-tech-visual pointer-events-none absolute top-1/2 right-0 h-[460px] w-[62%] -translate-y-1/2 items-center justify-center lg:flex">
               <img
                 src={engineV6}
                 alt="Двигатель Pentastar V6 3.6L"
                 width={1280}
                 height={960}
                 loading="lazy"
-                className="h-full w-full object-contain"
+                className="ram-tech-visual-img h-full w-full object-contain"
               />
             </div>
 
@@ -1241,7 +1241,7 @@ function Index() {
                 <span className="ml-3 opacity-70">Технологии и производительность</span>
               </p>
 
-              <div className="font-display mt-6 text-5xl leading-[0.95] font-medium tracking-tight uppercase lg:text-6xl">
+              <div className="ram-tech-title font-display mt-6 text-5xl leading-[0.95] font-medium tracking-tight uppercase lg:text-6xl">
                 Pentastar<sup className="align-super text-2xl">®</sup> V6 3.6L
               </div>
               <p className="font-sans mt-2 text-2xl font-normal tracking-tight uppercase opacity-80 lg:text-3xl">
@@ -1272,7 +1272,7 @@ function Index() {
                 ))}
               </div>
 
-              <div className="border-border/20 bg-background/5 mt-12 ml-auto w-full max-w-[256px] rounded-[8px] border p-6 backdrop-blur-sm lg:mt-[-120px]">
+              <div className="ram-tech-video-card relative z-10 border-border/20 bg-background/5 mt-12 ml-auto w-full max-w-[256px] rounded-[8px] border p-6 backdrop-blur-sm lg:mt-[-120px]">
                 <div className="flex items-center gap-4">
                   <span className="border-accent-foreground flex h-11 w-11 items-center justify-center rounded-full border">
                     <Play className="text-accent-foreground h-4 w-4 fill-current" />
@@ -1299,7 +1299,7 @@ function Index() {
             </div>
 
             <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.7fr)_minmax(0,1.1fr)]">
-              <div className="rounded-[8px] bg-[#ebebeb] p-6">
+              <div className="rounded-[5px] bg-[#ebebeb] p-6">
                 <img
                   src={gearbox9hpAsset}
                   alt="9-ступенчатая автоматическая коробка передач"

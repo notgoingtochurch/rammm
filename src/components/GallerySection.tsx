@@ -69,7 +69,7 @@ export function GallerySection() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="ram-gallery-grid mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {photos.map((p, index) => (
             <button
               key={p.src}
