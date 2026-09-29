@@ -10,7 +10,7 @@ import {
   Cpu,
   Fuel,
 } from "lucide-react";
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 import leasingBgAsset from "@/assets/leasing-bg.png";
 import finCreditAsset from "@/assets/fin-credit.png";
 const finCredit = finCreditAsset;
@@ -21,6 +21,7 @@ import finTradeinAsset from "@/assets/fin-tradein.png";
 const finTradein = finTradeinAsset;
 import finServiceAsset from "@/assets/fin-service-2.png";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
+import { sendContactEmail } from "@/lib/contact-email";
 
 const finService = finServiceAsset;
 
@@ -130,8 +131,31 @@ const ADVANTAGES = [
 
 export function FinanceSection() {
   const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const selectCls =
     "border-border bg-background focus:border-brand mt-2 h-[38px] w-full rounded-[6px] border px-3 text-xs outline-none";
+
+  const handleFinanceSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    setFormStatus("sending");
+
+    try {
+      await sendContactEmail({
+        data: {
+          source: "Заявка по финансированию",
+          name: String(formData.get("name") ?? ""),
+          phone: String(formData.get("phone") ?? ""),
+          website: String(formData.get("website") ?? ""),
+        },
+      });
+      form.reset();
+      setFormStatus("sent");
+    } catch {
+      setFormStatus("error");
+    }
+  };
 
   return (
     <section id="finance" className="border-border border-t">
@@ -341,13 +365,14 @@ export function FinanceSection() {
             <p className="text-muted-foreground mt-2 text-[11px] leading-relaxed">
               Мы свяжемся с вами и расскажем об условиях покупки, кредита и лизинга.
             </p>
-            <form className="mt-4 grid gap-3" onSubmit={(event) => event.preventDefault()}>
+            <form className="mt-4 grid gap-3" onSubmit={handleFinanceSubmit}>
+              <input name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
               <div className="grid gap-3 sm:grid-cols-2">
-                <input className={selectCls} placeholder="Ваше имя" />
-                <input className={selectCls} type="tel" placeholder="Телефон" />
+                <input className={selectCls} name="name" placeholder="Ваше имя" required />
+                <input className={selectCls} name="phone" type="tel" placeholder="Телефон" required />
               </div>
               <label className="text-muted-foreground flex items-start gap-2 text-[10px] leading-snug">
-                <input type="checkbox" className="mt-0.5 accent-brand" />
+                <input type="checkbox" required className="mt-0.5 accent-brand" />
                 Я согласен на обработку{" "}
                 <button
                   type="button"
@@ -357,9 +382,11 @@ export function FinanceSection() {
                   персональных данных
                 </button>
               </label>
-              <button type="submit" className="font-sans bg-brand text-brand-foreground rounded-[6px] px-6 py-3 text-[11px] font-bold uppercase">
-                Отправить заявку
+              <button type="submit" disabled={formStatus === "sending"} className="font-sans bg-brand text-brand-foreground rounded-[6px] px-6 py-3 text-[11px] font-bold uppercase disabled:opacity-50">
+                {formStatus === "sending" ? "Отправка..." : "Отправить заявку"}
               </button>
+              {formStatus === "sent" ? <p className="text-brand text-[11px] font-semibold uppercase">Заявка отправлена</p> : null}
+              {formStatus === "error" ? <p className="text-destructive text-[11px]">Не удалось отправить заявку. Позвоните нам по телефону.</p> : null}
             </form>
           </div>
 

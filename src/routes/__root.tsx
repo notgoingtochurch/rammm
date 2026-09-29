@@ -11,6 +11,18 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import lpTrackerSnippet from "../../lptraker.txt?raw";
+import metrikaSnippet from "../../metrika.txt?raw";
+
+function extractInlineScripts(snippet: string) {
+  return Array.from(
+    snippet.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi),
+    (match) => match[1],
+  );
+}
+
+const lpTrackerScripts = extractInlineScripts(lpTrackerSnippet);
+const metrikaScripts = extractInlineScripts(metrikaSnippet);
 
 function NotFoundComponent() {
   return (
@@ -99,7 +111,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
     ],
-
+    scripts: [...lpTrackerScripts, ...metrikaScripts].map((children) => ({ children })),
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -115,6 +127,15 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
+        <noscript>
+          <div>
+            <img
+              src="https://mc.yandex.ru/watch/113172165"
+              style={{ position: "absolute", left: "-9999px" }}
+              alt=""
+            />
+          </div>
+        </noscript>
         <Scripts />
       </body>
     </html>

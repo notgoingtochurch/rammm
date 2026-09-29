@@ -7,6 +7,8 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+    env_file:
+      - .env
     environment:
       NODE_ENV: development
       LOVABLE_PREVIEW_HOST: id-preview--7e44983b-7dfc-454c-a672-5cf77b9bcf5a.lovable.app

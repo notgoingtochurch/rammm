@@ -1,0 +1,571 @@
+<!-- LPTracker code start-->
+
+<!-- загрузка виджета для парсинга заявок и для calltracking start -->
+
+<script>(function(){
+
+'use strict';
+
+ 
+
+/* Единственная ссылка в коде — ручка на бренд-домене. Доменов виджета тут нет. */
+
+var HOST_API    = 'https://my.lptracker.ru/land/widget/';
+
+var PATH_PARSER = '/lpt_widget/out/parser.min.js';
+
+var PATH_KICK   = '/lpt_widget/kick-widget.js';
+
+ 
+
+window.addEventListener('load',function(){
+
+ 
+
+ var botRe = /bot|crawler|spider|crawling|facebook|pingdom|headless|phantom|slurp|mediapartners|adsbot|duckduckbot|bingpreview|pinterest|yandex|baiduspider|googlebot/i;
+
+ var isBot = navigator.webdriver || botRe.test(navigator.userAgent);
+
+ var started = false;
+
+ 
+
+ function loadScript(src){
+
+   var s = document.createElement('script');
+
+   s.type = 'text/javascript'; s.async = true; s.src = src;
+
+   document.head.appendChild(s);
+
+ }
+
+ 
+
+ /* JSONP к ручке за живым доменом (через тег script, минуя CORS) */
+
+ function fetchHost(cb){
+
+   var name = 'lptWgCb_' + Math.random().toString(36).slice(2);
+
+   var s, t;
+
+   function cleanup(){
+
+     clearTimeout(t);
+
+     try { delete window[name]; } catch(e){ window[name] = undefined; }
+
+     if (s && s.parentNode) s.parentNode.removeChild(s);
+
+   }
+
+   window[name] = function(data){ cleanup(); cb(data && data.host); };
+
+   t = setTimeout(function(){ cleanup(); cb(null); }, 5000);
+
+   s = document.createElement('script');
+
+   s.async = true;
+
+   s.src = HOST_API + '?cb=' + name;
+
+   s.onerror = function(){ cleanup(); cb(null); };
+
+   document.head.appendChild(s);
+
+ }
+
+ 
+
+ function init(){
+
+   if(started) return;
+
+   started = true;
+
+   removeUserListeners();
+
+ 
+
+   fetchHost(function(host){
+
+     if(!host) return;
+
+     window.lptWg = window.lptWg || {};
+
+     window.lptWg.host = host;
+
+     window.lptWg.projectId = 109104;
+
+     window.lptWg.parser = true;
+
+     loadScript('https://' + host + PATH_PARSER);
+
+     loadScript('https://' + host + PATH_KICK);
+
+   });
+
+ }
+
+ 
+
+ function onUserEvent(evt){
+
+   if(evt && evt.isTrusted) init();
+
+ }
+
+ 
+
+ const userEvents = ['keydown','scroll','touchstart','click','mousemove','mousedown'];
+
+ 
+
+ function addUserListeners(){
+
+   userEvents.forEach(function(ev){
+
+     window.addEventListener(ev,onUserEvent,{passive:true,once:true});
+
+   });
+
+ }
+
+ 
+
+ function removeUserListeners(){
+
+   userEvents.forEach(function(ev){
+
+     window.removeEventListener(ev,onUserEvent);
+
+   });
+
+ }
+
+ 
+
+ if(!isBot) addUserListeners(); // только для живых людей
+
+});
+
+})();</script>
+
+<!-- загрузка виджета для парсинга заявок и для calltracking end -->
+
+ 
+
+<!-- вспомогательный для подмены номеров на сайте start -->
+
+<script>(function () {
+
+'use strict';
+
+ 
+
+var CFG = {
+
+ // Исходные номера в ЛЮБОМ формате. [] = автоопределение по ссылкам tel: на странице.
+
+ // Заполнять, только если на сайте есть номера, которые подменять НЕ надо.
+
+ numbers: [],
+
+ 
+
+ // Фолбэк-домены, если host не удалось взять от виджета (список из kick-widget.js).
+
+ hosts: ['crm-track.space', 'stats.lptracker.ru', 'stats.lptracker.io'],
+
+ 
+
+ // Цвет подменённого номера. '' = не трогать оформление.
+
+ color: '',
+
+ 
+
+ // Сколько ждём LPTRACKER_VIEW_ID, мс.
+
+ waitMs: 15000,
+
+ 
+
+ // DOM самого виджета — не трогаем. Дефис обязателен: классы виджета lpt-sidebar,
+
+ // а lptracker_* пишется через подчёркивание и под этот селектор не попадает.
+
+ skip: '#lpt-widget, [class*="lpt-"]',
+
+ 
+
+ debug: false
+
+};
+
+ 
+
+var IGNORE = /^(SCRIPT|STYLE|NOSCRIPT|TEXTAREA|IFRAME|OPTION|SELECT)$/i;
+
+// разделители внутри номера: пробелы, скобки, точки, дефисы всех мастей, nbsp, U+2212
+
+var SEP = '[\\s()\\-.\\u00a0\\u2010-\\u2015\\u2212]*';
+
+ 
+
+var SRC = [];    // исходные номера: [{d10, re}]
+
+var NEW = null;  // подменный номер, 10 цифр
+
+ 
+
+function log() {
+
+ if (CFG.debug) console.log.apply(console, ['[lpt-swap]'].concat([].slice.call(arguments)));
+
+}
+
+ 
+
+// "+7 (499) 705-05-57" / "TEL:84997050557" -> "4997050557"
+
+function norm(s) {
+
+ var d = String(s == null ? '' : s).replace(/\D/g, '');
+
+ if (d.length === 11 && (d[0] === '7' || d[0] === '8')) d = d.slice(1);
+
+ return d.length === 10 ? d : null;
+
+}
+
+ 
+
+// регексп, находящий конкретный номер в любом оформлении
+
+function reFor(d10) {
+
+ return new RegExp('(?:\\+?7|8)?' + SEP + d10.split('').join(SEP), 'g');
+
+}
+
+ 
+
+// переносим формат оригинала на новый номер (скобки, дефисы, префикс — как было)
+
+function mask(orig, d10) {
+
+ var digits = orig.match(/\d/g) || [];
+
+ var next;
+
+ if (digits.length === 11) next = digits[0] + d10;   // сохраняем ведущую 7/8
+
+ else if (digits.length === 10) next = d10;
+
+ else return null;
+
+ var i = 0;
+
+ return orig.replace(/\d/g, function () { return next[i++]; });
+
+}
+
+ 
+
+function skipped(el) {
+
+ return !!(CFG.skip && el && el.closest && el.closest(CFG.skip));
+
+}
+
+ 
+
+function textNodes(root, fn) {
+
+ var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+
+   acceptNode: function (n) {
+
+     var p = n.parentNode;
+
+     if (!p || p.nodeType !== 1 || IGNORE.test(p.nodeName)) return NodeFilter.FILTER_REJECT;
+
+     if (skipped(p)) return NodeFilter.FILTER_REJECT;
+
+     return /\d/.test(n.nodeValue || '') ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+
+   }
+
+ });
+
+ var n, list = [];
+
+ while ((n = w.nextNode())) list.push(n);
+
+ list.forEach(fn);
+
+}
+
+ 
+
+function telLinks() {
+
+ return [].filter.call(document.querySelectorAll('a[href]'), function (a) {
+
+   return /^tel:/i.test(a.getAttribute('href') || '') && !skipped(a);
+
+ });
+
+}
+
+ 
+
+// какие номера подменяем: из конфига или автоматом по tel:-ссылкам
+
+function discover() {
+
+ var set = {};
+
+ (CFG.numbers || []).forEach(function (x) { var d = norm(x); if (d) set[d] = 1; });
+
+ if (!Object.keys(set).length) {
+
+   telLinks().forEach(function (a) { var d = norm(a.getAttribute('href')); if (d) set[d] = 1; });
+
+ }
+
+ SRC = Object.keys(set).map(function (d) { return { d10: d, re: reFor(d) }; });
+
+ log('исходные номера:', Object.keys(set));
+
+}
+
+ 
+
+function apply() {
+
+ if (!NEW || !SRC.length) return;
+
+ var hits = 0;
+
+ 
+
+ textNodes(document.body, function (node) {
+
+   var v = node.nodeValue, out = v;
+
+   SRC.forEach(function (s) {
+
+     if (s.d10 === NEW) return;
+
+     s.re.lastIndex = 0;
+
+     out = out.replace(s.re, function (m) { return mask(m, NEW) || m; });
+
+   });
+
+   if (out !== v) {
+
+     node.nodeValue = out;
+
+     hits++;
+
+     if (CFG.color && node.parentElement) node.parentElement.style.color = CFG.color;
+
+   }
+
+ });
+
+ 
+
+ telLinks().forEach(function (a) {
+
+   var d = norm(a.getAttribute('href'));
+
+   if (!d || d === NEW) return;
+
+   if (!SRC.some(function (s) { return s.d10 === d; })) return;
+
+   a.setAttribute('href', 'tel:+7' + NEW);
+
+   hits++;
+
+ });
+
+ 
+
+ if (hits) log('подменено узлов:', hits);
+
+}
+
+ 
+
+var timer = null, observing = false;
+
+function observe() {
+
+ if (observing || !window.MutationObserver) return;
+
+ observing = true;
+
+ // вёрстка (Tilda/React/слайдеры) перерисовывает блоки и возвращает исходный номер — переподменяем.
+
+ // Наши же правки повторно не матчатся (подменный номер не входит в SRC), поэтому цикла нет.
+
+ new MutationObserver(function () {
+
+   clearTimeout(timer);
+
+   timer = setTimeout(apply, 150);
+
+ }).observe(document.body, { childList: true, subtree: true, characterData: true });
+
+}
+
+ 
+
+// домен: сначала от виджета, потом из уже загруженного parser.min.js, потом фолбэк
+
+function hosts() {
+
+ var out = [];
+
+ var add = function (h) { if (h && out.indexOf(h) < 0) out.push(h); };
+
+ if (window.lptWg && window.lptWg.host) add(window.lptWg.host);
+
+ [].forEach.call(document.scripts, function (s) {
+
+   var m = (s.src || '').match(/^https?:\/\/([^\/]+)\/lpt_widget\//);
+
+   if (m) add(m[1]);
+
+ });
+
+ (CFG.hosts || []).forEach(add);
+
+ return out;
+
+}
+
+ 
+
+function fetchPhone(list, i, cb) {
+
+ if (i >= list.length) return cb(null);
+
+ fetch('https://' + list[i] + '/track/get_calltracking_phone', {
+
+   method: 'POST',
+
+   headers: { 'Content-Type': 'application/json' },
+
+   body: JSON.stringify({ view_id: window.LPTRACKER_VIEW_ID })
+
+ })
+
+   .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+
+   .then(function (d) {
+
+     var n = norm(d && d.calltracking && d.calltracking.phone);
+
+     if (!n) throw new Error('в ответе нет номера');
+
+     cb(n);
+
+   })
+
+   .catch(function (e) {
+
+     log('хост ' + list[i] + ' не ответил:', e.message);
+
+     fetchPhone(list, i + 1, cb);   // домен заблокирован — пробуем следующий
+
+   });
+
+}
+
+ 
+
+function start() {
+
+ var t0 = Date.now();
+
+ var iv = setInterval(function () {
+
+   if (typeof window.LPTRACKER_VIEW_ID !== 'undefined' && window.LPTRACKER_VIEW_ID) {
+
+     clearInterval(iv);
+
+     discover();
+
+     if (!SRC.length) { log('исходные номера не найдены — нечего подменять'); return; }
+
+     fetchPhone(hosts(), 0, function (n) {
+
+       if (!n) { log('номер не получен — оставляем исходный'); return; }
+
+       NEW = n;
+
+       log('подменный номер:', n);
+
+       apply();
+
+       observe();
+
+     });
+
+     return;
+
+   }
+
+   if (Date.now() - t0 > CFG.waitMs) {
+
+     clearInterval(iv);   // виджет не поднялся (заблокирован) — номер остаётся исходным
+
+     log('LPTRACKER_VIEW_ID не появился за ' + CFG.waitMs + 'мс');
+
+   }
+
+ }, 100);
+
+}
+
+ 
+
+// Виджет грузится только после жеста живого человека (см. блок загрузки выше),
+
+// поэтому и ждать LPTRACKER_VIEW_ID начинаем с жеста. Иначе waitMs истечёт ещё до
+
+// того, как посетитель шевельнётся, и подмена не сработает вовсе.
+
+function arm() {
+
+ if (typeof window.LPTRACKER_VIEW_ID !== 'undefined' && window.LPTRACKER_VIEW_ID) return start();
+
+ var evs = ['keydown', 'scroll', 'touchstart', 'click', 'mousemove', 'mousedown'];
+
+ function off() { evs.forEach(function (ev) { window.removeEventListener(ev, on); }); }
+
+ function on(e) { if (!e || !e.isTrusted) return; off(); start(); }   // once:true нельзя: синтетика съест слушатель
+
+ evs.forEach(function (ev) { window.addEventListener(ev, on, { passive: true }); });
+
+}
+
+ 
+
+if (document.readyState === 'complete') arm();
+
+else window.addEventListener('load', arm);
+
+ 
+
+})();</script>
+
+<!-- вспомогательный для подмены номеров на сайте end -->
+
+<!-- LPTracker code end-->

@@ -12,8 +12,9 @@ import {
   Youtube,
   Send,
 } from "lucide-react";
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
+import { sendContactEmail } from "@/lib/contact-email";
 import contactHeroAsset from "@/assets/contact-0.png";
 import contactManagerAsset from "@/assets/contact-men.png";
 import footerLogoAsset from "@/assets/footer-logo.png";
@@ -110,6 +111,30 @@ const FOOTER_COLS = [
 export function ContactsSection() {
   const [agreementOpen, setAgreementOpen] = useState(false);
   const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    setFormStatus("sending");
+
+    try {
+      await sendContactEmail({
+        data: {
+          source: "Форма в разделе контактов",
+          name: String(formData.get("name") ?? ""),
+          phone: String(formData.get("phone") ?? ""),
+          comment: String(formData.get("comment") ?? ""),
+          website: String(formData.get("website") ?? ""),
+        },
+      });
+      form.reset();
+      setFormStatus("sent");
+    } catch {
+      setFormStatus("error");
+    }
+  };
 
   return (
     <section id="contacts" className="border-border border-t bg-[#FDFDFE] pt-0 pb-16">
@@ -245,24 +270,31 @@ export function ContactsSection() {
             <p className="text-muted-foreground mt-3 text-[11px] leading-relaxed">
               Наш специалист свяжется с вами и ответит на все вопросы
             </p>
-            <form className="mt-5 grid gap-3" onSubmit={(e) => e.preventDefault()}>
+            <form className="mt-5 grid gap-3" onSubmit={handleContactSubmit}>
+              <input name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
               <div className="grid gap-3 sm:grid-cols-2">
                 <input
                   className="border-border bg-background placeholder:text-muted-foreground rounded-[5px] border px-4 py-3 text-[11px] outline-none focus:border-brand"
                   placeholder="Ваше имя"
+                  name="name"
+                  required
                 />
                 <input
                   className="border-border bg-background placeholder:text-muted-foreground rounded-[5px] border px-4 py-3 text-[11px] outline-none focus:border-brand"
                   placeholder="Телефон"
+                  name="phone"
+                  type="tel"
+                  required
                 />
               </div>
               <textarea
                 rows={4}
                 className="border-border bg-background placeholder:text-muted-foreground rounded-[5px] border px-4 py-3 text-[11px] outline-none focus:border-brand"
                 placeholder="Комментарий"
+                name="comment"
               />
               <label className="text-muted-foreground flex items-start gap-2.5 text-[10px] leading-snug">
-                <input type="checkbox" className="accent-brand mt-0.5 h-3.5 w-3.5 shrink-0" />
+                <input type="checkbox" required className="accent-brand mt-0.5 h-3.5 w-3.5 shrink-0" />
                 Я согласен на обработку{" "}
                 <button
                   type="button"
@@ -274,10 +306,13 @@ export function ContactsSection() {
               </label>
               <button
                 type="submit"
+                disabled={formStatus === "sending"}
                 className="bg-brand text-brand-foreground mt-1 rounded-[5px] px-6 py-3 text-[11px] font-bold tracking-normal uppercase transition-opacity hover:opacity-90"
               >
-                Отправить заявку
+                {formStatus === "sending" ? "Отправка..." : "Отправить заявку"}
               </button>
+              {formStatus === "sent" ? <p className="text-brand text-[11px] font-semibold uppercase">Заявка отправлена</p> : null}
+              {formStatus === "error" ? <p className="text-destructive text-[11px]">Не удалось отправить заявку. Позвоните нам по телефону.</p> : null}
             </form>
           </div>
 

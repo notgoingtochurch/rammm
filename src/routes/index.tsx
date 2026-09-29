@@ -1,5 +1,6 @@
 import { type CSSProperties, type FormEvent, useEffect, useState } from "react";
 import logoRam from "@/assets/logo-ram-svg.svg";
+import { sendContactEmail } from "@/lib/contact-email";
 
 
 import { createFileRoute } from "@tanstack/react-router";
@@ -59,7 +60,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import heroVan from "@/assets/hero-section-bg.jpg";
-import videoThumb from "@/assets/video-thumb.jpg";
+import heroVideoThumb from "@/assets/rutube-promaster-thumb.jpg";
 import modelSideAsset from "@/assets/van-low-roof-6.png";
 import vanHighRoofAsset from "@/assets/van-high-roof-6.png";
 import vanSuperHighRoofAsset from "@/assets/van-super-high-roof-2.png";
@@ -94,8 +95,6 @@ import vidTestdriveAsset from "@/assets/video-7.png";
 const vidTestdrive = vidTestdriveAsset;
 import vidOwnersAsset from "@/assets/video-8-2.png";
 const vidOwners = vidOwnersAsset;
-import galleryHeroAsset from "@/assets/gal-ext-front-new.png";
-const galleryHero = galleryHeroAsset;
 import carCompareAsset from "@/assets/car-1-2.png";
 
 import compSprinter from "@/assets/comp-sprinter.jpg";
@@ -466,6 +465,9 @@ function Index() {
   const [discountPhone, setDiscountPhone] = useState("");
   const [discountConsent, setDiscountConsent] = useState(false);
   const [discountSubmitted, setDiscountSubmitted] = useState(false);
+  const [discountSending, setDiscountSending] = useState(false);
+  const [discountError, setDiscountError] = useState("");
+  const [heroVideoOpen, setHeroVideoOpen] = useState(false);
   const [headerMenuOpen, setHeaderMenuOpen] = useState(false);
   const [cookiesVisible, setCookiesVisible] = useState(false);
   const [cookiesPolicyOpen, setCookiesPolicyOpen] = useState(false);
@@ -505,16 +507,34 @@ function Index() {
   const openDiscountDialog = () => {
     setDiscountOpen(true);
     setDiscountSubmitted(false);
+    setDiscountError("");
   };
 
-  const handleDiscountSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleDiscountSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!canSubmitDiscount) return;
 
-    setDiscountSubmitted(true);
-    setDiscountPhone("");
-    setDiscountConsent(false);
+    setDiscountSending(true);
+    setDiscountError("");
+
+    try {
+      const formData = new FormData(event.currentTarget);
+      await sendContactEmail({
+        data: {
+          source: "Обратный звонок",
+          phone: discountPhone,
+          website: String(formData.get("website") ?? ""),
+        },
+      });
+      setDiscountSubmitted(true);
+      setDiscountPhone("");
+      setDiscountConsent(false);
+    } catch {
+      setDiscountError("Не удалось отправить заявку. Позвоните нам по телефону.");
+    } finally {
+      setDiscountSending(false);
+    }
   };
 
   return (
@@ -636,6 +656,7 @@ function Index() {
           </DialogHeader>
 
           <form className="mt-2 grid gap-4" onSubmit={handleDiscountSubmit}>
+            <input name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
             <label className="grid gap-2">
               <span className="text-[11px] font-bold tracking-wide uppercase">
                 Телефон
@@ -678,10 +699,10 @@ function Index() {
 
             <button
               type="submit"
-              disabled={!canSubmitDiscount}
+              disabled={!canSubmitDiscount || discountSending}
               className="bg-brand text-brand-foreground rounded-[5px] px-6 py-3 text-[11px] font-bold tracking-normal uppercase transition-opacity hover:opacity-90 disabled:pointer-events-none disabled:opacity-50"
             >
-              Отправить
+              {discountSending ? "Отправка..." : "Отправить"}
             </button>
 
             {discountSubmitted ? (
@@ -689,7 +710,23 @@ function Index() {
                 Заявка отправлена
               </p>
             ) : null}
+            {discountError ? <p className="text-destructive text-[11px]">{discountError}</p> : null}
           </form>
+        </DialogContent>
+      </Dialog>
+      <Dialog open={heroVideoOpen} onOpenChange={setHeroVideoOpen}>
+        <DialogContent className="w-[calc(100vw-32px)] max-w-5xl rounded-[8px] border-border bg-black p-3 sm:p-5">
+          <DialogTitle className="sr-only">Ram ProMaster как одна из вершин концерна Stellantis</DialogTitle>
+          <DialogDescription className="sr-only">Видео на RUTUBE</DialogDescription>
+          <div className="aspect-video w-full overflow-hidden rounded-[6px] bg-black">
+            <iframe
+              src="https://rutube.ru/play/embed/d4762685f4fbe494c4151ce4d2ddf85d"
+              title="Ram ProMaster как одна из вершин концерна Stellantis"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+              className="h-full w-full border-0"
+            />
+          </div>
         </DialogContent>
       </Dialog>
 
@@ -822,12 +859,17 @@ function Index() {
               </div>
 
               <div className="ram-hero-video self-end">
-                <div className="group overflow-hidden rounded-[8px] bg-accent text-accent-foreground shadow-xl">
+                <button
+                  type="button"
+                  onClick={() => setHeroVideoOpen(true)}
+                  aria-label="Смотреть видео Ram ProMaster"
+                  className="group w-full overflow-hidden rounded-[8px] bg-accent text-left text-accent-foreground shadow-xl"
+                >
                   <div className="relative">
 
                     <img
-                      src={galleryHero}
-                      alt="RAM ProMaster — кадр видеообзора"
+                      src={heroVideoThumb}
+                      alt="Превью видео Ram ProMaster на RUTUBE"
 
                       width={230}
                       height={190}
@@ -848,7 +890,7 @@ function Index() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </button>
               </div>
             </div>
 
