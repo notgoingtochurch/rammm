@@ -226,9 +226,13 @@
     max-width: 100%;
   }
 
-  .ram-page img {
-    overflow-clip-margin: unset;
-  }
+.ram-page img {
+  overflow-clip-margin: unset;
+}
+
+.ram-mobile-callback {
+  display: none;
+}
 
   .ram-page button,
   .ram-page a,
@@ -456,6 +460,10 @@
   }
 
   @media screen and (max-width: 768px) {
+    .ram-mobile-callback {
+      display: flex;
+    }
+
     .ram-gallery-grid {
       grid-template-columns: none !important;
       grid-auto-flow: column;

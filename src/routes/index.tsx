@@ -798,7 +798,7 @@ function Index() {
                 }}
                 className="ram-mobile-discount-button bg-brand font-menu text-brand-foreground mt-2 hidden h-[42px] items-center justify-center rounded-sm px-6 text-xs font-semibold tracking-wide uppercase transition-opacity hover:opacity-90"
               >
-                Получить скидку
+                Обратный звонок
               </button>
             </div>
           </nav>
@@ -1409,11 +1409,20 @@ function Index() {
           type="button"
           aria-label="Вернуться наверх"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed right-5 bottom-5 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-brand text-brand-foreground shadow-lg transition-transform hover:scale-105"
+          className="fixed right-5 bottom-5 z-40 flex h-11 w-11 items-center justify-center rounded-sm bg-brand text-brand-foreground shadow-lg transition-transform hover:scale-105"
         >
           <ArrowUp className="h-5 w-5" strokeWidth={2} />
         </button>
       ) : null}
+
+      <button
+        type="button"
+        aria-label="Получить консультацию"
+        onClick={openDiscountDialog}
+        className={`ram-mobile-callback fixed bottom-5 z-40 h-11 items-center justify-center rounded-sm bg-brand text-xs font-bold uppercase text-brand-foreground shadow-lg transition-all ${showBackToTop ? "right-[69px] left-5 w-auto px-6" : "right-5 left-5 px-6"}`}
+      >
+        Получить консультацию
+      </button>
 
 
     </div>
