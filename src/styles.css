@@ -662,10 +662,18 @@
       gap: 10px !important;
     }
 
+    .ram-warranty-parts {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+
     .ram-consent-label {
       align-items: center !important;
       gap: 8px !important;
       white-space: nowrap;
+    }
+
+    .ram-consent-label input {
+      flex-shrink: 0 !important;
     }
 
     .ram-tech-visual {

@@ -264,7 +264,7 @@ export function FinanceSection() {
               Гарантия распространяется на все узлы и агрегаты автомобиля при соблюдении условий
               эксплуатации и прохождения планового ТО.
             </p>
-            <div className="mt-5 grid grid-cols-5 gap-2">
+            <div className="ram-warranty-parts mt-5 grid grid-cols-5 gap-2">
               {WARRANTY_PARTS.map(({ icon: Icon, label }) => (
                 <div key={label}>
                   <Icon className="h-6 w-6" strokeWidth={1.3} />
