@@ -870,6 +870,7 @@ function Index() {
                     <img
                       src={heroVideoThumb}
                       alt="Превью видео Ram ProMaster на RUTUBE"
+                      loading="lazy"
 
                       width={230}
                       height={190}
@@ -936,7 +937,7 @@ function Index() {
                   { icon: MoveHorizontal, image: "/chassis.svg", title: "Передний", value: "Привод", text: "Уверенная тяга и большой полезный объём пространства" },
                 ].map(({ icon: Icon, image, title, value, text }) => (
                   <div key={title} className="flex min-h-44 flex-col items-center justify-center px-3 py-5 text-center">
-                    {image ? <img src={image} alt="" className="h-9 w-9 object-contain" /> : <Icon className="h-9 w-9" strokeWidth={1.6} />}
+                    {image ? <img src={image} alt="" loading="lazy" className="h-9 w-9 object-contain" /> : <Icon className="h-9 w-9" strokeWidth={1.6} />}
                     <p className="mt-3 font-display text-base leading-none font-bold uppercase">{title}</p>
                     <p className="mt-1 font-display text-xl leading-none font-bold uppercase">{value}</p>
                     <p className="mt-3 text-[10px] leading-snug text-black/60">{text}</p>
