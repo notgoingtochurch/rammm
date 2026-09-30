@@ -357,14 +357,14 @@ export function ContactsSection() {
             <ul className="mt-5 grid gap-3 text-[11px]">
               <li className="flex items-center gap-3">
                 <Phone className="text-brand h-4 w-4 shrink-0" strokeWidth={1.5} />
-                <a href="tel:+74997119161" className="hover:text-brand transition-colors">
-                  +7 (499) 711 - 9161
+                <a href="tel:+79801588831" className="hover:text-brand transition-colors">
+                  +7 (980) 158-88-31
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="text-brand h-4 w-4 shrink-0" strokeWidth={1.5} />
-                <a href="mailto:sales@ducatocenter.ru" className="hover:text-brand transition-colors">
-                  sales@ducatocenter.ru
+                <a href="mailto:info@ducatocenter.ru" className="hover:text-brand transition-colors">
+                  info@ducatocenter.ru
                 </a>
               </li>
               <li className="flex items-center gap-3">
