@@ -14,13 +14,13 @@ import {
   Repeat,
   Truck,
 } from "lucide-react";
-import aboutDealerAsset from "@/assets/about-dealer.png";
+import aboutDealerAsset from "@/assets/about-dealer.webp";
 const aboutDealer = aboutDealerAsset;
-import aboutShippingAsset from "@/assets/ship-1.png";
+import aboutShippingAsset from "@/assets/ship-1.webp";
 const aboutShipping = aboutShippingAsset;
-import aboutWarehouseAsset from "@/assets/ship-2.png";
+import aboutWarehouseAsset from "@/assets/ship-2.webp";
 const aboutWarehouse = aboutWarehouseAsset;
-import aboutServiceAsset from "@/assets/ship-3.png";
+import aboutServiceAsset from "@/assets/ship-3.webp";
 const aboutService = aboutServiceAsset;
 
 const PILLARS = [

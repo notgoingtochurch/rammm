@@ -1,7 +1,7 @@
 import { ShieldCheck, Sparkles, Star, Check, ArrowRight, Wrench, Truck, Percent } from "lucide-react";
-import trimWhiteAsset from "@/assets/ram-white.png";
-import trimSilverAsset from "@/assets/ram-grey.png";
-import trimBlackAsset from "@/assets/ram-black.png";
+import trimWhiteAsset from "@/assets/ram-white.webp";
+import trimSilverAsset from "@/assets/ram-grey.webp";
+import trimBlackAsset from "@/assets/ram-black.webp";
 
 const INTRO_FEATURES = [
   { icon: ShieldCheck, title: "Надёжность", text: "Проверенные решения и компоненты" },

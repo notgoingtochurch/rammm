@@ -17,11 +17,11 @@ import {
   Headphones,
   ArrowRight,
 } from "lucide-react";
-import vsRam from "@/assets/vs-ram.jpg";
-import compareBg from "@/assets/compare-bg.png";
-import compDucato from "@/assets/comp-ducato.jpg";
-import vsSprinter from "@/assets/vs-sprinter.jpg";
-import vsCrafter from "@/assets/vs-crafter.jpg";
+import vsRam from "@/assets/vs-ram.webp";
+import compareBg from "@/assets/compare-bg.webp";
+import compDucato from "@/assets/comp-ducato.webp";
+import vsSprinter from "@/assets/vs-sprinter.webp";
+import vsCrafter from "@/assets/vs-crafter.webp";
 
 const RIVALS = [
   { name: 'RAM ProMaster 2500 159" High Roof', image: vsRam, ours: true },

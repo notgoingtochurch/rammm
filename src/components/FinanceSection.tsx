@@ -11,15 +11,15 @@ import {
   Fuel,
 } from "lucide-react";
 import { type FormEvent, useState } from "react";
-import leasingBgAsset from "@/assets/leasing-bg.png";
-import finCreditAsset from "@/assets/fin-credit.png";
+import leasingBgAsset from "@/assets/leasing-bg.webp";
+import finCreditAsset from "@/assets/fin-credit.webp";
 const finCredit = finCreditAsset;
-import finLeasingAsset from "@/assets/fin-leasing-2.png";
-import warrantyBgAsset from "@/assets/warranty-bg.png";
+import finLeasingAsset from "@/assets/fin-leasing-2.webp";
+import warrantyBgAsset from "@/assets/warranty-bg.webp";
 const finLeasing = finLeasingAsset;
-import finTradeinAsset from "@/assets/fin-tradein.png";
+import finTradeinAsset from "@/assets/fin-tradein.webp";
 const finTradein = finTradeinAsset;
-import finServiceAsset from "@/assets/fin-service-2.png";
+import finServiceAsset from "@/assets/fin-service-2.webp";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { sendContactEmail } from "@/lib/contact-email";
 

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Play, ArrowRight, Check } from "lucide-react";
-import ytThumb from "@/assets/rutube-promaster-thumb.jpg";
-import reviewBg from "@/assets/review-bg.png";
+import ytThumb from "@/assets/rutube-promaster-thumb.webp";
+import reviewBg from "@/assets/review-bg.webp";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-const REVIEW_IMAGES = import.meta.glob("../assets/reviews/*.jpg", {
+const REVIEW_IMAGES = import.meta.glob("../assets/reviews/*.webp", {
   eager: true,
   query: "?url",
   import: "default",
@@ -101,7 +101,7 @@ export function ReviewsSection() {
             >
               <div className="relative aspect-[9/16] overflow-hidden bg-[#161616]">
                 <img
-                  src={REVIEW_IMAGES[`../assets/reviews/${r.videoId}.jpg`]}
+                  src={REVIEW_IMAGES[`../assets/reviews/${r.videoId}.webp`]}
                   alt={r.title}
                   loading="lazy"
                   className="h-full w-full object-cover opacity-100"

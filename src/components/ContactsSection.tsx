@@ -15,9 +15,9 @@ import {
 import { type FormEvent, useState } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { sendContactEmail } from "@/lib/contact-email";
-import contactHeroAsset from "@/assets/contact-0.png";
-import contactManagerAsset from "@/assets/contact-men.png";
-import footerLogoAsset from "@/assets/footer-logo.png";
+import contactHeroAsset from "@/assets/contact-0.webp";
+import contactManagerAsset from "@/assets/contact-men.webp";
+import footerLogoAsset from "@/assets/footer-logo.webp";
 
 const AGREEMENT_TEXT = [
   "Пользователь, оставляя обращение, заявку на сайте ramvan.ru (далее также – сайт), создавая аккаунт и/или соглашаясь с офертой на сайте, принимает настоящее Согласие на обработку персональных данных.",

@@ -59,51 +59,51 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import heroVan from "@/assets/hero-section-bg.jpg";
-import heroVideoThumb from "@/assets/rutube-promaster-thumb.jpg";
-import modelSideAsset from "@/assets/van-low-roof-6.png";
-import vanHighRoofAsset from "@/assets/van-high-roof-6.png";
-import vanSuperHighRoofAsset from "@/assets/van-super-high-roof-2.png";
-import vanExtHighRoofAsset from "@/assets/van-ext-high-roof-3.png";
+import heroVan from "@/assets/hero-section-bg.webp";
+import heroVideoThumb from "@/assets/rutube-promaster-thumb.webp";
+import modelSideAsset from "@/assets/van-low-roof-6.webp";
+import vanHighRoofAsset from "@/assets/van-high-roof-6.webp";
+import vanSuperHighRoofAsset from "@/assets/van-super-high-roof-2.webp";
+import vanExtHighRoofAsset from "@/assets/van-ext-high-roof-3.webp";
 const vanLowRoof = modelSideAsset;
 const vanHighRoof = vanHighRoofAsset;
 const vanSuperHighRoof = vanSuperHighRoofAsset;
 const vanExtHighRoof = vanExtHighRoofAsset;
-import interiorMainAsset from "@/assets/saloon.png";
+import interiorMainAsset from "@/assets/saloon.webp";
 const interiorMain = interiorMainAsset;
-import interiorDisplayAsset from "@/assets/media.png";
+import interiorDisplayAsset from "@/assets/media.webp";
 const interiorDisplay = interiorDisplayAsset;
-import interiorClusterAsset from "@/assets/panel.png";
+import interiorClusterAsset from "@/assets/panel.webp";
 const interiorCluster = interiorClusterAsset;
-import interiorStorageAsset from "@/assets/panel2.png";
+import interiorStorageAsset from "@/assets/panel2.webp";
 const interiorStorage = interiorStorageAsset;
-import interiorSeatsAsset from "@/assets/seats.png";
+import interiorSeatsAsset from "@/assets/seats.webp";
 const interiorSeats = interiorSeatsAsset;
-import vidExteriorAsset from "@/assets/video-1.png";
+import vidExteriorAsset from "@/assets/video-1.webp";
 const vidExterior = vidExteriorAsset;
-import vidInteriorAsset from "@/assets/video-2.png";
+import vidInteriorAsset from "@/assets/video-2.webp";
 const vidInterior = vidInteriorAsset;
-import vidEngineAsset from "@/assets/video-3.png";
+import vidEngineAsset from "@/assets/video-3.webp";
 const vidEngine = vidEngineAsset;
-import vidGearboxAsset from "@/assets/video-4.png";
+import vidGearboxAsset from "@/assets/video-4.webp";
 const vidGearbox = vidGearboxAsset;
-import vidCargoAsset from "@/assets/video-5.png";
+import vidCargoAsset from "@/assets/video-5.webp";
 const vidCargo = vidCargoAsset;
-import vidCamperAsset from "@/assets/video-6.png";
+import vidCamperAsset from "@/assets/video-6.webp";
 const vidCamper = vidCamperAsset;
-import vidTestdriveAsset from "@/assets/video-7.png";
+import vidTestdriveAsset from "@/assets/video-7.webp";
 const vidTestdrive = vidTestdriveAsset;
-import vidOwnersAsset from "@/assets/video-8-2.png";
+import vidOwnersAsset from "@/assets/video-8-2.webp";
 const vidOwners = vidOwnersAsset;
-import carCompareAsset from "@/assets/car-1-2.png";
+import carCompareAsset from "@/assets/car-1-2.webp";
 
-import compSprinter from "@/assets/comp-sprinter.jpg";
-import compDucato from "@/assets/comp-ducato.jpg";
-import compCrafter from "@/assets/vs-crafter.jpg";
-import engineV6Asset from "@/assets/engine-1.png";
+import compSprinter from "@/assets/comp-sprinter.webp";
+import compDucato from "@/assets/comp-ducato.webp";
+import compCrafter from "@/assets/vs-crafter.webp";
+import engineV6Asset from "@/assets/engine-1.webp";
 const engineV6 = engineV6Asset;
-import gearbox9hpAsset from "@/assets/engine-3.png";
-import specVanAsset from "@/assets/engine-2.png";
+import gearbox9hpAsset from "@/assets/engine-3.webp";
+import specVanAsset from "@/assets/engine-2.webp";
 
 function EngineIcon({ className }: { className?: string }) {
   return (
@@ -949,15 +949,15 @@ function Index() {
             <div className="mt-8 grid gap-7 lg:grid-cols-12 lg:items-end">
               <div className="grid gap-7 lg:col-span-12 lg:grid-cols-[1.2fr_1fr] lg:items-start">
                 <div>
-                  <img src="/size-1.jpg" alt="RAM ProMaster 2500: вид сбоку с габаритами" width={1078} height={560} loading="lazy" className="ram-catalog-photo ram-catalog-photo-side" />
+                  <img src="/size-1.webp" alt="RAM ProMaster 2500: вид сбоку с габаритами" width={1078} height={560} loading="lazy" className="ram-catalog-photo ram-catalog-photo-side" />
                 </div>
                 <div>
-                  <img src="/size-2.jpg" alt="RAM ProMaster 2500: передняя и задняя проекции" width={474} height={560} loading="lazy" className="ram-catalog-photo ram-catalog-photo-front" />
+                  <img src="/size-2.webp" alt="RAM ProMaster 2500: передняя и задняя проекции" width={474} height={560} loading="lazy" className="ram-catalog-photo ram-catalog-photo-front" />
                 </div>
               </div>
               <div className="ram-catalog-lower-media grid lg:col-span-9 lg:items-center">
-                <img src="/size-3.jpg" alt="RAM ProMaster 2500: грузовой отсек и габариты" width={1131} height={452} loading="lazy" className="ram-catalog-photo ram-catalog-photo-cargo" />
-                <img src="/size-3-1.jpg" alt="RAM ProMaster 2500: задняя часть и размеры" width={662} height={298} loading="lazy" className="ram-catalog-photo ram-catalog-photo-cargo-door" />
+                <img src="/size-3.webp" alt="RAM ProMaster 2500: грузовой отсек и габариты" width={1131} height={452} loading="lazy" className="ram-catalog-photo ram-catalog-photo-cargo" />
+                <img src="/size-3-1.webp" alt="RAM ProMaster 2500: задняя часть и размеры" width={662} height={298} loading="lazy" className="ram-catalog-photo ram-catalog-photo-cargo-door" />
               </div>
               <div className="lg:col-span-3">
                 <div className="ram-cargo-dimensions flex h-full min-h-48 flex-col justify-center px-7 py-6 text-left">
@@ -1186,9 +1186,9 @@ function Index() {
             </div>
 
             <div className="mt-9 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
-              <img src="/size-4.jpg" alt="RAM ProMaster: вид сбоку и размеры" width={547} height={351} loading="lazy" className="h-auto w-fit max-w-full object-contain lg:h-[351px]" />
-              <img src="/size-5.jpg" alt="RAM ProMaster: передняя и задняя проекции" width={567} height={351} loading="lazy" className="h-auto w-fit max-w-full object-contain lg:h-[351px]" />
-              <img src="/size-6.jpg" alt="RAM ProMaster: грузовой отсек" width={425} height={351} loading="lazy" className="h-auto w-fit max-w-full object-contain lg:h-[351px]" />
+              <img src="/size-4.webp" alt="RAM ProMaster: вид сбоку и размеры" width={547} height={351} loading="lazy" className="h-auto w-fit max-w-full object-contain lg:h-[351px]" />
+              <img src="/size-5.webp" alt="RAM ProMaster: передняя и задняя проекции" width={567} height={351} loading="lazy" className="h-auto w-fit max-w-full object-contain lg:h-[351px]" />
+              <img src="/size-6.webp" alt="RAM ProMaster: грузовой отсек" width={425} height={351} loading="lazy" className="h-auto w-fit max-w-full object-contain lg:h-[351px]" />
             </div>
 
             <div className="mt-8 grid divide-y divide-black/10 overflow-hidden rounded-xl border border-black/10 bg-white sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-6">

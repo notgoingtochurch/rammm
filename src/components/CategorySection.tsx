@@ -10,17 +10,17 @@ import {
   ArrowRight,
   Headphones,
 } from "lucide-react";
-import catWhiteAsset from "@/assets/vs-1-3.png";
+import catWhiteAsset from "@/assets/vs-1-3.webp";
 const catWhite = catWhiteAsset;
-import catDarkAsset from "@/assets/vs-2-3.png";
+import catDarkAsset from "@/assets/vs-2-3.webp";
 const catDark = catDarkAsset;
-import catConsult from "@/assets/cat-consult.jpg";
+import catConsult from "@/assets/cat-consult.webp";
 
-import vsBanner from "@/assets/vs-0-3.png";
-import photo1Asset from "@/assets/vs-3-2.png";
-import photo2Asset from "@/assets/vs-4-2.png";
-import photo3Asset from "@/assets/vs-5-3.png";
-import photo4Asset from "@/assets/vs-6-2.png";
+import vsBanner from "@/assets/vs-0-3.webp";
+import photo1Asset from "@/assets/vs-3-2.webp";
+import photo2Asset from "@/assets/vs-4-2.webp";
+import photo3Asset from "@/assets/vs-5-3.webp";
+import photo4Asset from "@/assets/vs-6-2.webp";
 
 
 const CARDS = [

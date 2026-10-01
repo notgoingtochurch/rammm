@@ -2,18 +2,18 @@ import { useState } from "react";
 import { Camera, BadgeCheck, Eye, ShieldCheck } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 const PHOTOS: { src: string; alt: string; cat?: string }[] = [
-  { src: "/ram-images/ram-1.jpg", alt: "RAM ProMaster фото 1", cat: "Детали" },
-  { src: "/ram-images/ram-2.jpg", alt: "RAM ProMaster фото 2", cat: "Детали" },
-  { src: "/ram-images/ram-3.jpg", alt: "RAM ProMaster фото 3", cat: "Детали" },
-  { src: "/ram-images/ram-4.jpeg", alt: "RAM ProMaster фото 4", cat: "Детали" },
-  { src: "/ram-images/ram-5.jpg", alt: "RAM ProMaster фото 5", cat: "Детали" },
-  { src: "/ram-images/ram-6.avif", alt: "RAM ProMaster фото 6", cat: "Детали" },
-  { src: "/ram-images/ram-7.jpg", alt: "RAM ProMaster фото 7", cat: "Детали" },
-  { src: "/ram-images/ram-8.png", alt: "RAM ProMaster фото 8", cat: "Детали" },
-  { src: "/ram-images/ram-9.png", alt: "RAM ProMaster фото 9", cat: "Детали" },
-  { src: "/ram-images/ram-10.jpg", alt: "RAM ProMaster фото 10", cat: "Детали" },
-  { src: "/ram-images/ram-11.jpg", alt: "RAM ProMaster фото 11", cat: "Детали" },
-  { src: "/ram-images/ram-12.jpg", alt: "RAM ProMaster фото 12", cat: "Детали" },
+  { src: "/ram-images/ram-1.webp", alt: "RAM ProMaster фото 1", cat: "Детали" },
+  { src: "/ram-images/ram-2.webp", alt: "RAM ProMaster фото 2", cat: "Детали" },
+  { src: "/ram-images/ram-3.webp", alt: "RAM ProMaster фото 3", cat: "Детали" },
+  { src: "/ram-images/ram-4.webp", alt: "RAM ProMaster фото 4", cat: "Детали" },
+  { src: "/ram-images/ram-5.webp", alt: "RAM ProMaster фото 5", cat: "Детали" },
+  { src: "/ram-images/ram-6.webp", alt: "RAM ProMaster фото 6", cat: "Детали" },
+  { src: "/ram-images/ram-7.webp", alt: "RAM ProMaster фото 7", cat: "Детали" },
+  { src: "/ram-images/ram-8.webp", alt: "RAM ProMaster фото 8", cat: "Детали" },
+  { src: "/ram-images/ram-9.webp", alt: "RAM ProMaster фото 9", cat: "Детали" },
+  { src: "/ram-images/ram-10.webp", alt: "RAM ProMaster фото 10", cat: "Детали" },
+  { src: "/ram-images/ram-11.webp", alt: "RAM ProMaster фото 11", cat: "Детали" },
+  { src: "/ram-images/ram-12.webp", alt: "RAM ProMaster фото 12", cat: "Детали" },
 ];
 
 const NOTES = [
