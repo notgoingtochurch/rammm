@@ -188,7 +188,7 @@ export function CompetitorsSection({ onDiscountClick }: CompetitorsSectionProps)
           <button
             type="button"
             onClick={onDiscountClick}
-            className="font-sans bg-brand text-brand-foreground flex items-center gap-3 rounded-[5px] px-6 py-3 text-[11px] font-bold tracking-normal uppercase transition-opacity hover:opacity-90"
+            className="ram-ripple-button font-sans bg-brand text-brand-foreground flex items-center gap-3 rounded-[5px] px-6 py-3 text-[11px] font-bold tracking-normal uppercase transition-opacity hover:opacity-90"
           >
             Получить скидку
             <ArrowRight className="h-4 w-4" strokeWidth={1.6} />

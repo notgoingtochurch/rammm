@@ -193,7 +193,7 @@ export function ReviewsSection() {
             href="https://rutube.ru/channel/25956461/"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-brand text-brand-foreground hover:bg-accent inline-flex items-center justify-center gap-3 rounded-[5px] px-8 py-3.5 text-[11px] font-bold tracking-[0.14em] uppercase transition-colors"
+            className="ram-ripple-button bg-brand text-brand-foreground hover:bg-accent inline-flex items-center justify-center gap-3 rounded-[5px] px-8 py-3.5 text-[11px] font-bold tracking-[0.14em] uppercase transition-colors"
           >
             ПЕРЕЙТИ НА RUTUBE
             <ArrowRight className="h-4 w-4" />

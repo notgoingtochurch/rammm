@@ -22,6 +22,7 @@ const finTradein = finTradeinAsset;
 import finServiceAsset from "@/assets/fin-service-2.webp";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { sendContactEmail } from "@/lib/contact-email";
+import { formatRussianPhone } from "@/lib/phone";
 
 const finService = finServiceAsset;
 
@@ -357,7 +358,18 @@ export function FinanceSection() {
               <input name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
               <div className="grid gap-3 sm:grid-cols-2">
                 <input className={selectCls} name="name" placeholder="Ваше имя" required />
-                <input className={selectCls} name="phone" type="tel" placeholder="Телефон" required />
+                <input
+                  className={selectCls}
+                  name="phone"
+                  type="tel"
+                  inputMode="tel"
+                  autoComplete="tel"
+                  placeholder="+7 (___) ___-__-__"
+                  onChange={(event) => {
+                    event.currentTarget.value = formatRussianPhone(event.currentTarget.value);
+                  }}
+                  required
+                />
               </div>
               <label className="ram-consent-label text-muted-foreground flex items-start gap-2 text-[10px] leading-snug">
                 <input type="checkbox" required className="mt-0.5 accent-brand" />
@@ -370,7 +382,7 @@ export function FinanceSection() {
                   персональных данных
                 </button>
               </label>
-              <button type="submit" disabled={formStatus === "sending"} className="font-sans bg-brand text-brand-foreground rounded-[6px] px-6 py-3 text-[11px] font-bold uppercase disabled:opacity-50">
+              <button type="submit" disabled={formStatus === "sending"} className="ram-ripple-button font-sans bg-brand text-brand-foreground rounded-[6px] px-6 py-3 text-[11px] font-bold uppercase disabled:opacity-50">
                 {formStatus === "sending" ? "Отправка..." : "Отправить заявку"}
               </button>
               {formStatus === "sent" ? <p className="text-brand text-[11px] font-semibold uppercase">Заявка отправлена</p> : null}

@@ -11,10 +11,14 @@ import {
   Users,
   Youtube,
   Send,
+  Layers3,
+  Paintbrush,
+  ArrowRight,
 } from "lucide-react";
 import { type FormEvent, useState } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { sendContactEmail } from "@/lib/contact-email";
+import { formatRussianPhone } from "@/lib/phone";
 import contactHeroAsset from "@/assets/contact-0.webp";
 import contactManagerAsset from "@/assets/contact-men.webp";
 import footerLogoAsset from "@/assets/footer-logo.webp";
@@ -172,6 +176,7 @@ export function ContactsSection() {
           </div>
         </DialogContent>
       </Dialog>
+
       <div className="ram-mobile-gutter mx-auto max-w-[1600px] px-6">
         <div
           className="ram-contacts-hero grid min-h-[420px] items-center gap-8 bg-contain bg-right bg-no-repeat"
@@ -281,9 +286,14 @@ export function ContactsSection() {
                 />
                 <input
                   className="border-border bg-background placeholder:text-muted-foreground rounded-[5px] border px-4 py-3 text-[11px] outline-none focus:border-brand"
-                  placeholder="Телефон"
+                  placeholder="+7 (___) ___-__-__"
                   name="phone"
                   type="tel"
+                  inputMode="tel"
+                  autoComplete="tel"
+                  onChange={(event) => {
+                    event.currentTarget.value = formatRussianPhone(event.currentTarget.value);
+                  }}
                   required
                 />
               </div>
@@ -307,7 +317,7 @@ export function ContactsSection() {
               <button
                 type="submit"
                 disabled={formStatus === "sending"}
-                className="bg-brand text-brand-foreground mt-1 rounded-[5px] px-6 py-3 text-[11px] font-bold tracking-normal uppercase transition-opacity hover:opacity-90"
+                className="ram-ripple-button bg-brand text-brand-foreground mt-1 rounded-[5px] px-6 py-3 text-[11px] font-bold tracking-normal uppercase transition-opacity hover:opacity-90"
               >
                 {formStatus === "sending" ? "Отправка..." : "Отправить заявку"}
               </button>
@@ -380,7 +390,85 @@ export function ContactsSection() {
         </div>
       </div>
 
-      <footer className="ram-footer bg-accent text-accent-foreground mt-16">
+      <div className="ram-gift-section text-white">
+        <div className="ram-gift-overlay" aria-hidden="true" />
+        <div className="ram-gift-container relative z-10 mx-auto flex min-h-[620px] max-w-[1600px] items-center justify-end px-6 py-16">
+          <div className="ram-gift-content w-full max-w-[760px]">
+            <div className="flex items-center gap-5">
+              <p className="font-sans text-sm tracking-[0.2em] uppercase sm:text-base">При покупке RAM ProMaster</p>
+              <span className="h-px flex-1 bg-white/55" />
+            </div>
+            <div className="font-display mt-4 text-[clamp(54px,6vw,96px)] leading-[0.9] font-bold tracking-tight uppercase">
+              Вам — <span className="text-brand">подарки</span>
+            </div>
+            <div className="ram-gift-benefits mt-10 grid grid-cols-3 gap-6">
+              <div>
+                <ShieldCheck className="h-12 w-12" strokeWidth={1.8} />
+                <p className="mt-4 text-sm font-bold uppercase">Безоговорочно</p>
+                <p className="mt-1 text-2xl font-bold uppercase">1 год гарантии</p>
+                <p className="mt-1 text-sm font-semibold uppercase opacity-55">или 100 000 км пробега</p>
+              </div>
+              <div className="ram-gift-benefit border-l border-white/45 pl-7">
+                <Layers3 className="h-12 w-12" strokeWidth={1.8} />
+                <p className="mt-4 text-sm font-bold uppercase">Обшивка кузова</p>
+                <p className="mt-1 text-2xl font-bold uppercase">Влагостойкой фанерой</p>
+              </div>
+              <div className="ram-gift-benefit border-l border-white/45 pl-7">
+                <Paintbrush className="h-12 w-12" strokeWidth={1.8} />
+                <p className="mt-4 text-sm font-bold uppercase">Полная обработка</p>
+                <p className="mt-1 text-2xl font-bold uppercase">Антикором</p>
+              </div>
+            </div>
+            <form className="ram-gift-form mt-10" onSubmit={handleContactSubmit}>
+              <input name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+              <input type="hidden" name="name" value="Заявка на подарки" />
+              <input type="hidden" name="comment" value="Получить подарки при покупке RAM ProMaster" />
+              <div className="grid gap-4 sm:grid-cols-[minmax(0,1.08fr)_minmax(280px,1fr)]">
+                <label className="relative block">
+                  <span className="sr-only">Ваш телефон</span>
+                  <Phone className="absolute top-1/2 left-6 h-5 w-5 -translate-y-1/2 text-white/45" strokeWidth={2} />
+                  <input
+                    type="tel"
+                    name="phone"
+                    required
+                    autoComplete="tel"
+                    placeholder="+7 (___) ___-__-__"
+                    onChange={(event) => {
+                      event.currentTarget.value = formatRussianPhone(event.currentTarget.value);
+                    }}
+                    className="h-[82px] w-full rounded-[5px] border border-white/30 bg-black/25 pr-5 pl-[15px] text-lg text-white outline-none backdrop-blur-sm placeholder:text-white/45 focus:border-brand"
+                  />
+                </label>
+                <button
+                  type="submit"
+                  disabled={formStatus === "sending"}
+                  className="ram-ripple-button bg-brand flex h-[82px] items-center justify-center gap-5 rounded-[5px] px-8 text-base font-bold uppercase transition-opacity hover:opacity-90 disabled:opacity-50"
+                >
+                  {formStatus === "sending" ? "Отправка..." : "Получить подарки"}
+                  <ArrowRight className="h-5 w-5" />
+                </button>
+              </div>
+              <label className="mt-4 flex items-center gap-3 text-xs whitespace-nowrap text-white/50">
+                <input type="checkbox" required className="accent-brand h-4 w-4 shrink-0" />
+                <span>
+                  Я согласен на обработку{" "}
+                  <button
+                    type="button"
+                    onClick={() => setAgreementOpen(true)}
+                    className="ram-gift-consent-link underline underline-offset-2 hover:text-white"
+                  >
+                    персональных данных
+                  </button>
+                </span>
+              </label>
+              {formStatus === "sent" ? <p className="mt-3 text-sm font-semibold text-white">Заявка отправлена</p> : null}
+              {formStatus === "error" ? <p className="mt-3 text-sm text-red-300">Не удалось отправить заявку. Позвоните нам по телефону.</p> : null}
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <footer className="ram-footer bg-accent text-accent-foreground">
         <div className="hidden mx-auto grid max-w-[1600px] gap-10 px-6 py-14 lg:grid-cols-[minmax(0,1.1fr)_repeat(3,minmax(0,0.8fr))_minmax(0,1.2fr)]">
           <div>
             <img

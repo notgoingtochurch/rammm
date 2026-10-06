@@ -1,6 +1,7 @@
 import { type CSSProperties, type FormEvent, useEffect, useState } from "react";
 import logoRam from "@/assets/logo-ram-svg.svg";
 import { sendContactEmail } from "@/lib/contact-email";
+import { formatRussianPhone } from "@/lib/phone";
 
 
 import { createFileRoute } from "@tanstack/react-router";
@@ -426,40 +427,6 @@ const VIDEO_REASONS = [
   },
 ];
 
-function formatRussianPhone(value: string) {
-  let digits = value.replace(/\D/g, "");
-
-  if (digits.startsWith("8")) {
-    digits = `7${digits.slice(1)}`;
-  }
-
-  if (digits.startsWith("7")) {
-    digits = digits.slice(1);
-  }
-
-  digits = digits.slice(0, 10);
-
-  const parts = [
-    digits.slice(0, 3),
-    digits.slice(3, 6),
-    digits.slice(6, 8),
-    digits.slice(8, 10),
-  ];
-
-  if (!digits) return "";
-
-  let formatted = `+7 (${parts[0]}`;
-  if (parts[0].length === 3) formatted += ")";
-  if (parts[1]) formatted += ` ${parts[1]}`;
-  if (parts[2]) formatted += `-${parts[2]}`;
-  if (parts[3]) formatted += `-${parts[3]}`;
-
-  return formatted;
-}
-
-
-
-
 function Index() {
   const [discountOpen, setDiscountOpen] = useState(false);
   const [discountPhone, setDiscountPhone] = useState("");
@@ -762,7 +729,7 @@ function Index() {
             <button
               type="button"
               onClick={openDiscountDialog}
-              className="ram-discount-button bg-brand font-menu text-brand-foreground flex h-[42px] items-center rounded-sm px-6 text-xs font-semibold tracking-wide uppercase transition-opacity hover:opacity-90"
+              className="ram-discount-button ram-ripple-button bg-brand font-menu text-brand-foreground flex h-[42px] items-center rounded-sm px-6 text-xs font-semibold tracking-wide uppercase transition-opacity hover:opacity-90"
             >
               Обратный звонок
             </button>
@@ -857,7 +824,7 @@ function Index() {
                         behavior: "smooth",
                       });
                     }}
-                    className="inline-flex items-center justify-center rounded-sm bg-brand px-8 py-3.5 text-xs font-bold text-brand-foreground uppercase transition-opacity hover:opacity-90"
+                    className="ram-ripple-button inline-flex items-center justify-center rounded-sm bg-brand px-8 py-3.5 text-xs font-bold text-brand-foreground uppercase transition-opacity hover:opacity-90"
                   >
                     Перейти в каталог
                   </a>
@@ -1288,7 +1255,12 @@ function Index() {
                 ))}
               </div>
 
-              <div className="ram-tech-video-card relative z-10 border-border/20 bg-background/5 mt-12 ml-auto w-full max-w-[256px] rounded-[8px] border p-6 backdrop-blur-sm lg:mt-[-120px]">
+              <button
+                type="button"
+                onClick={() => setHeroVideoOpen(true)}
+                aria-label="Смотреть видеообзор двигателя"
+                className="ram-tech-video-card relative z-10 border-border/20 bg-background/5 mt-12 ml-auto w-full max-w-[256px] rounded-[8px] border p-6 text-left backdrop-blur-sm lg:mt-[-120px]"
+              >
                 <div className="flex items-center gap-4">
                   <span className="border-accent-foreground flex h-11 w-11 items-center justify-center rounded-full border">
                     <Play className="text-accent-foreground h-4 w-4 fill-current" />
@@ -1303,7 +1275,7 @@ function Index() {
                   Узнайте больше о возможностях Pentastar V6 3.6L
                 </p>
                 <p className="mt-6 text-right text-xs opacity-60">05:18</p>
-              </div>
+              </button>
             </div>
           </div>
         </section>
@@ -1431,14 +1403,13 @@ function Index() {
         </button>
       ) : null}
 
-      <button
-        type="button"
-        aria-label="Получить консультацию"
-        onClick={openDiscountDialog}
-        className={`ram-mobile-callback fixed bottom-5 z-40 h-11 items-center justify-center rounded-sm bg-brand text-xs font-bold uppercase text-brand-foreground shadow-lg transition-all ${showBackToTop ? "right-[64px] left-[15px] w-auto px-6" : "right-[15px] left-[15px] px-6"}`}
+      <a
+        href="tel:+74997119161"
+        aria-label="Позвонить по номеру +7 (499) 711-9161"
+        className={`ram-mobile-callback ram-ripple-button fixed bottom-5 z-40 h-11 items-center justify-center rounded-sm bg-brand text-xs font-bold uppercase text-brand-foreground shadow-lg transition-all ${showBackToTop ? "right-[64px] left-[15px] w-auto px-6" : "right-[15px] left-[15px] px-6"}`}
       >
-        Получить консультацию
-      </button>
+        Позвонить +7 (499) 711-9161
+      </a>
 
 
     </div>
