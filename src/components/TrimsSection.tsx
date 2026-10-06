@@ -13,7 +13,7 @@ const TRIMS = [
   {
     name: "Tradesman",
     subtitle: "Практичность и надёжность",
-    price: "4 950 000",
+    price: "8 880 000",
     image: trimWhiteAsset,
     featured: false,
     features: [
@@ -30,7 +30,7 @@ const TRIMS = [
   {
     name: "SLT",
     subtitle: "Больше комфорта и технологий",
-    price: "5 350 000",
+    price: "8 880 000",
     image: trimSilverAsset,
     featured: true,
     features: [
@@ -47,7 +47,7 @@ const TRIMS = [
   {
     name: "SLT+",
     subtitle: "Максимум возможностей",
-    price: "5 850 000",
+    price: "8 880 000",
     image: trimBlackAsset,
     featured: false,
     features: [

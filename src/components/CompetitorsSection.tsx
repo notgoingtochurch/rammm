@@ -63,7 +63,7 @@ const ROWS: { icon: typeof Cog; label: string; values: string[]; accent?: boolea
   {
     icon: ShieldCheck,
     label: "Цена в России",
-    values: ["8 300 000 ₽", "4 910 000 ₽", "≈13 500 000 ₽", "≈11 200 000–11 600 000 ₽"],
+    values: ["8 880 000 ₽", "4 910 000 ₽", "≈13 500 000 ₽", "≈11 200 000–11 600 000 ₽"],
     accent: true,
   },
   {

@@ -44,7 +44,7 @@ const CARDS = [
       { icon: Box, label: "Объём", value: "13 м³" },
     ],
     payload: "до 1 820 кг",
-    price: "от 5 350 000 ₽",
+    price: "8 880 000 ₽",
   },
   {
     letter: "C",
@@ -65,7 +65,7 @@ const CARDS = [
       { icon: Box, label: "Объём", value: "16 м³" },
     ],
     payload: "до 2 300 кг",
-    price: "от 5 850 000 ₽",
+    price: "8 880 000 ₽",
   },
 ];
 

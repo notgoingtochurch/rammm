@@ -240,7 +240,7 @@ const COMPARISON = {
     { icon: Ruler, label: "Длина грузового отсека", values: ["≈3 705–3 736 мм", "≈3 705 мм", "зависит от версии", "зависит от версии"] },
     { icon: MoveVertical, label: "Высота грузового отсека", values: ["≈1 930–1 971 мм", "≈1 932 мм", "зависит от версии", "зависит от версии"] },
     { icon: DoorOpen, label: "Задние двери", values: ["открывание 260°", "до 270°", "зависит от исполнения", "зависит от исполнения"] },
-    { icon: Coins, label: "Цена в России", values: ["8 300 000 ₽", "4 910 000 ₽", "≈13 500 000 ₽", "≈11 200 000–11 600 000 ₽"] },
+    { icon: Coins, label: "Цена в России", values: ["8 880 000 ₽", "4 910 000 ₽", "≈13 500 000 ₽", "≈11 200 000–11 600 000 ₽"] },
   ],
 };
 
@@ -250,7 +250,7 @@ const COMPARISON = {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "RAM ProMaster Center — фургоны из США от 4 950 000 ₽" },
+      { title: "RAM ProMaster Center — фургоны из США за 8 880 000 ₽" },
       {
         name: "description",
         content:
@@ -302,7 +302,7 @@ const MODELS = [
     length: "5413 мм",
     volume: "10,0 м³",
     payload: "до 1600 кг",
-    price: "4 950 000 ₽",
+    price: "8 880 000 ₽",
   },
   {
     num: "02",
@@ -312,7 +312,7 @@ const MODELS = [
     length: "5998 мм",
     volume: "13,0 м³",
     payload: "до 1820 кг",
-    price: "5 350 000 ₽",
+    price: "8 880 000 ₽",
   },
   {
     num: "03",
@@ -322,7 +322,7 @@ const MODELS = [
     length: "6363 мм",
     volume: "15,0 м³",
     payload: "до 1820 кг",
-    price: "5 650 000 ₽",
+    price: "8 880 000 ₽",
   },
   {
     num: "04",
@@ -332,7 +332,7 @@ const MODELS = [
     length: "6363 мм",
     volume: "16,0 м³",
     payload: "до 1820 кг",
-    price: "5 850 000 ₽",
+    price: "8 880 000 ₽",
   },
 ];
 
@@ -808,7 +808,7 @@ function Index() {
 
                 <div className="ram-hero-price mt-8 flex items-baseline gap-2 font-menu">
                   <span className="text-sm text-muted-foreground uppercase">от</span>
-                  <span className="text-4xl font-bold">8 300 000 ₽</span>
+                  <span className="text-4xl font-bold">8 880 000 ₽</span>
                 </div>
 
                 <div className="ram-button-row relative z-10 mt-6 flex flex-wrap gap-3">
