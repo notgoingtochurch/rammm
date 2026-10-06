@@ -172,7 +172,7 @@ export function ContactsSection() {
           </div>
         </DialogContent>
       </Dialog>
-      <div className="mx-auto max-w-[1600px] px-6">
+      <div className="ram-mobile-gutter mx-auto max-w-[1600px] px-6">
         <div
           className="ram-contacts-hero grid min-h-[420px] items-center gap-8 bg-contain bg-right bg-no-repeat"
           style={{ backgroundImage: `url(${contactHeroAsset})` }}
@@ -182,7 +182,7 @@ export function ContactsSection() {
               <span className="text-brand font-display text-xs font-bold">12</span>
               <span className="text-xs font-semibold tracking-normal uppercase">/ Контакты</span>
             </div>
-            <div className="font-display mt-6 text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
+            <div className="ram-mobile-section-title font-display mt-6 text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
               RAM Promaster
               <br />
               <span className="text-brand font-medium">Center</span>
@@ -380,7 +380,7 @@ export function ContactsSection() {
         </div>
       </div>
 
-      <footer className="bg-accent text-accent-foreground mt-16">
+      <footer className="ram-footer bg-accent text-accent-foreground mt-16">
         <div className="hidden mx-auto grid max-w-[1600px] gap-10 px-6 py-14 lg:grid-cols-[minmax(0,1.1fr)_repeat(3,minmax(0,0.8fr))_minmax(0,1.2fr)]">
           <div>
             <img

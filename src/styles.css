@@ -460,8 +460,61 @@
   }
 
   @media screen and (max-width: 768px) {
+    .ram-footer {
+      padding-bottom: 60px;
+    }
+
+    div.ram-mobile-section-title {
+      font-size: 32px !important;
+    }
+
+    .ram-mobile-gutter {
+      padding-left: 15px !important;
+      padding-right: 15px !important;
+    }
+
+    .ram-reviews-list {
+      padding-top: 0 !important;
+    }
+
     .ram-mobile-callback {
       display: flex;
+    }
+
+    .ram-back-to-top {
+      right: 15px !important;
+    }
+
+    .ram-warranty-card {
+      background-size: contain !important;
+      background-position: center !important;
+    }
+
+    .ram-competitors-table {
+      min-width: 900px !important;
+      font-size: 9px !important;
+    }
+
+    .ram-competitors-table th,
+    .ram-competitors-table td,
+    .ram-competitors-table span {
+      font-size: 9px !important;
+      line-height: 1.15 !important;
+      letter-spacing: 0 !important;
+    }
+
+    .ram-competitors-table th,
+    .ram-competitors-table td {
+      padding: 6px 8px !important;
+    }
+
+    .ram-competitors-table span {
+      gap: 5px !important;
+    }
+
+    .ram-competitors-table svg {
+      width: 12px !important;
+      height: 12px !important;
     }
 
     .ram-gallery-grid {
@@ -480,7 +533,7 @@
     .ram-reviews-grid {
       grid-template-columns: none !important;
       grid-auto-flow: column;
-      grid-auto-columns: calc((100% - 16px) / 1.2);
+      grid-auto-columns: calc((100% - 48px) / 2.2);
       overflow-x: auto;
       padding-bottom: 8px;
       scroll-snap-type: x mandatory;
@@ -630,11 +683,25 @@
     }
 
     .ram-video-grid {
-      grid-template-columns: 1fr !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     }
 
     .ram-video-img {
       height: fit-content !important;
+    }
+
+    .ram-video-title {
+      font-size: 12px !important;
+    }
+
+    .ram-video-text {
+      font-size: 10px !important;
+      line-height: 1 !important;
+    }
+
+    .ram-finance-program-image {
+      width: 32.4% !important;
+      height: 105.6px !important;
     }
 
     .ram-dim-schemes {
@@ -781,6 +848,7 @@
     }
 
     .ram-button-row button,
+    .ram-button-row > a,
     .ram-catalog-link,
     .ram-page form button,
     .ram-page select {
@@ -861,7 +929,7 @@
       bottom: -10px;
       left: -14px;
       z-index: -1;
-      width: 45vw;
+      width: 100vw;
       background: linear-gradient(90deg, oklch(1 0 0 / 92%) 0%, oklch(1 0 0 / 55%) 62%, oklch(1 0 0 / 0%) 100%);
       pointer-events: none;
     }

@@ -44,7 +44,7 @@ export function GallerySection() {
 
   return (
     <section id="gallery" className="border-border border-t py-16">
-      <div className="mx-auto max-w-[1600px] px-6">
+      <div className="ram-mobile-gutter mx-auto max-w-[1600px] px-6">
         <div className="text-muted-foreground flex items-center gap-3 text-xs">
           <span className="text-brand font-display font-bold">08</span>
           <span>/</span>
@@ -55,7 +55,7 @@ export function GallerySection() {
 
         <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)_minmax(0,1.3fr)] lg:items-center">
           <div>
-            <div className="font-display text-4xl leading-none font-bold tracking-tight uppercase sm:text-5xl">
+            <div className="ram-mobile-section-title font-display text-4xl leading-none font-bold tracking-tight uppercase sm:text-5xl">
               RAM Promaster
             </div>
             <p className="text-muted-foreground font-sans mt-1 text-2xl leading-none font-light tracking-tight uppercase sm:text-3xl">

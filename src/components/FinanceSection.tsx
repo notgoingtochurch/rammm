@@ -180,7 +180,7 @@ export function FinanceSection() {
       </Dialog>
       <div className="bg-surface relative overflow-hidden">
         <div
-          className="ram-finance-hero relative mx-auto grid max-w-[1600px] items-center gap-8 bg-contain bg-right bg-no-repeat px-6 py-12 lg:grid-cols-2"
+          className="ram-finance-hero ram-mobile-gutter relative mx-auto grid max-w-[1600px] items-center gap-8 bg-contain bg-right bg-no-repeat px-6 py-12 lg:grid-cols-2"
           style={{ backgroundImage: `url(${leasingBgAsset})` }}
         >
           <div>
@@ -191,7 +191,7 @@ export function FinanceSection() {
                 Финансовые программы и защита
               </span>
             </div>
-            <div className="font-display mt-5 text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
+            <div className="ram-mobile-section-title font-display mt-5 text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
               Кредит, лизинг и гарантия
             </div>
             <p className="text-foreground mt-5 max-w-md text-xs leading-relaxed">
@@ -202,7 +202,7 @@ export function FinanceSection() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1600px] space-y-4 px-6 py-8">
+      <div className="ram-mobile-gutter mx-auto max-w-[1600px] space-y-4 px-6 py-8">
         <div className="grid gap-4 lg:grid-cols-3">
           {PROGRAMS.map(({ icon: Icon, title, subtitle, items, cta, image }) => (
             <div key={title} className="border-border relative overflow-hidden rounded-[6px] border p-4">
@@ -212,7 +212,7 @@ export function FinanceSection() {
                 width={800}
                 height={600}
                 loading="lazy"
-                className="pointer-events-none absolute right-0 bottom-0 h-44 w-[54%] object-contain object-right mix-blend-multiply"
+                className="ram-finance-program-image pointer-events-none absolute right-0 bottom-0 h-44 w-[54%] object-contain object-right mix-blend-multiply"
               />
               <div className="relative">
                 <div className="flex items-start gap-3">
@@ -241,7 +241,7 @@ export function FinanceSection() {
 
         <div className="grid gap-4 lg:grid-cols-3">
           <div
-            className="bg-accent text-accent-foreground rounded-[6px] p-4"
+            className="ram-warranty-card bg-accent text-accent-foreground rounded-[6px] p-4"
             style={{
               backgroundImage: `url(${warrantyBgAsset})`,
               backgroundSize: "100% 100%",

@@ -63,7 +63,7 @@ export function ReviewsSection() {
     <section id="reviews" className="border-border border-t">
       <div className="relative overflow-hidden bg-[#fbfbfb]">
         <div
-          className="ram-reviews-hero relative mx-auto grid max-w-[1600px] items-center gap-8 bg-contain bg-right bg-no-repeat px-6 py-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]"
+          className="ram-reviews-hero ram-mobile-gutter relative mx-auto grid max-w-[1600px] items-center gap-8 bg-contain bg-right bg-no-repeat px-6 py-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]"
           style={{ backgroundImage: `url(${reviewBg})` }}
         >
           <div>
@@ -74,7 +74,7 @@ export function ReviewsSection() {
                 Видеоотзывы
               </span>
             </div>
-            <div className="font-display mt-5 text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
+            <div className="ram-mobile-section-title font-display mt-5 text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
               Видеоотзывы клиентов
             </div>
             <p className="font-sans text-muted-foreground mt-3 text-lg font-medium tracking-tight uppercase">
@@ -88,7 +88,7 @@ export function ReviewsSection() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1600px] px-6 py-10">
+      <div className="ram-reviews-list ram-mobile-gutter mx-auto max-w-[1600px] px-6 py-10">
         <div className="ram-reviews-grid mt-6 grid gap-6 font-sans tracking-normal sm:grid-cols-2 lg:grid-cols-5">
           {REVIEWS.map((r) => (
             <article

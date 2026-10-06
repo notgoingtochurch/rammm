@@ -110,14 +110,14 @@ export function AboutSection() {
           aria-hidden="true"
         />
         
-        <div className="relative mx-auto grid max-w-[1600px] gap-10 px-6 py-14 lg:grid-cols-2 lg:items-center lg:py-24">
+        <div className="ram-mobile-gutter relative mx-auto grid max-w-[1600px] gap-10 px-6 py-14 lg:grid-cols-2 lg:items-center lg:py-24">
           <div>
             <div className="flex items-center gap-3">
               <span className="text-brand font-display text-xs font-bold">07</span>
               <span className="text-xs font-semibold tracking-normal uppercase">О нас</span>
             </div>
 
-            <div className="font-display mt-6 text-4xl leading-none font-bold tracking-tight uppercase sm:text-5xl">
+            <div className="ram-mobile-section-title font-display mt-6 text-4xl leading-none font-bold tracking-tight uppercase sm:text-5xl">
               RAM Promaster Center
             </div>
             <p className="font-sans mt-[10px] text-2xl leading-none font-light tracking-tight uppercase opacity-70 sm:text-3xl">
@@ -164,7 +164,7 @@ export function AboutSection() {
       </div>
 
 
-      <div className="mx-auto max-w-[1600px] px-6 py-14">
+      <div className="ram-mobile-gutter mx-auto max-w-[1600px] px-6 py-14">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,2fr)_minmax(0,0.75fr)]">
           <div>
             <div className="font-display text-xl leading-tight font-bold tracking-tight uppercase">

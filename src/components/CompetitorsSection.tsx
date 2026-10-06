@@ -89,7 +89,7 @@ type CompetitorsSectionProps = {
 export function CompetitorsSection({ onDiscountClick }: CompetitorsSectionProps) {
   return (
     <section id="competitors" className="border-border border-t bg-[#f8f9f9] py-16">
-      <div className="mx-auto max-w-[1600px] px-6">
+      <div className="ram-mobile-gutter mx-auto max-w-[1600px] px-6">
         <div className="flex items-center gap-3">
           <span className="text-brand font-display text-xs font-bold">11</span>
           <span className="text-xs font-semibold tracking-normal uppercase">
@@ -99,7 +99,7 @@ export function CompetitorsSection({ onDiscountClick }: CompetitorsSectionProps)
 
         <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.6fr)] lg:items-center">
           <div>
-            <div className="font-display text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
+            <div className="ram-mobile-section-title font-display text-4xl leading-none font-medium tracking-tight uppercase sm:text-5xl">
               RAM Promaster
               <br />
               vs конкуренты
@@ -122,7 +122,7 @@ export function CompetitorsSection({ onDiscountClick }: CompetitorsSectionProps)
         </div>
 
         <div className="border-border mt-12 overflow-x-auto rounded-[5px] border">
-          <table className="w-full min-w-[1400px] border-collapse text-xs">
+          <table className="ram-competitors-table w-full min-w-[1400px] border-collapse text-xs">
             <thead>
               <tr>
                 <th className="border-border w-[20%] border-b px-5 py-3 text-left text-[11px] font-bold tracking-[0.12em] uppercase">

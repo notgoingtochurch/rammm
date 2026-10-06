@@ -844,10 +844,23 @@ function Index() {
                   <span className="text-4xl font-bold">8 300 000 ₽</span>
                 </div>
 
-                <div className="ram-button-row mt-6 flex flex-wrap gap-3">
-                  <button className="rounded-sm bg-brand px-8 py-3.5 text-xs font-bold text-brand-foreground uppercase transition-opacity hover:opacity-90">
+                <div className="ram-button-row relative z-10 mt-6 flex flex-wrap gap-3">
+                  <a
+                    href="#catalog"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      const catalog = document.getElementById("catalog");
+                      if (!catalog) return;
+                      window.history.replaceState(null, "", "#catalog");
+                      window.scrollTo({
+                        top: catalog.getBoundingClientRect().top + window.scrollY,
+                        behavior: "smooth",
+                      });
+                    }}
+                    className="inline-flex items-center justify-center rounded-sm bg-brand px-8 py-3.5 text-xs font-bold text-brand-foreground uppercase transition-opacity hover:opacity-90"
+                  >
                     Перейти в каталог
-                  </button>
+                  </a>
                   <button
                     type="button"
                     onClick={openDiscountDialog}
@@ -922,7 +935,7 @@ function Index() {
                   <span className="text-brand">02</span>{" "}
                   <span className="text-muted-foreground">Каталог</span>
                 </p>
-                <div className="mt-5 font-display text-4xl leading-[.88] font-bold tracking-tight uppercase sm:text-5xl lg:text-7xl">
+                <div className="ram-mobile-section-title mt-5 font-display text-4xl leading-[.88] font-bold tracking-tight uppercase sm:text-5xl lg:text-7xl">
                   RAM ProMaster 2500
                 </div>
                 <p className="mt-2 font-display text-3xl leading-none font-light tracking-wide uppercase sm:text-4xl lg:text-5xl">159” High Roof</p>
@@ -1014,7 +1027,7 @@ function Index() {
                   <span className="text-brand">03</span>{" "}
                   <span className="opacity-80">Интерьер</span>
                 </p>
-                <div className="ram-interior-title mt-5 font-display text-5xl leading-[0.95] font-bold tracking-tight uppercase lg:text-6xl">
+                <div className="ram-interior-title ram-mobile-section-title mt-5 font-display text-5xl leading-[0.95] font-bold tracking-tight uppercase lg:text-6xl">
                   RAM Promaster
                   <br />
                   <span className="ram-interior-subtitle mt-[6px] inline-block font-sans text-[46px] font-normal opacity-50">Создан для работы</span>
@@ -1081,7 +1094,7 @@ function Index() {
                 <span className="text-brand">04</span>{" "}
                 <span className="text-muted-foreground">Видеоцентр</span>
               </p>
-              <div className="mt-4 font-display text-4xl leading-[0.95] font-medium tracking-tight uppercase lg:text-5xl">
+              <div className="ram-mobile-section-title mt-4 font-display text-4xl leading-[0.95] font-medium tracking-tight uppercase lg:text-5xl">
                 RAM Promaster
                 <br />
                 <span className="mt-[15px] inline-block font-normal text-muted-foreground">Без секретов</span>
@@ -1106,10 +1119,12 @@ function Index() {
 
             <div className="ram-video-grid grid gap-[8px] sm:grid-cols-2 xl:grid-cols-4">
               {VIDEOS.map((v) => (
-                <a
+                <button
+                  type="button"
                   key={v.title}
-                  href="#"
-                  className="group relative block overflow-hidden rounded-[8px] bg-accent"
+                  onClick={() => setHeroVideoOpen(true)}
+                  aria-label={`Смотреть видео: ${v.title}`}
+                  className="group relative block w-full overflow-hidden rounded-[8px] bg-accent text-left"
                 >
                   <img
                     src={v.image}
@@ -1124,15 +1139,15 @@ function Index() {
                     <Play className="h-5 w-5 fill-current text-accent-foreground" />
                   </span>
                   <div className="absolute inset-x-0 bottom-0 rounded-b-[8px] bg-accent/40 px-4 py-3 text-accent-foreground backdrop-blur-md">
-                    <p className="font-display text-sm font-bold tracking-wide uppercase">
+                    <p className="ram-video-title font-display text-sm font-bold tracking-wide uppercase">
                       {v.title}
                     </p>
                     <div className="mt-1.5 flex items-end justify-between gap-3">
-                      <p className="text-[11px] opacity-70">{v.text}</p>
+                      <p className="ram-video-text text-[11px] opacity-70">{v.text}</p>
                       <span className="text-xs opacity-70">{v.time}</span>
                     </div>
                   </div>
-                </a>
+                </button>
               ))}
             </div>
           </div>
@@ -1242,7 +1257,7 @@ function Index() {
                 <span className="ml-3 opacity-70">Технологии и производительность</span>
               </p>
 
-              <div className="ram-tech-title font-display mt-6 text-5xl leading-[0.95] font-medium tracking-tight uppercase lg:text-6xl">
+              <div className="ram-tech-title ram-mobile-section-title font-display mt-6 text-5xl leading-[0.95] font-medium tracking-tight uppercase lg:text-6xl">
                 Pentastar<sup className="align-super text-2xl">®</sup> V6 3.6L
               </div>
               <p className="font-sans mt-2 text-2xl font-normal tracking-tight uppercase opacity-80 lg:text-3xl">
@@ -1295,7 +1310,7 @@ function Index() {
 
         <section className="ram-tech-specs bg-[#f5f5f5]">
           <div className="ram-container mx-auto max-w-[1600px] px-6 py-16">
-            <div className="font-display text-4xl font-medium tracking-tight uppercase">
+            <div className="ram-mobile-section-title font-display text-4xl font-medium tracking-tight uppercase">
               Технические характеристики
             </div>
 
@@ -1410,7 +1425,7 @@ function Index() {
           type="button"
           aria-label="Вернуться наверх"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed right-5 bottom-5 z-40 flex h-11 w-11 items-center justify-center rounded-sm bg-brand text-brand-foreground shadow-lg transition-transform hover:scale-105"
+          className="ram-back-to-top fixed right-5 bottom-5 z-40 flex h-11 w-11 items-center justify-center rounded-sm bg-brand text-brand-foreground shadow-lg transition-transform hover:scale-105"
         >
           <ArrowUp className="h-5 w-5" strokeWidth={2} />
         </button>
@@ -1420,7 +1435,7 @@ function Index() {
         type="button"
         aria-label="Получить консультацию"
         onClick={openDiscountDialog}
-        className={`ram-mobile-callback fixed bottom-5 z-40 h-11 items-center justify-center rounded-sm bg-brand text-xs font-bold uppercase text-brand-foreground shadow-lg transition-all ${showBackToTop ? "right-[69px] left-5 w-auto px-6" : "right-5 left-5 px-6"}`}
+        className={`ram-mobile-callback fixed bottom-5 z-40 h-11 items-center justify-center rounded-sm bg-brand text-xs font-bold uppercase text-brand-foreground shadow-lg transition-all ${showBackToTop ? "right-[64px] left-[15px] w-auto px-6" : "right-[15px] left-[15px] px-6"}`}
       >
         Получить консультацию
       </button>
